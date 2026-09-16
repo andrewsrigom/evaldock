@@ -434,6 +434,72 @@ async def export_jsonl(
     )
 
 
+class SecretValue(Contract):
+    value: str = Field(min_length=1, max_length=8192)
+
+
+class SecretSlot(Contract):
+    name: str = Field(min_length=1, max_length=120)
+
+
+def credential_status(credential: Credential) -> dict[str, Any]:
+    configured = bool(decrypt(credential.ciphertext).strip())
+    return {
+        "id": credential.id,
+        "name": credential.name,
+        "value": "••••••••" if configured else "",
+        "configured": configured,
+    }
+
+
+@app.post("/api/projects/{project_id}/credentials/slot")
+async def reserve_credential(
+    project_id: str,
+    body: SecretSlot,
+    who: Principal = Depends(principal),
+    db: AsyncSession = Depends(get_db),
+) -> dict[str, Any]:
+    project = await project_access(db, who, project_id, write=True)
+    await db.execute(select(Project).where(Project.id == project_id).with_for_update())
+    rows = (
+        await db.scalars(
+            select(Credential).where(
+                Credential.project_id == project_id, Credential.name == body.name
+            )
+        )
+    ).all()
+    if len(rows) > 1:
+        raise ValueError("Multiple credentials have this name; select an existing credential")
+    if rows:
+        return credential_status(rows[0])
+    credential = Credential(project_id=project_id, name=body.name, ciphertext=encrypt(""))
+    db.add(credential)
+    await db.flush()
+    audit(db, who, project, "credential.reserved", {"credential_id": credential.id})
+    await db.commit()
+    return credential_status(credential)
+
+
+@app.put("/api/projects/{project_id}/credentials/{credential_id}")
+async def update_credential(
+    project_id: str,
+    credential_id: str,
+    body: SecretValue,
+    who: Principal = Depends(principal),
+    db: AsyncSession = Depends(get_db),
+) -> dict[str, Any]:
+    project = await project_access(db, who, project_id, write=True)
+    credential = await db.get(Credential, credential_id)
+    if not credential or credential.project_id != project_id:
+        raise HTTPException(404, "Credential not found")
+    if not body.value.strip():
+        raise ValueError("Enter a nonempty API key")
+    credential.ciphertext = encrypt(body.value.strip())
+    audit(db, who, project, "credential.updated", {"credential_id": credential.id})
+    await db.commit()
+    return credential_status(credential)
+
+
 class SecretCreate(Contract):
     name: str = Field(min_length=1, max_length=120)
     value: str = Field(min_length=1, max_length=8192)
@@ -445,7 +511,7 @@ async def credentials(
 ) -> list[dict[str, Any]]:
     await project_access(db, who, project_id)
     rows = (await db.scalars(select(Credential).where(Credential.project_id == project_id))).all()
-    return [{"id": c.id, "name": c.name, "value": "••••••••"} for c in rows]
+    return [credential_status(c) for c in rows]
 
 
 @app.post("/api/projects/{project_id}/credentials")
@@ -480,6 +546,12 @@ async def test_target(
     await scoped_version(db, version_id, project.id, "target")
     config = TargetConfig.model_validate(detail["config"])
     credential = await db.get(Credential, config.credential_id) if config.credential_id else None
+    if config.credential_id and (
+        not credential
+        or credential.project_id != project.id
+        or not decrypt(credential.ciphertext).strip()
+    ):
+        raise ValueError("Add the target API key in Settings before testing")
     from .execution import target_slot
 
     try:

@@ -56,6 +56,9 @@ jobs:
       - run: uv run python scripts/wait_ready.py
       - run: docker compose exec -T api uv run python -m evaldock.seed
       - run: uv run python scripts/demo_verify.py
+      - run: uv run python scripts/load_catalog_calibration.py
+      - run: uv run python scripts/load_public_catalog.py
+      - run: uv run python scripts/configure_catalog_ai.py
       - run: npm ci && npx playwright install --with-deps chromium && npm run e2e
         working-directory: apps/web
       - uses: actions/upload-artifact@v4

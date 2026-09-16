@@ -14,7 +14,7 @@ export function evaluatorDefaults(kind: string): Obj {
 }
 export function defaults(kind: string): Obj {
   if (kind === 'dataset') return { config: { held_out: true }, cases: [{ case_id: 'case-001', input: {}, tags: [], slices: {} }] }
-  if (kind === 'target') return { endpoint: '', request_mapping: {}, output_pointer: '/output', trace_pointer: '/trace', metadata_pointer: '/metadata', usage_pointer: '/usage', cost_pointer: '/cost', credential_id: null, auth_header: 'Authorization', auth_prefix: 'Bearer ', timeout_seconds: 20, concurrency: 4, requests_per_second: 5, max_attempts: 3, fixture: false }
+  if (kind === 'target') return { kind: 'http', endpoint: '', instructions: '', output_schema: { type: 'object', properties: {}, required: [], additionalProperties: false }, model: '', max_output_tokens: 2000, reasoning_effort: 'low', request_mapping: {}, output_pointer: '/output', trace_pointer: '/trace', metadata_pointer: '/metadata', usage_pointer: '/usage', cost_pointer: '/cost', credential_id: null, auth_header: 'Authorization', auth_prefix: 'Bearer ', timeout_seconds: 20, concurrency: 4, requests_per_second: 5, max_attempts: 3, fixture: false }
   if (kind === 'evaluator') return { kind: 'exact_match', metric_key: 'exact_match', definition: { direction: 'higher', aggregation: 'mean', value_type: 'number', threshold: null }, config: evaluatorDefaults('exact_match'), max_attempts: 2 }
   return { evaluator_version_ids: [] }
 }
@@ -35,7 +35,10 @@ export function validationErrors(kind: string, draft: Obj, project?: Project): s
     })
   }
   if (kind === 'target') {
-    try { const u = new URL(draft.endpoint); if (!['http:', 'https:'].includes(u.protocol) || u.username || u.password) throw new Error() } catch { errors.push('Enter an HTTP or HTTPS endpoint without embedded credentials.') }
+    if (draft.kind === 'openai') {
+      if (!draft.model?.trim() || !draft.instructions?.trim() || !draft.credential_id) errors.push('Choose a model, prompt and credential.')
+      if (draft.output_schema?.type !== 'object') errors.push('The output schema must describe an object.')
+    } else try { const u = new URL(draft.endpoint); if (!['http:', 'https:'].includes(u.protocol) || u.username || u.password) throw new Error() } catch { errors.push('Enter an HTTP or HTTPS endpoint without embedded credentials.') }
     if (Object.entries(draft.request_mapping || {}).some(([key, value]) => !key || key.includes('/') || typeof value !== 'string' || (!!value && !value.startsWith('/')))) errors.push('Request mapping: use a field name and a JSON Pointer, such as /text. An empty pointer maps the full input.')
     for (const key of ['output_pointer', 'trace_pointer', 'metadata_pointer', 'usage_pointer', 'cost_pointer']) if (draft[key] && !String(draft[key]).startsWith('/')) errors.push(`${key}: start with /, or leave empty for the root.`)
   }

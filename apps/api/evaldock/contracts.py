@@ -41,7 +41,12 @@ def parse_jsonl(content: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]
 
 
 class TargetConfig(Contract):
-    endpoint: str
+    kind: Literal["http", "openai"] = "http"
+    endpoint: str = ""
+    instructions: str = ""
+    output_schema: dict[str, Any] = Field(default_factory=dict)
+    max_output_tokens: int = Field(default=2000, ge=256, le=16000)
+    reasoning_effort: Literal["none", "low", "medium", "high", "xhigh"] = "low"
     method: Literal["POST"] = "POST"
     request_mapping: dict[str, str] = Field(default_factory=dict)
     output_pointer: str = "/output"
@@ -62,6 +67,32 @@ class TargetConfig(Contract):
     model: str | None = None
     parameters: dict[str, Any] = Field(default_factory=dict)
     fixture: bool = False
+
+    @model_validator(mode="after")
+    def provider_fields(self) -> "TargetConfig":
+        if self.kind == "openai":
+            from .openai_target import ENDPOINT, validate_schema
+
+            if self.endpoint and self.endpoint != ENDPOINT:
+                raise ValueError("OpenAI targets use the official Responses API endpoint")
+            self.endpoint = ENDPOINT
+            if (
+                not self.model
+                or not self.model.strip()
+                or not self.instructions.strip()
+                or not self.credential_id
+            ):
+                raise ValueError("OpenAI targets require a model, instructions and credential slot")
+            if self.fixture or self.parameters or self.request_mapping:
+                raise ValueError(
+                    "OpenAI targets use explicit generation settings and complete case input"
+                )
+            if self.auth_header != "Authorization" or self.auth_prefix != "Bearer ":
+                raise ValueError("OpenAI targets require Bearer authentication")
+            validate_schema(self.output_schema)
+        elif not self.endpoint:
+            raise ValueError("HTTP targets require an endpoint")
+        return self
 
     @field_validator("request_mapping")
     @classmethod

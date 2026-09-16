@@ -1,0 +1,77 @@
+import { test, expect } from '@playwright/test'
+import fs from 'node:fs'
+import path from 'node:path'
+
+const root = path.resolve('../..')
+const env = Object.fromEntries(fs.readFileSync(path.join(root, '.env'), 'utf8').split('\n').filter(l => l.includes('=')).map(l => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1)]))
+const setupPath = path.join(root, 'docs/ai-setup.json')
+const setup = fs.existsSync(setupPath) ? JSON.parse(fs.readFileSync(setupPath, 'utf8')) : null
+
+test('prepared AI pilot needs only a key and preserves offline use', async ({ page }) => {
+  test.skip(!setup, 'Configure the AI pilot first')
+  const errors: string[] = []
+  page.on('pageerror', e => errors.push(e.message))
+  page.on('dialog', dialog => dialog.accept())
+  await page.goto('/')
+  await page.getByLabel('Email', { exact: true }).fill('demo@evaldock.local')
+  await page.getByLabel('Password', { exact: true }).fill(env.DEMO_PASSWORD)
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Project overview', exact: true })).toBeVisible()
+  const base = `/projects/${setup.project_id}`
+  await page.goto(`${base}/settings`)
+  await expect(page.getByRole('heading', { name: 'OpenAI API key', exact: true })).toBeVisible()
+  await expect(page.getByLabel('API key', { exact: true })).toHaveAttribute('type', 'password')
+  await expect(page.getByRole('button', { name: 'Save API key', exact: true })).toBeDisabled()
+  await expect(page.getByText('Not configured', { exact: true })).toBeVisible()
+  await page.screenshot({ path: path.join(root, 'docs/ai-settings.png'), fullPage: true })
+
+  // Exercise UI handling without persisting a fake key in the user's project.
+  const credentialPath = `**/api/projects/${setup.project_id}/credentials/*`
+  await page.route(credentialPath, async route => {
+    expect(route.request().method()).toBe('PUT')
+    expect(route.request().postDataJSON()).toEqual({ value: 'test-browser-only-key' })
+    await route.fulfill({ json: { id: 'test', name: 'OpenAI', value: '••••••••', configured: true } })
+  })
+  await page.getByLabel('API key', { exact: true }).fill('test-browser-only-key')
+  await page.getByRole('button', { name: 'Save API key', exact: true }).click()
+  await expect(page.getByLabel('API key', { exact: true })).toHaveValue('')
+  await expect(page.getByRole('status')).toContainText('API key saved')
+  await page.unroute(credentialPath)
+  await page.goto(`${base}/overview`)
+  await page.getByRole('button', { name: 'New experiment', exact: true }).click()
+  const dialog = page.getByRole('dialog')
+  await expect(dialog.getByRole('combobox', { name: 'Execution mode', exact: true })).toHaveValue('http')
+  await expect(dialog.getByRole('combobox', { name: 'Target version', exact: true })).toHaveValue(setup.target_version_id)
+  await expect(dialog.getByRole('combobox', { name: 'Evaluation suite', exact: true })).toHaveValue(setup.suite_version_id)
+  await expect(dialog).toContainText('8 planned executions')
+  await expect(dialog).toContainText('8 AI reviews')
+  await expect(dialog).toContainText('Add your API key in Settings')
+  await expect(dialog.getByRole('button', { name: 'Launch experiment', exact: true })).toBeDisabled()
+  await page.screenshot({ path: path.join(root, 'docs/ai-launch.png'), fullPage: true })
+  await dialog.getByRole('combobox', { name: 'Execution mode', exact: true }).selectOption('imported')
+  await dialog.getByRole('combobox', { name: 'Evaluation suite', exact: true }).selectOption({ label: 'Catalog public-source criteria v1 · v1' })
+  await expect(dialog.getByText('Add your API key in Settings', { exact: false })).not.toBeVisible()
+  await dialog.getByRole('button', { name: 'Close dialog', exact: true }).click()
+  const credentialsUrl = `/api/projects/${setup.project_id}/credentials`
+  const credentials = await (await page.request.get(credentialsUrl)).json()
+  const credentialsRoute = `**${credentialsUrl}`
+  await page.route(credentialsRoute, route => route.fulfill({ json: credentials.map((c: Record<string, unknown>) => ({ ...c, configured: true, value: '••••••••' })) }))
+  await page.getByRole('button', { name: 'New experiment', exact: true }).click()
+  await dialog.getByRole('combobox', { name: 'Execution mode', exact: true }).selectOption('http')
+  await dialog.getByRole('combobox', { name: 'Evaluation suite', exact: true }).selectOption(setup.suite_version_id)
+  await expect(dialog.getByRole('button', { name: 'Launch experiment', exact: true })).toBeEnabled()
+  await dialog.getByRole('button', { name: 'Close dialog', exact: true }).click()
+  await page.unroute(credentialsRoute)
+  await page.goto(`${base}/targets`)
+  await page.getByRole('button', { name: /Catalog extraction · OpenAI/ }).click()
+  const editor = page.getByRole('dialog')
+  await expect(editor.getByRole('combobox', { name: 'Target type', exact: true })).toHaveValue('openai')
+  await expect(editor.getByLabel('Model', { exact: true })).toHaveValue(setup.model)
+  await expect(editor.getByLabel('Prompt', { exact: true })).toHaveValue(/Extract one product record/)
+  await editor.getByRole('button', { name: 'Close dialog', exact: true }).click()
+  await page.goto(`${base}/settings`)
+  await page.setViewportSize({ width: 390, height: 844 })
+  await expect(page.getByLabel('API key', { exact: true })).toBeVisible()
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+  expect(errors).toEqual([])
+})

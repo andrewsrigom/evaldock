@@ -72,6 +72,27 @@ def validate_evaluator(ev: EvaluatorConfig) -> None:
         for schema in cfg.get("arguments", {}).values():
             Draft202012Validator.check_schema(schema)
     if ev.kind == "llm_judge":
+        params = cfg.get("parameters", {})
+        if not isinstance(params, dict) or set(params) - {
+            "temperature",
+            "top_p",
+            "reasoning_effort",
+            "max_output_tokens",
+        }:
+            raise ValueError("Unsupported judge parameters")
+        if "reasoning_effort" in params and params["reasoning_effort"] not in {
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+        }:
+            raise ValueError("Unsupported judge reasoning effort")
+        if "max_output_tokens" in params and (
+            type(params["max_output_tokens"]) is not int
+            or not 256 <= params["max_output_tokens"] <= 16000
+        ):
+            raise ValueError("Judge output token limit must be between 256 and 16000")
         if cfg.get("mode") not in {"fixture", "live"}:
             raise ValueError("Judge mode must explicitly be fixture or live")
         if cfg.get("template", "correctness") not in JUDGE_TEMPLATES:
@@ -292,7 +313,11 @@ async def evaluate(
         params = {
             k: v for k, v in cfg.get("parameters", {}).items() if k in {"temperature", "top_p"}
         }
-        async with AsyncOpenAI(api_key=secret, timeout=60, max_retries=0) as client:
+        if cfg.get("parameters", {}).get("reasoning_effort"):
+            params["reasoning"] = {"effort": cfg["parameters"]["reasoning_effort"]}
+        async with AsyncOpenAI(
+            api_key=secret, base_url="https://api.openai.com/v1", timeout=60, max_retries=0
+        ) as client:
             response = await client.responses.parse(
                 model=cfg["model"],
                 input=[
@@ -305,7 +330,8 @@ async def evaluate(
                     },
                 ],
                 text_format=Judgment,
-                max_output_tokens=1200,
+                max_output_tokens=cfg.get("parameters", {}).get("max_output_tokens", 1200),
+                store=False,
                 **params,
             )
         judgment = response.output_parsed

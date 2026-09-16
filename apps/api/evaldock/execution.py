@@ -33,10 +33,26 @@ async def launch(
     db: Any, project_id: str, payload: Launch, parent_id: str | None = None
 ) -> Experiment:
     await scoped_version(db, payload.dataset_version_id, project_id, "dataset")
-    await scoped_version(db, payload.suite_version_id, project_id, "suite")
+    suite = await scoped_version(db, payload.suite_version_id, project_id, "suite")
+    credentials = set()
     if payload.mode == "http":
         assert payload.target_version_id is not None
-        await scoped_version(db, payload.target_version_id, project_id, "target")
+        target = await scoped_version(db, payload.target_version_id, project_id, "target")
+        if target.config.get("credential_id"):
+            credentials.add(target.config["credential_id"])
+    for version_id in suite.config["evaluator_version_ids"]:
+        evaluator = await scoped_version(db, version_id, project_id, "evaluator")
+        cfg = evaluator.config.get("config", {})
+        if evaluator.config["kind"] == "llm_judge" and cfg.get("mode") == "live":
+            credentials.add(cfg.get("credential_id"))
+    for credential_id in credentials:
+        credential = await db.get(Credential, credential_id) if credential_id else None
+        if (
+            not credential
+            or credential.project_id != project_id
+            or not decrypt(credential.ciphertext).strip()
+        ):
+            raise ValueError("Add the required API key in Settings before launching")
     cases = list(
         (
             await db.scalars(

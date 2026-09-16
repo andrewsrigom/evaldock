@@ -8,6 +8,7 @@ from urllib.parse import urlsplit
 import aiohttp
 from aiohttp.abc import AbstractResolver
 
+from . import openai_target
 from .config import settings
 from .contracts import ObservableTrace, TargetConfig
 
@@ -117,6 +118,8 @@ class PinnedResolver(AbstractResolver):
 async def invoke(
     config: TargetConfig, case_input: Any, idempotency_key: str, secret: str | None = None
 ) -> dict[str, Any]:
+    if config.kind == "openai" and not secret:
+        raise ValueError("Add your OpenAI API key in Settings before launching")
     addresses = await validate_destination(config.endpoint)
     headers = {"Accept": "application/json"}
     if config.idempotency_header:
@@ -133,7 +136,9 @@ async def invoke(
     ) as client:
         async with client.post(
             config.endpoint,
-            json=request_body(case_input, config.request_mapping),
+            json=openai_target.request(config, case_input)
+            if config.kind == "openai"
+            else request_body(case_input, config.request_mapping),
             headers=headers,
             allow_redirects=False,
         ) as response:
@@ -153,6 +158,28 @@ async def invoke(
 
             payload = json.loads(b"".join(chunks))
     latency = (time.perf_counter() - started) * 1000
+    if config.kind == "openai":
+        return {
+            "output": openai_target.parse(payload, config.output_schema),
+            "trace": None,
+            "target_latency_ms": latency,
+            "metadata": {
+                "provider": "openai",
+                "model": payload.get("model", config.model),
+                "requested_model": config.model,
+                "response_id": payload.get("id"),
+                "prompt_version": config.prompt_version,
+                "revision": config.revision,
+                "parameters": {
+                    "reasoning_effort": config.reasoning_effort,
+                    "max_output_tokens": config.max_output_tokens,
+                },
+                "fixture": False,
+                "target_usage": payload.get("usage"),
+                "target_cost": None,
+                "target_cost_provenance": "unavailable",
+            },
+        }
     output = pointer(payload, config.output_pointer)
     if output is MISSING:
         raise ValueError("Response output mapping is missing")

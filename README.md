@@ -69,6 +69,19 @@ uv run python scripts/load_catalog_calibration.py
 
 This creates a dedicated project through the API, preserves the original examples and never calls targets/models or records assistant decisions as human reviews. In projects without an HTTP target, the launcher defaults to imported outputs.
 
+## Ready-to-use AI pilot
+
+In **Catalog extraction · public-source pilot → Settings**, paste your OpenAI key into **API key** and select **Save API key**. Then choose **New experiment → Launch experiment**. The model, extraction prompt, structured output schema and evaluation suite are already prepared. Saving a key does not make a provider request.
+
+To prepare the same pilot in a new installation:
+
+```bash
+uv run python scripts/load_public_catalog.py
+uv run python scripts/configure_catalog_ai.py
+```
+
+The default run uses eight calibration inputs and up to eight AI reviews. Usage is billed by OpenAI. See [AI setup](docs/AI-READINESS.md) for settings and verification limits. No API key is included in this repository.
+
 ## CLI and CI
 
 Create a token in Settings. Tokens are hashed in the database, restricted to one workspace and a set of `read`/`write` scopes, and expire. The plaintext is shown once.
