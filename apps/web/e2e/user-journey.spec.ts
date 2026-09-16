@@ -8,7 +8,7 @@ const read = (name: string) => fs.existsSync(path.join(root, name)) ? JSON.parse
 const setup = read('docs/ai-setup.json')
 const evidence = read('docs/catalog-public-v1.json')
 const calibration = read('docs/catalog-ai-v2/summary.json')
-const shots = path.join(root, 'docs/portfolio')
+const shots = path.join(root, 'docs/screenshots')
 
 async function login(page: Page) {
   await page.goto('/')

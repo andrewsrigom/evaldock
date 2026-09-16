@@ -1,6 +1,6 @@
 # Final UX review
 
-2026-09-16 · Local demo and portfolio presentation.
+2026-09-16 · Desktop and mobile workflows.
 
 The workbench retains CatalogForge's white navigation, blue actions and restrained slate/neutral surfaces. Application copy is English. No blocking usability issue was found in the flows checked below.
 
@@ -22,7 +22,7 @@ The workbench retains CatalogForge's white navigation, blue actions and restrain
 
 Backend scoring was unchanged. The 78-test backend verification belongs to the preceding calibration revision. The full mutation-heavy browser suite was not rerun against the local pilot.
 
-## Portfolio walkthrough
+## Evaluation walkthrough
 
 Use the **Catalog extraction · public-source pilot** project:
 
@@ -32,7 +32,7 @@ Use the **Catalog extraction · public-source pilot** project:
 
 The [calibration report](AI-CALIBRATION.md) documents the limited pilot evidence. Results remain preliminary: the validation set is curated, not blind, and independent human approval is pending.
 
-Screenshots: [comparison](portfolio/comparison-desktop.png), [results](portfolio/results-desktop.png), [release checks](portfolio/release-checks-desktop.png), [overview](portfolio/overview-desktop.png), [mobile overview](portfolio/overview-mobile.png), [mobile checks](portfolio/release-checks-mobile.png).
+Screenshots: [comparison](screenshots/comparison-desktop.png), [results](screenshots/results-desktop.png), [release checks](screenshots/release-checks-desktop.png), [overview](screenshots/overview-desktop.png), [mobile overview](screenshots/overview-mobile.png), [mobile checks](screenshots/release-checks-mobile.png).
 
 ## Re-run the focused checks
 
@@ -40,7 +40,7 @@ Screenshots: [comparison](portfolio/comparison-desktop.png), [results](portfolio
 cd apps/web
 npm test
 npm run build
-npm run e2e -- e2e/portfolio.spec.ts e2e/public-catalog.spec.ts e2e/ai-setup.spec.ts
+npm run e2e -- e2e/user-journey.spec.ts e2e/public-catalog.spec.ts e2e/ai-setup.spec.ts
 npm run e2e -- e2e/ux.spec.ts --grep 'invalid JSON|responsive navigation'
 ```
 

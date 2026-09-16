@@ -9,7 +9,7 @@
   <a href="#quick-start">Quick start</a> · <a href="docs/README.md">Documentation</a> · <a href="CONTRIBUTING.md#reporting-bugs">Report a bug</a>
 </p>
 
-![Baseline and candidate comparison in EvalDock](docs/portfolio/comparison-desktop.png)
+![Baseline and candidate comparison in EvalDock](docs/screenshots/comparison-desktop.png)
 
 ## Why EvalDock exists
 
@@ -135,9 +135,9 @@ For live AI, prepare the pilot and set `OPENAI_API_KEY` in the root `.env` as de
 - HTTP targets support synchronous JSON POST only; no streaming or asynchronous target protocols.
 - No dollar-budget enforcement or price estimates; cost stays unavailable unless reported by a target/provider.
 
-## Project status
+## Verification
 
-The local workflow is implemented and verified for portfolio demonstration: **78 backend tests**, **13 frontend tests** and **6 browser journeys** passed, along with lint, type checking and the production build. The live AI pilot is documented above; its configuration preflight also passed.
+**78 backend tests**, **13 frontend tests** and **6 browser journeys** passed. Lint, type checking, the production build and the AI configuration preflight also passed.
 
 See [verification commands](CONTRIBUTING.md#checks) and the [desktop and mobile review](docs/UX-REVIEW.md) for coverage.
 
