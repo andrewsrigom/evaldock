@@ -36,15 +36,15 @@ The Compose project is named `evaldock`. Database and artifact volumes persist a
 
 ## Complete walkthrough
 
-1. In **Datasets**, inspect the 24-case held-out dataset. Each case has JSON input, optional expected output/context, tags, slices and labeling notes. Editing and saving creates a new immutable version. Expand JSONL import to see line-specific validation and a preview. Export any version through its download action.
-2. In **Targets**, inspect the baseline and candidate HTTP adapters. The sample services are explicitly administrator-allowlisted. Use **Test** with a dataset case's input only. Target requests never include the reference or evaluator context.
-3. In **Evaluators**, inspect schema and field accuracy criteria. The support project also computes classification confusion matrices and micro/macro metrics. A separate fixture judge suite supports calibration without a provider key.
+1. In **Datasets**, inspect the 24-case held-out dataset. Each case has JSON input, optional expected output/context, tags, slices and labeling notes. Use the guided case editor to add, duplicate and edit cases. Enable “Reference output provided” to distinguish an explicit null from a missing reference. Saving creates a new immutable version. Upload or paste JSONL, validate it, then apply the preview to the draft. Export any version through its download action.
+2. In **Targets**, use the guided connection form to inspect the baseline and candidate HTTP adapters, credentials, mappings and request limits. The sample services are explicitly administrator-allowlisted. Use **Test** with a dataset case's input only. Target requests never include the reference or evaluator context.
+3. In **Evaluators**, configure criteria through the guided forms, then choose named evaluator versions in **New suite**. The support project also computes classification confusion matrices and micro/macro metrics. A separate fixture judge suite supports calibration without a provider key.
 4. Launch **Baseline · release v1** with the original dataset, baseline target, Release criteria suite, two repetitions and concurrency two. Wait for completion. Open its result and **Pin baseline**.
 5. Launch **Candidate · release v2** with the same dataset/suite and candidate target. The baseline ID is copied at launch; later baseline changes do not move this comparison reference.
 6. Open **Compare**. Select the two runs and `field_accuracy`. Filter regressions, errors or tags. Inspect baseline and candidate side by side, expected output/context, field differences, evaluator explanations and trace data. A score improvement in the aggregate can coexist with critical case regressions.
 7. Save a human assessment on a regression. Automated results remain intact. The experiment calibration section reports human agreement and disagreements, using the latest assessment per reviewer/case/metric.
 8. Open candidate results, choose the fixture judge suite and **Rescore outputs**. The new record links to the source experiment and reuses its outputs. It makes no target calls and reports no new target latency.
-9. In **CI & reports**, select the candidate and evaluate the gate. The deliberately regressed candidates fail. Download JSON/JUnit or persist a report artifact.
+9. In **CI & reports**, configure thresholds with the policy form, select the candidate and evaluate the gate. The deliberately regressed candidates fail. Download JSON/JUnit or persist a report artifact.
 10. Switch to **Support triage** and repeat the same workflow with no engine changes.
 
 For an automated demonstration using the real HTTP API and worker:
@@ -55,6 +55,8 @@ uv run python scripts/demo_verify.py
 ```
 
 This creates new runs, verifies both applications, imports observable agent traces, saves a human disagreement, asserts zero target calls during rescoring and verifies the CLI exit code. It writes `docs/verification.json` and example reports. It does not call a live model.
+
+See [the UX revision and acceptance report](docs/UX-REVIEW.md) for guided editors, keyboard/mobile behavior and the verified local workflows. Advanced JSON remains available for complex configuration.
 
 ## CLI and CI
 

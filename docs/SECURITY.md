@@ -20,6 +20,6 @@
 - HTTP integrations support synchronous JSON POST only. No streaming, asynchronous job protocols, arbitrary headers or executable mappings. Query-string endpoints are deliberately unsupported; use JSON input and credential headers.
 - No configured price-estimation table or dollar budget. Costs without provider reporting stay unavailable. Request-count budgets are conservative reservations and can count a call canceled before transmission.
 - Structured live OpenAI judging is implemented, but no live-model evaluation is claimed without credentials. Deterministic fixture tests demonstrate product behavior only. No statistical significance or benchmark claims.
-- Configuration uses JSON editors with validation and version selectors. There is no visual schema/rubric builder, bulk review assignment or customizable chart dashboard.
+- Datasets, targets, evaluators, suites and gates have guided forms with version selectors and validation. Arbitrary input/output JSON, JSON Schema and tool argument schemas retain validated JSON fields. There is no graphical JSON Schema builder, bulk review assignment or customizable chart dashboard. Unsaved drafts are protected by navigation/unload warnings but are not autosaved across browser crashes.
 - Authenticated polling is used instead of SSE. Experiment lists currently show the latest 100 runs and the review queue includes the latest 10 terminal experiments.
 - Local Compose images include development tooling for reproducibility; a hardened production image and deployment design remain future work.

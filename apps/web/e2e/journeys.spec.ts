@@ -65,6 +65,7 @@ test('dataset version editor validates JSONL and preserves the original', async 
   await expect(page.locator('details pre')).toContainText('Duplicate case_id')
   await page.getByLabel('JSONL content').fill('{"case_id":"a","input":{},"expected":null}')
   await page.getByRole('button', { name: 'Validate & preview' }).click()
+  await page.getByRole('button', { name: 'Use 1 imported cases' }).click()
   await page.getByRole('button', { name: 'Save immutable version' }).click()
   await expect(page.getByRole('dialog')).not.toBeVisible()
   await expect(page.getByRole('status')).toContainText('Immutable version saved')

@@ -1,0 +1,28 @@
+<script setup lang="ts">
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
+import { Plus, Trash2 } from '@lucide/vue'
+import { api, pretty, type Obj } from '@/api/client'
+import { Button } from './ui/button'
+import JsonField from './JsonField.vue'
+const props = defineProps<{ projectId: string; config: Obj; metrics: string[]; readonly?: boolean }>()
+const emit = defineEmits<{ saved: [] }>()
+const draft = ref<Obj>({}), thresholds = ref<{ key: string; value: number }[]>([]), original = ref(''), advanced = ref(false), valid = ref(true), saving = ref(false), error = ref(''), success = ref('')
+const serialized = computed(() => pretty({ ...draft.value, min_accuracy: Object.fromEntries(thresholds.value.map(t => [t.key, t.value])) }))
+const dirty = computed(() => !valid.value || serialized.value !== original.value)
+watch(() => props.config, value => { if (original.value && dirty.value) return; draft.value = JSON.parse(pretty(value)); thresholds.value = Object.entries(value.min_accuracy || {}).map(([key,value]) => ({ key, value: Number(value) })); original.value = serialized.value }, { immediate: true })
+const duplicate = computed(() => new Set(thresholds.value.map(t => t.key)).size !== thresholds.value.length || thresholds.value.some(t => !t.key || t.value < 0 || t.value > 1))
+function rawUpdate(value: Obj) { draft.value = value; thresholds.value = Object.entries(value.min_accuracy || {}).map(([key,value]) => ({ key, value: Number(value) })) }
+function leave(event: BeforeUnloadEvent) { if (dirty.value) { event.preventDefault(); event.returnValue = '' } }
+window.addEventListener('beforeunload', leave)
+onBeforeUnmount(() => window.removeEventListener('beforeunload', leave))
+const guard = () => !dirty.value || window.confirm('Leave without saving the gate policy?')
+onBeforeRouteLeave(guard)
+onBeforeRouteUpdate(guard)
+async function save() { saving.value = true; error.value = ''; success.value = ''; try { await api(`/projects/${props.projectId}/gate`, { method: 'PUT', body: serialized.value }); original.value = serialized.value; success.value = 'Gate policy saved'; emit('saved') } catch (e) { error.value = (e as Error).message } finally { saving.value = false } }
+</script>
+<template>
+<form @submit.prevent="save" class="panel pad"><div class="section-intro"><div><h3>Release policy</h3><p>Define when a candidate is ready. All thresholds apply together.</p></div></div><div v-if="error" class="error" role="alert">{{ error }}</div><div v-if="success" class="notice" role="status">{{ success }}</div><div class="editor-mode"><div class="segmented-control"><button type="button" :class="{ active: !advanced }" :disabled="!valid" @click="advanced = false">Guided</button><button type="button" :class="{ active: advanced }" :disabled="!valid" @click="advanced = true">JSON</button></div><span class="draft-indicator">{{ dirty ? 'Unsaved changes' : 'Saved policy' }}</span></div><fieldset :disabled="readonly || saving" class="editor-fields">
+<JsonField v-if="advanced" :model-value="JSON.parse(serialized)" @update:model-value="rawUpdate" label="Gate configuration" object-only :rows="18" @validity="valid = $event"/>
+<template v-else><div class="form-grid"><label>Maximum regressions<input v-model.number="draft.max_regressions" type="number" min="0" required/></label><label>Critical case tag<input v-model="draft.critical_tag" placeholder="critical"/><small>Every scored case with this tag must pass.</small></label><label>Minimum coverage<input v-model.number="draft.min_coverage" type="number" min="0" max="1" step="0.01" required/><small>1 = all planned cases scored.</small></label><label>Maximum target error rate<input v-model.number="draft.max_target_error_rate" type="number" min="0" max="1" step="0.01" required/><small>0 = no target errors allowed.</small></label><label>Evaluator error policy<select v-model="draft.evaluator_errors"><option value="fail">Fail quality gate · exit 1</option><option value="infrastructure_error">Infrastructure error · exit 2</option></select></label><label>P95 latency ceiling (ms)<input :value="draft.max_p95_latency_ms" @input="draft.max_p95_latency_ms = ($event.target as HTMLInputElement).value === '' ? null : Number(($event.target as HTMLInputElement).value)" type="number" min="0.001" step="any" placeholder="No latency limit"/><small>Enforced only with comparable measurements.</small></label></div><div class="section-intro"><div><h3>Minimum metric accuracy</h3><p>Scores use a 0–1 scale.</p></div><Button type="button" variant="outline" size="sm" @click="thresholds.push({ key: metrics.find(m => !thresholds.some(t => t.key === m)) || '', value: 0.9 })"><Plus :size="14"/>Add threshold</Button></div><div v-for="(t, i) in thresholds" :key="i" class="mapping-row"><label>Metric<select v-model="t.key" required><option value="">Choose metric</option><option v-for="m in [...new Set([...metrics, t.key].filter(Boolean))]" :key="m">{{ m }}</option></select></label><label>Minimum score<input v-model.number="t.value" type="number" min="0" max="1" step="0.01" required/></label><button type="button" class="icon-button" :aria-label="`Remove threshold ${i + 1}`" @click="thresholds.splice(i, 1)"><Trash2 :size="16"/></button></div><p v-if="duplicate" class="field-error">Choose a distinct metric and a score from 0 to 1 for every threshold.</p></template></fieldset><div class="form-footer"><Button v-if="!readonly" type="submit" :disabled="saving || !valid || duplicate || !dirty">{{ saving ? 'Saving…' : 'Save gate policy' }}</Button><small v-else>Viewer access · policy is read-only.</small></div></form>
+</template>

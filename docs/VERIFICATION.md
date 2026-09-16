@@ -23,7 +23,7 @@ Machine-readable run IDs and counts are in `verification.json`. The test environ
 
 ## Automated checks
 
-Final result: **45 pytest tests, 2 Vitest tests and 3 Playwright journeys passed**. Ruff, mypy, strict Vue/TypeScript checking and Vite production build passed. `npm audit` reported 0 vulnerabilities for the resolved final lockfile.
+Initial delivery result: **45 pytest tests, 2 Vitest tests and 3 Playwright journeys passed**. Ruff, mypy, strict Vue/TypeScript checking and Vite production build passed. `npm audit` reported 0 vulnerabilities for the resolved final lockfile.
 
 Backend checks include real-PostgreSQL version immutability, workspace isolation, scoped roles, secret encryption/redaction, line-specific import validation, missing-vs-null, evaluator math, classification reports, coverage denominators, compatible pairing, gates, independent retries, cancellation with late output, saved-output recovery, persisted retry limits, duplicate execution delivery, human disagreement, schema-invalid judging and separation of adversarial judge data. HTTP adapter tests use an actual local HTTP service for destination pinning, response bounds and unsupported protocols.
 
@@ -35,4 +35,8 @@ Frontend checks include strict Vue/TypeScript compilation, Vite production build
 - No load test, statistical significance, production security audit or internet deployment is claimed.
 - GitHub Actions configuration was authored and local equivalent checks were run; a remote GitHub Actions run was not triggered.
 
-See SECURITY.md for limits, including at-least-once external calls, local authentication, JSON editors, loopback deployment and unavailable cost estimation.
+See SECURITY.md for limits, including at-least-once external calls, local authentication, schema JSON fields, loopback deployment and unavailable cost estimation.
+
+## UX revision, 2026-09-16
+
+The frontend revision passed **9 Vitest tests and 9 browser journeys** (8 together, plus the real-viewer access/token journey). Strict TypeScript and the production build passed. The earlier backend code was unchanged and its 45-test suite was not rerun for this frontend-only revision. See [UX-REVIEW.md](UX-REVIEW.md) for the exact scope, screenshots and limitations. No external integration or live model was used.

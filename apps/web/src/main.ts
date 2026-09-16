@@ -5,6 +5,7 @@ import App from './App.vue'
 import Workbench from './pages/Workbench.vue'
 import Compare from './pages/Compare.vue'
 import './style.css'
+import './catalogforge.css'
 
 const router = createRouter({ history: createWebHistory(), routes: [
   { path: '/', component: Workbench },
