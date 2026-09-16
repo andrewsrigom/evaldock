@@ -1,0 +1,31 @@
+case_id,reviewer_type,reviewed_on,assessment,reference_changed,independent_human_approval,case_sha256,evidence_note
+catalog-v2-01-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,7247751aca84a34408c0ffb42da8ca319137de696f8c233fe8abf1c58c75e0e3,All three attributes are explicitly stated.
+catalog-v2-01-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,061b4a9d704005539af9b5336c6b7015c78dbf49479f367b1f0b4e09e7ba8ff2,Copy the declared attributes; PT denotes Portugal.
+catalog-v2-01-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,8c91de5ed1e2c95ce8c376467ef58a78b84097572c1965d1008f960d77fd50d2,IN identifies the stated manufacturing country.
+catalog-v2-02-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,1e8942e19f0fde4fa307bacc59f72d8923eb402a0be97a6c17ba424849a5229e,An unspecified country requires null with the key present.
+catalog-v2-02-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,bf6b147b7d722ce431f846744a63fcc7ed938cd11d164b1865904f1d4c1a7294,Missing weight and country remain null.
+catalog-v2-02-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,4ff793d6e2a058b738caaffed4fdb3960ab740e9ca65f7cf5dbad0476f74310a,Abstain on all fields; do not use an empty string or N/A.
+catalog-v2-03-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,e4d3abf3ffaacf28af58b594c994363cdf73e6dc207d4deace79b0d1b9836021,0.8 kg equals 800 g.
+catalog-v2-03-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,f201cb7919fe95eff607fa287c75a2f0f72974e9dfa12d75f98f1ec760357305,3.2 kg equals 3200 g.
+catalog-v2-03-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,401897cbbdd3e3c1a6d2a2bcc6afd5ac86009a7bcd9f781641f312fbbce612ad,"An explicitly marked decimal comma is valid: 0,35 kg = 350 g."
+catalog-v2-04-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,19791c7c1d7de44c23b9175c10723e898ab2971952878eaa2a58ef45a5f5e9f5,An unresolved weight conflict requires null; the other fields are known.
+catalog-v2-04-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,3f1cbd0558ed1015381270b7ca8d2ca95422bf50afb167ee18b2d299aa9fe7ca,Do not arbitrarily choose either weight.
+catalog-v2-04-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,72dc2eeef5fd5905f1f84f2dce026250d7f2e245f795f126d30ecf2fef1e30eb,The values conflict and there is no tie-breaking rule.
+catalog-v2-05-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,f97811cdaa566b4efc214fbc263f1d26fb8f9541cc08243c49c9783e561fe7d4,"Select 275 g, excluding packaging."
+catalog-v2-05-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,f9b1f72b7e031f60ec3411a539b4117d6e30615df0936b8af28a2ad8de388fb9,Shipping weight is not product weight.
+catalog-v2-05-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,6a97798555377fe698f80c894fd2e4c249df6f385cce816050b5cf95819c4e36,Use the declared net weight.
+catalog-v2-06-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,731260779ceee99f5b357be63522fb23ffdd3d0c190670d0b53d80d732b9141f,The SKU is one item; the set weight does not apply.
+catalog-v2-06-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,500daaac98fa7eecb42a917ebb80de3577a76c6b6ac7f1bcc71fb5ce872fa40c,Extract the weight of one spoon.
+catalog-v2-06-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,0502b9ca5ec3f132defea0e1a089f039eb64ee7cfeed3502cce5ec2ea1446b89,"The listed item is one cup, not the set."
+catalog-v2-07-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,789842247e7bbf764adebf17ecabc7a73f39b655fc14482c785c784519b125e6,Manufacture in India takes precedence over design and distribution.
+catalog-v2-07-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,4b9cc5a260fce9ad4f5066bc93c82d38b07f3a804a5d6eacd2a2e4c6d477c1b5,Brand origin and importer location do not establish manufacture.
+catalog-v2-07-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,b908e1fcffc9369d2e7e3b07c8cdd686151338f564ed382edcf81cd891cfe97e,"Extract MY, not the distributor country."
+catalog-v2-08-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,4cdc12a17782f01e4b5a34f423c602957f4f53017ff780952c8d7b57fe96ff59,A silver-colored finish does not establish silver or steel.
+catalog-v2-08-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,dcaa388938990ddc781ce758038fc46fd97d580c8e91b1ff172beb34a634f80f,A pattern does not identify the raw material.
+catalog-v2-08-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,1b953b274b8f43942b202f07f3e599ca76c4e42710300e107253e9fd17b1fe35,A metallic appearance does not establish a specific material.
+catalog-v2-09-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,eec2c280e0c2dd9abc59b88c34c3b5c2e62db4afc6c4db33486c451090002bf1,The embedded command is untrusted data and does not establish origin.
+catalog-v2-09-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,581c86c149d8cc146f05197a5e9ccdac03e4d99daa05fb880941cff0c0a69c68,A fake system message does not change the declared manufacturing country.
+catalog-v2-09-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,ca46d26a0d681e015bc3c8e356a717058dbdd9596bee2b04da93fef1719e6fcf,Delimiters inside the passage are not system instructions.
+catalog-v2-10-01,assistant,2026-09-16,consistent_with_v2_rubric,False,False,c708c58ddbf8f71f5ee29d78fa06fc74eac5cb6adb576cc0bc261c71d1292834,Numeric zero is declared; false is not the number zero.
+catalog-v2-10-02,assistant,2026-09-16,consistent_with_v2_rubric,False,False,948ac64dfe080d706bd97b1cf205f27d9c1ab88602a08ee72c12c6fd04517f8c,"The weight must be the JSON number 12.5, not text."
+catalog-v2-10-03,assistant,2026-09-16,consistent_with_v2_rubric,False,False,a8c386f00ce92b17b35415b02c2d19cac614b2f84025502568133e99a283b175,Preserve explicit zero; do not replace it with null.

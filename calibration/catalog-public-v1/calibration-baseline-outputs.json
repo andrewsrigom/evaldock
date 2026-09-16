@@ -1,0 +1,124 @@
+{
+  "outputs": [
+    {
+      "case_id": "public-v1-toaks-750",
+      "replicate": 0,
+      "output": {
+        "material": "titanium",
+        "weight_g": 86.0,
+        "country": "US"
+      },
+      "metadata": {
+        "producer": "offline-rules-baseline-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "677df312528cf5358d96c199ba5a67720ffbc4346904fcc904bc47595aefaa1e",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-550",
+      "replicate": 0,
+      "output": {
+        "material": "titanium",
+        "weight_g": 72.0,
+        "country": "US"
+      },
+      "metadata": {
+        "producer": "offline-rules-baseline-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "c6a6b591a41757373a09302501ec4b0c0f1a263253065a6c8fa278d62fcdd777",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-450",
+      "replicate": 0,
+      "output": {
+        "material": "titanium",
+        "weight_g": 76.0,
+        "country": "US"
+      },
+      "metadata": {
+        "producer": "offline-rules-baseline-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "97e83051762574e00f5f1e4f91673d983bbaf583210ee4b5c319bfcbc20b25f7",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-spoon",
+      "replicate": 0,
+      "output": {
+        "material": "titanium",
+        "weight_g": 19.0,
+        "country": "US"
+      },
+      "metadata": {
+        "producer": "offline-rules-baseline-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "412f56668fddf84888ecfc921153abe84d8e777af6f3113eee4922994186d99f",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-wide-32",
+      "replicate": 0,
+      "output": {
+        "material": "Tritan Renew",
+        "weight_g": 177.25,
+        "country": "US"
+      },
+      "metadata": {
+        "producer": "offline-rules-baseline-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "c7e7626040ef7cf49eac18b9051cd71e60796c54c90c8f4b0a75457e81acba2b",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-silo",
+      "replicate": 0,
+      "output": {
+        "material": "Tritan Renew",
+        "weight_g": 209.0,
+        "country": "US"
+      },
+      "metadata": {
+        "producer": "offline-rules-baseline-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "8e4611b338909c9793063696b1eef1908d03b933443b8eaaa1bfb725f1cad01b",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-ultralite-32",
+      "replicate": 0,
+      "output": {
+        "material": "HDPE",
+        "weight_g": 106.25,
+        "country": null
+      },
+      "metadata": {
+        "producer": "offline-rules-baseline-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "dfa17b7cbe0321d9c71109f0a0f2039628712823f1f89fe60018be0744a13e84",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-cap",
+      "replicate": 0,
+      "output": {
+        "material": null,
+        "weight_g": null,
+        "country": null
+      },
+      "metadata": {
+        "producer": "offline-rules-baseline-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "7cbb75d74bd870c8503f8214107e6d9d178da0b62bdba2411dbc5cbc4c10e105",
+        "live_model": false
+      }
+    }
+  ]
+}

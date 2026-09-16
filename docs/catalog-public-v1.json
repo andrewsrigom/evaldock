@@ -1,0 +1,810 @@
+{
+  "pack": "catalog-public-v1",
+  "project_id": "862802ec-280d-4e46-8a75-031b0eceb944",
+  "project_url": "http://localhost:5188/projects/862802ec-280d-4e46-8a75-031b0eceb944/overview",
+  "language": "en-US",
+  "source_type": "curated manufacturer factual paraphrases",
+  "blind_validation": false,
+  "human_approved": false,
+  "live_model_calls": 0,
+  "sample_target_calls": 0,
+  "execution_count": 24,
+  "metric_decisions_verified": 144,
+  "suite_version_id": "1b9faccc-077e-4647-81e4-b6988b92c09e",
+  "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+  "pack_manifest_sha256": "337da197d6e58850dd4de1af7111823f40844e1f2e2ca665d1ac1b4a3b141ac0",
+  "runs": {
+    "validation": {
+      "cases": 4,
+      "dataset_version_id": "03e7f326-22e5-4351-b256-1c2c0eeef4c1",
+      "baseline_id": "aeb2d858-ec6d-4475-a31b-bd277115fc01",
+      "candidate_id": "ae8dbdc3-e6ac-46a0-ad4b-5bfa46a0ee55",
+      "baseline_metrics": {
+        "schema_valid": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "field_accuracy": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.6666666666666666,
+          "passed": 2,
+          "failed": 2,
+          "pass_rate": 0.5,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 0.6666666666666666,
+            "stddev": 0.33333333333333337,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "material_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.75,
+          "passed": 3,
+          "failed": 1,
+          "pass_rate": 0.75,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 0.75,
+            "stddev": 0.4330127018922193,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "weight_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.75,
+          "passed": 3,
+          "failed": 1,
+          "pass_rate": 0.75,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 0.75,
+            "stddev": 0.4330127018922193,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "country_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.5,
+          "passed": 2,
+          "failed": 2,
+          "pass_rate": 0.5,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 0.5,
+            "stddev": 0.5,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "record_exact": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.5,
+          "passed": 2,
+          "failed": 2,
+          "pass_rate": 0.5,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 0.5,
+            "stddev": 0.5,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        }
+      },
+      "candidate_metrics": {
+        "schema_valid": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "field_accuracy": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "material_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "weight_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "country_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "record_exact": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 4,
+          "scored": 4,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 4,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 4,
+          "variability": {
+            "n": 4,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        }
+      },
+      "paired_counts": {
+        "unchanged_pass": 2,
+        "improved": 2
+      },
+      "gate": {
+        "passed": true,
+        "exit_code": 0,
+        "quality_failures": [],
+        "infrastructure_errors": [],
+        "policy": {
+          "min_accuracy": {
+            "record_exact": 1.0,
+            "schema_valid": 1.0,
+            "field_accuracy": 1.0,
+            "weight_correct": 1.0,
+            "country_correct": 1.0,
+            "material_correct": 1.0
+          },
+          "max_regressions": 0,
+          "critical_tag": "critical",
+          "max_target_error_rate": 0.0,
+          "min_coverage": 1.0,
+          "evaluator_errors": "fail",
+          "max_p95_latency_ms": null
+        },
+        "pinned_baseline_id": "aeb2d858-ec6d-4475-a31b-bd277115fc01"
+      },
+      "artifact_id": "0228afd8-f464-4444-81a6-020448d9ae94"
+    },
+    "calibration": {
+      "cases": 8,
+      "dataset_version_id": "f5d8791f-90d4-4709-8a62-d8fc2740d6b4",
+      "baseline_id": "dd969a03-8979-423f-800e-a670715bdf67",
+      "candidate_id": "473022c0-8125-4a94-9966-be23a87a277b",
+      "baseline_metrics": {
+        "schema_valid": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 8,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "field_accuracy": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.75,
+          "passed": 4,
+          "failed": 4,
+          "pass_rate": 0.5,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 0.75,
+            "stddev": 0.27638539919628335,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "material_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.875,
+          "passed": 7,
+          "failed": 1,
+          "pass_rate": 0.875,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 0.875,
+            "stddev": 0.33071891388307384,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "weight_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.875,
+          "passed": 7,
+          "failed": 1,
+          "pass_rate": 0.875,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 0.875,
+            "stddev": 0.33071891388307384,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "country_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.5,
+          "passed": 4,
+          "failed": 4,
+          "pass_rate": 0.5,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 0.5,
+            "stddev": 0.5,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "record_exact": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 0.5,
+          "passed": 4,
+          "failed": 4,
+          "pass_rate": 0.5,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 0.5,
+            "stddev": 0.5,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        }
+      },
+      "candidate_metrics": {
+        "schema_valid": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 8,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "field_accuracy": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 8,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "material_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 8,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "weight_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 8,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "country_correct": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 8,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        },
+        "record_exact": {
+          "definition": {
+            "direction": "higher",
+            "threshold": 1.0,
+            "value_type": "number",
+            "aggregation": "mean",
+            "required_inputs": [
+              "actual",
+              "reference"
+            ]
+          },
+          "denominator": 8,
+          "scored": 8,
+          "coverage": 1.0,
+          "not_applicable": 0,
+          "errors": 0,
+          "missing": 0,
+          "mean": 1.0,
+          "passed": 8,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "decision_denominator": 8,
+          "variability": {
+            "n": 8,
+            "mean": 1.0,
+            "stddev": 0.0,
+            "p95": 1.0,
+            "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+          }
+        }
+      },
+      "paired_counts": {
+        "unchanged_pass": 4,
+        "improved": 4
+      },
+      "gate": {
+        "passed": true,
+        "exit_code": 0,
+        "quality_failures": [],
+        "infrastructure_errors": [],
+        "policy": {
+          "min_accuracy": {
+            "record_exact": 1.0,
+            "schema_valid": 1.0,
+            "field_accuracy": 1.0,
+            "weight_correct": 1.0,
+            "country_correct": 1.0,
+            "material_correct": 1.0
+          },
+          "max_regressions": 0,
+          "critical_tag": "critical",
+          "max_target_error_rate": 0.0,
+          "min_coverage": 1.0,
+          "evaluator_errors": "fail",
+          "max_p95_latency_ms": null
+        },
+        "pinned_baseline_id": "dd969a03-8979-423f-800e-a670715bdf67"
+      },
+      "artifact_id": "81b593d3-7bab-4cc9-9f8f-48c1efedb4eb"
+    }
+  }
+}

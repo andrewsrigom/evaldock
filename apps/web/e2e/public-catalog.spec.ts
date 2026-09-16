@@ -1,0 +1,47 @@
+import { test, expect } from '@playwright/test'
+import fs from 'node:fs'
+import path from 'node:path'
+
+const root = path.resolve('../..')
+const env = Object.fromEntries(fs.readFileSync(path.join(root, '.env'), 'utf8').split('\n').filter(l => l.includes('=')).map(l => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1)]))
+const reportPath = path.join(root, 'docs/catalog-public-v1.json')
+const evidence = fs.existsSync(reportPath) ? JSON.parse(fs.readFileSync(reportPath, 'utf8')) : null
+
+test('public-source pilot preserves evidence and shows actual offline improvements', async ({ page }) => {
+  test.skip(!evidence, 'Load catalog-public-v1 first')
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  await page.goto('/')
+  await page.getByLabel('Email', { exact: true }).fill('demo@evaldock.local')
+  await page.getByLabel('Password', { exact: true }).fill(env.DEMO_PASSWORD)
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Project overview', exact: true })).toBeVisible()
+  await page.goto(`/projects/${evidence.project_id}/overview`)
+  await expect(page.getByRole('link', { name: 'Provide outputs Saved outputs are ready to evaluate.' })).toHaveClass(/done/)
+  await page.getByRole('button', { name: 'New experiment', exact: true }).click()
+  await expect(page.getByRole('combobox', { name: 'Execution mode', exact: true })).toHaveValue('imported')
+  await page.getByRole('dialog').getByRole('button', { name: 'Close dialog', exact: true }).click()
+  await page.getByRole('link', { name: 'Compare', exact: true }).click()
+  await page.getByLabel('Comparison metric', { exact: true }).selectOption('record_exact')
+  await expect(page.getByRole('tab', { name: 'All cases 8', exact: true })).toBeVisible()
+  await expect(page.getByRole('tab', { name: 'Improvements 4', exact: true })).toBeVisible()
+  await page.getByRole('tab', { name: 'Improvements 4', exact: true }).click()
+  await page.getByRole('button', { name: /public-v1-toaks-750/i }).click()
+  await expect(page.locator('.reference-grid')).toContainText('source_url')
+  await expect(page.locator('.reference-grid')).toContainText('https://www.toaksoutdoor.com/products/pot-750')
+  await expect(page.locator('.reference-grid')).toContainText('human_review_status')
+  await page.screenshot({ path: path.join(root, 'docs/catalog-public-desktop.png'), fullPage: true })
+  await page.getByRole('button', { name: 'Clear filters', exact: true }).click()
+  await page.getByLabel('Baseline experiment', { exact: true }).selectOption(evidence.runs.validation.baseline_id)
+  await page.getByLabel('Candidate experiment', { exact: true }).selectOption(evidence.runs.validation.candidate_id)
+  await expect(page.getByRole('tab', { name: 'All cases 4', exact: true })).toBeVisible()
+  await expect(page.getByRole('tab', { name: 'Improvements 2', exact: true })).toBeVisible()
+  await page.getByRole('link', { name: 'Human review', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Calibration queue 24', exact: true })).toBeVisible()
+  await page.goto(`/projects/${evidence.project_id}/overview`)
+  await page.setViewportSize({ width: 390, height: 844 })
+  await expect(page.getByRole('heading', { name: 'Project overview', exact: true })).toBeVisible()
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+  await page.screenshot({ path: path.join(root, 'docs/catalog-public-mobile.png'), fullPage: true })
+  expect(errors).toEqual([])
+})

@@ -1,0 +1,64 @@
+{
+  "outputs": [
+    {
+      "case_id": "public-v1-toaks-650",
+      "replicate": 0,
+      "output": {
+        "material": "grade 1 titanium",
+        "weight_g": 80.0,
+        "country": null
+      },
+      "metadata": {
+        "producer": "offline-rules-candidate-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "36924a6b81cb84ce6d41dc483cb33030924bde66b4efd954f15ed74ccefa3be3",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-900",
+      "replicate": 0,
+      "output": {
+        "material": "titanium",
+        "weight_g": 116.0,
+        "country": "CN"
+      },
+      "metadata": {
+        "producer": "offline-rules-candidate-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "83b66467aae22eb444ccb503a1f69f1bd7f7569f0335dda30355deddf07aed91",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-ultralite-16",
+      "replicate": 0,
+      "output": {
+        "material": "HDPE",
+        "weight_g": 56.75,
+        "country": null
+      },
+      "metadata": {
+        "producer": "offline-rules-candidate-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "3fdc7f7f305ddc6eccc4cac02017589f13b1561f5617f1b2502bf2c47c87c5db",
+        "live_model": false
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-narrow-32",
+      "replicate": 0,
+      "output": {
+        "material": "HDPE",
+        "weight_g": 102.75,
+        "country": null
+      },
+      "metadata": {
+        "producer": "offline-rules-candidate-v1",
+        "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+        "input_sha256": "f38e1b03edb4fdb2581beec6141f80fdea926dff06f0acbea5a57ffb058472c1",
+        "live_model": false
+      }
+    }
+  ]
+}

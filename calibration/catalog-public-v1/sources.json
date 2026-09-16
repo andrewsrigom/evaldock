@@ -1,0 +1,194 @@
+[
+  {
+    "key": "toaks-750",
+    "split": "calibration",
+    "title": "TOAKS Titanium 750ml Pot",
+    "url": "https://www.toaksoutdoor.com/products/pot-750",
+    "passage": "Material: titanium, uncoated\nPot weight without lid: 3 oz (86 g)\nPot weight with lid: 3.6 oz (103 g)\nCapacity: 750 ml\nDesigned in the USA\nManufactured in China",
+    "expected": {
+      "material": "titanium",
+      "weight_g": 103,
+      "country": "CN"
+    },
+    "challenge": "assembly-weight",
+    "rationale": "Select the assembled pot and lid, not the bare pot. Design location does not establish manufacture.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "toaks-550",
+    "split": "calibration",
+    "title": "TOAKS Ultralight Titanium 550ml Pot",
+    "url": "https://www.toaksoutdoor.com/products/pot-550-l",
+    "passage": "Material: uncoated Grade 1 Titanium\nWeight with lid: 2.6 oz (72 g)\nWeight without lid: 2.1 oz (60 g)\nCapacity: 550 ml\nDesigned in the USA\nA mesh storage sack is supplied",
+    "expected": {
+      "material": "grade 1 titanium",
+      "weight_g": 72,
+      "country": null
+    },
+    "challenge": "design-only",
+    "rationale": "Keep the material grade. The selected manufacturer specification identifies design location only, so manufacturing country is unknown.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "toaks-450",
+    "split": "calibration",
+    "title": "TOAKS Titanium 450ml Cup, 0.5mm version",
+    "url": "https://www.toaksoutdoor.com/products/cup-450",
+    "passage": "Material: uncoated titanium\nWeight: 2.7 oz (76 g)\nCapacity: 450 ml\nWall thickness: 0.5 mm\nDesigned in the USA\nManufactured in China",
+    "expected": {
+      "material": "titanium",
+      "weight_g": 76,
+      "country": "CN"
+    },
+    "challenge": "design-versus-origin",
+    "rationale": "Use the specified 0.5mm variant and manufacturing country.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "toaks-spoon",
+    "split": "calibration",
+    "title": "TOAKS Titanium Long Handle Spoon with Polished Bowl, SLV-11",
+    "url": "https://www.toaksoutdoor.com/products/slv-11",
+    "passage": "Material: uncoated titanium\nWeight: 0.65 oz (19 g)\nLength: 220 mm\nDesigned in the USA\nManufactured in China",
+    "expected": {
+      "material": "titanium",
+      "weight_g": 19,
+      "country": "CN"
+    },
+    "challenge": "metric-priority",
+    "rationale": "Use the current specification table for SLV-11. A polished surface does not change the material.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "nalgene-wide-32",
+    "split": "calibration",
+    "title": "Nalgene 32oz Wide Mouth Bottle",
+    "url": "https://nalgene.com/product/32oz-wide-mouth-bottle/",
+    "passage": "Capacity: 32 fluid oz\nMaterial: Tritan Renew\nWeight: 6.25 oz (177.25 g)\nCountry of origin: USA",
+    "expected": {
+      "material": "Tritan Renew",
+      "weight_g": 177.25,
+      "country": "US"
+    },
+    "challenge": "volume-versus-mass",
+    "rationale": "Capacity in fluid ounces is not mass. Preserve the manufacturer-provided grams and material trade name.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "nalgene-silo",
+    "split": "calibration",
+    "title": "Nalgene 48oz Wide Mouth Silo Bottle",
+    "url": "https://nalgene.com/product/48oz-wide-mouth-silo-bottle/",
+    "passage": "Capacity: 48 fluid oz\nMaterial: Tritan Renew\nWeight: 7.375 oz (209 g)\nBottle made in the USA\nCap made in China",
+    "expected": {
+      "material": "Tritan Renew",
+      "weight_g": 209,
+      "country": "US"
+    },
+    "challenge": "component-origin",
+    "rationale": "The country field concerns the primary bottle body; the cap has a separately stated origin.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "nalgene-ultralite-32",
+    "split": "calibration",
+    "title": "Nalgene 32oz Wide Mouth Ultralite Bottle",
+    "url": "https://nalgene.com/product/32oz-wide-mouth-ultralite-bottle/",
+    "passage": "Capacity: 32 fluid oz\nMaterial: high density polyethylene (HDPE)\nWeight: 3.75 oz (106.25 g)\nOpening: wide mouth",
+    "expected": {
+      "material": "HDPE",
+      "weight_g": 106.25,
+      "country": null
+    },
+    "challenge": "absent-origin",
+    "rationale": "The selected description and specification table do not state manufacture. Customer comments and replies are outside the supplied evidence.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "nalgene-cap",
+    "split": "calibration",
+    "title": "Nalgene 16oz Wide Mouth Cap",
+    "url": "https://nalgene.com/product/16oz-wide-mouth-cap-2/",
+    "passage": "Replacement cap for the 16oz wide mouth bottle\nSeparate color choices are available for the base, strap and button",
+    "expected": {
+      "material": null,
+      "weight_g": null,
+      "country": null
+    },
+    "challenge": "abstention",
+    "rationale": "The selected product section supplies color options but no composition, mass or manufacturing country. Bottle capacity does not describe cap weight.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "toaks-650",
+    "split": "validation",
+    "title": "TOAKS Ultralight Titanium 650ml Pot",
+    "url": "https://www.toaksoutdoor.com/products/pot-650-l",
+    "passage": "Material: uncoated Grade 1 Titanium\nWeight with lid: 2.8 oz (80 g)\nWeight without lid: 2.1 oz (70 g)\nCapacity: 650 ml\nDesigned in the USA\nA mesh storage sack is supplied",
+    "expected": {
+      "material": "grade 1 titanium",
+      "weight_g": 80,
+      "country": null
+    },
+    "challenge": "design-only",
+    "rationale": "Use the published metric weight for the assembly. The ounce/gram figures for the bare pot disagree; do not silently fix the source. Only design location is supplied.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "toaks-900",
+    "split": "validation",
+    "title": "TOAKS Titanium 900ml D115mm Pot",
+    "url": "https://www.toaksoutdoor.com/products/pot-900-d115",
+    "passage": "Material: titanium, uncoated\nPot weight without lid: 3.2 oz (92 g)\nPot weight with lid: 4.1 oz (116 g)\nCapacity: 900 ml\nDesigned in the USA\nManufactured in China",
+    "expected": {
+      "material": "titanium",
+      "weight_g": 116,
+      "country": "CN"
+    },
+    "challenge": "assembly-weight",
+    "rationale": "Select the D115mm variant with its lid. Exclude the storage sack and bare-pot alternative.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "nalgene-ultralite-16",
+    "split": "validation",
+    "title": "Nalgene 16oz Wide Mouth Ultralite Bottle",
+    "url": "https://nalgene.com/product/16oz-wide-mouth-ultralite/",
+    "passage": "Capacity: 16 fluid oz\nMaterial: high density polyethylene\nWeight: 2 oz (56.75 g)\nOpening: wide mouth",
+    "expected": {
+      "material": "HDPE",
+      "weight_g": 56.75,
+      "country": null
+    },
+    "challenge": "absent-origin",
+    "rationale": "Use the manufacturer specification, not customer measurements. Manufacturing country is absent from the selected description and table.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  },
+  {
+    "key": "nalgene-narrow-32",
+    "split": "validation",
+    "title": "Nalgene 32oz Narrow Mouth Ultralite Bottle",
+    "url": "https://nalgene.com/product/ultralite-32oz-narrow-mouth-nalgene/",
+    "passage": "Capacity: 32 fluid oz\nMaterial: HDPE\nWeight: 3.625 oz (102.75 g)\nOpening: narrow mouth",
+    "expected": {
+      "material": "HDPE",
+      "weight_g": 102.75,
+      "country": null
+    },
+    "challenge": "volume-versus-mass",
+    "rationale": "Use this narrow-mouth variant, not the wide-mouth product. Do not infer its manufacturing country from other SKUs.",
+    "observed_on": "2026-09-16",
+    "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot."
+  }
+]

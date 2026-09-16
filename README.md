@@ -153,3 +153,7 @@ Generated request contracts are in `src/api/schema.d.ts`; view models add types 
 - [Executed verification](docs/VERIFICATION.md)
 
 The MVP uses no arbitrary user code, vector database, agent builder, automatic prompt optimization, billing or enterprise SSO. Evaluation datasets should be held out from repeated prompt tuning.
+
+## Local completion and public-source pilot
+
+See [the local completion report](docs/LOCAL-COMPLETION.md), [rubric review](docs/catalog-rubric-review.md), and [first live AI experiment guide](docs/AI-READINESS.md). The public-source pack contains twelve real products as curated factual paraphrases, actual offline extraction outputs and reproducible paired results. It requires no external project integration or model key.

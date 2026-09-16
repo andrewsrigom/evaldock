@@ -40,3 +40,7 @@ See SECURITY.md for limits, including at-least-once external calls, local authen
 ## UX revision, 2026-09-16
 
 The frontend revision passed **9 Vitest tests and 9 browser journeys** (8 together, plus the real-viewer access/token journey). Strict TypeScript and the production build passed. The earlier backend code was unchanged and its 45-test suite was not rerun for this frontend-only revision. See [UX-REVIEW.md](UX-REVIEW.md) for the exact scope, screenshots and limitations. No external integration or live model was used.
+
+## Public-source pilot, 2026-09-16
+
+The isolated backend suite now passes 53 tests (45 existing plus 8 pilot checks). Ruff and mypy passed. The new read-only Playwright journey passed for paired public-source results, input evidence, split selection, review queue, imported launch and mobile layout. All 24 offline executions / 144 decisions and idempotent reloading were verified. See [LOCAL-COMPLETION.md](LOCAL-COMPLETION.md) for scope and limitations. No live model calls or independent human approvals are claimed.

@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Record format · public-source v1",
+    "config": {
+      "kind": "json_schema",
+      "metric_key": "schema_valid",
+      "config": {
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "material",
+            "weight_g",
+            "country"
+          ],
+          "properties": {
+            "material": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "weight_g": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "country": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[A-Z]{2}$"
+            }
+          }
+        }
+      },
+      "definition": {
+        "threshold": 1,
+        "aggregation": "mean",
+        "direction": "higher",
+        "required_inputs": [
+          "actual"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Three-field accuracy · public-source v1",
+    "config": {
+      "kind": "field_comparison",
+      "metric_key": "field_accuracy",
+      "config": {
+        "paths": [
+          "/material",
+          "/weight_g",
+          "/country"
+        ]
+      },
+      "definition": {
+        "threshold": 1,
+        "aggregation": "mean",
+        "direction": "higher",
+        "required_inputs": [
+          "actual",
+          "reference"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Correct material · public-source v1",
+    "config": {
+      "kind": "field_comparison",
+      "metric_key": "material_correct",
+      "config": {
+        "paths": [
+          "/material"
+        ]
+      },
+      "definition": {
+        "threshold": 1,
+        "aggregation": "mean",
+        "direction": "higher",
+        "required_inputs": [
+          "actual",
+          "reference"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Correct weight in grams · public-source v1",
+    "config": {
+      "kind": "field_comparison",
+      "metric_key": "weight_correct",
+      "config": {
+        "paths": [
+          "/weight_g"
+        ]
+      },
+      "definition": {
+        "threshold": 1,
+        "aggregation": "mean",
+        "direction": "higher",
+        "required_inputs": [
+          "actual",
+          "reference"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Correct manufacturing country · public-source v1",
+    "config": {
+      "kind": "field_comparison",
+      "metric_key": "country_correct",
+      "config": {
+        "paths": [
+          "/country"
+        ]
+      },
+      "definition": {
+        "threshold": 1,
+        "aggregation": "mean",
+        "direction": "higher",
+        "required_inputs": [
+          "actual",
+          "reference"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Exact complete record · public-source v1",
+    "config": {
+      "kind": "exact_match",
+      "metric_key": "record_exact",
+      "config": {},
+      "definition": {
+        "threshold": 1,
+        "aggregation": "mean",
+        "direction": "higher",
+        "required_inputs": [
+          "actual",
+          "reference"
+        ]
+      }
+    }
+  }
+]

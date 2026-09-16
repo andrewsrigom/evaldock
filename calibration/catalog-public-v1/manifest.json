@@ -1,0 +1,24 @@
+{
+  "pack": "catalog-public-v1",
+  "case_count": 12,
+  "calibration": 8,
+  "validation": 4,
+  "source_type": "curated manufacturer factual paraphrases",
+  "human_approved": false,
+  "blind_validation": false,
+  "live_model_calls": 0,
+  "implementation_sha256": "00b17f36f6c72dc13bd04ceb6ba0ceb4e648fc9ef336d2269e9ef8f9f7c5e8d8",
+  "sha256": {
+    "README.md": "59b13754900c97a3cb7d55ac30a072a8581d7e978e1104966680dbd97630608c",
+    "RUBRIC.md": "49d15b303af34c72683c830dc3e5561002b0c49c6b36edfb74afef069e986b49",
+    "calibration-baseline-outputs.json": "75cf61266a1de7315c9c4ab09b99df09949311e40346a09c7135273de2b42a22",
+    "calibration-candidate-outputs.json": "5dfd096fa833473044a2ca52f3687a2fcfcd1ca9fec30630ccfa54868a8fce88",
+    "calibration.jsonl": "7358b11073f75b7dcbe6641dfc9af66e126f3dd9781e3069c549a0c615441ca4",
+    "evaluators.json": "5797d0394b648b670ad164dd97702be5db7d5ce6139a51e87fdeb001e2c1130b",
+    "gate.json": "9239566897d2500b077b4f6b3475ae2ce60a57acdf01c83438879c74eda9f581",
+    "sources.json": "c6f7f2c93c7c74dae849060c869b82ffb5c72e0202b4887a915b22f6842d5500",
+    "validation-baseline-outputs.json": "4a11aa97514c2cd9e7b07ef0fefe941b37161edacf00b7bfdccc4817698e8ac1",
+    "validation-candidate-outputs.json": "1439c83fc5f7834e52c9595ed3525ad599ac37efb788c752076aab23b333b16e",
+    "validation.jsonl": "7760aca974e8af075c4a26f1b82073b98b65db42b10dc71795e36f2e9f0fcda0"
+  }
+}
