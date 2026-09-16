@@ -1,0 +1,134 @@
+{
+  "outputs": [
+    {
+      "case_id": "catalog-v1-01-04",
+      "output": {
+        "material": "plástico ABS",
+        "weight_g": 210,
+        "country": "TW"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-02-04",
+      "output": {
+        "material": null,
+        "weight_g": 200,
+        "country": null
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-03-04",
+      "output": {
+        "material": "lã",
+        "weight_g": 1250,
+        "country": "NP"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-04-04",
+      "output": {
+        "material": "aço",
+        "weight_g": null,
+        "country": "DE"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-05-04",
+      "output": {
+        "material": "silicone",
+        "weight_g": 140,
+        "country": "VN"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-06-04",
+      "output": {
+        "material": "nylon",
+        "weight_g": 8,
+        "country": "JP"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-07-04",
+      "output": {
+        "material": "madeira de cedro",
+        "weight_g": 500,
+        "country": "RO"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-08-04",
+      "output": {
+        "material": null,
+        "weight_g": 190,
+        "country": "MX"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-09-04",
+      "output": {
+        "material": "algodão",
+        "weight_g": 75,
+        "country": "BR"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    },
+    {
+      "case_id": "catalog-v1-10-04",
+      "output": {
+        "material": "poliéster",
+        "weight_g": 0.5,
+        "country": "TW"
+      },
+      "metadata": {
+        "source": "authored reference control",
+        "synthetic": true,
+        "model_called": false
+      }
+    }
+  ]
+}

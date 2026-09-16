@@ -1,0 +1,37 @@
+{
+  "pack": "catalog-v1",
+  "provenance": "assistant-authored synthetic",
+  "human_approved": false,
+  "live_model_calls": 0,
+  "calibration_cases": 30,
+  "validation_cases": 10,
+  "scenarios": {
+    "direto": 4,
+    "ausencia": 4,
+    "unidades": 4,
+    "conflito": 4,
+    "embalagem": 4,
+    "unidade": 4,
+    "origem": 4,
+    "material": 4,
+    "instrucao": 4,
+    "zero_tipo": 4
+  },
+  "expected_challenge_failures": {
+    "calibration": 20,
+    "validation": 5
+  },
+  "sha256": {
+    "RUBRIC.md": "56678f115cd29c25a7dc2ae455e89768fd0496a4e8ccbc655696d53d5dd9fc12",
+    "calibration-challenge-outputs.json": "c4de785a8380ec7dcd9e49bf134e13d1a621230513efc34136e15f8488e4084e",
+    "calibration-reference-outputs.json": "4e47d3938f6f617b62a81005a8767daff77daab1858f4183b41fd68785965ccf",
+    "calibration.jsonl": "5c5a54daae3ed5ef84171af2f2817c8275b8d18faa5ada63a52f4744e7a083f6",
+    "evaluators.json": "a58bb3ec0f376c4ae23a0f66af512b1602d88f017b912da0f569b5bf89290970",
+    "expected-decisions.json": "51705944a6e0a3aa60bc7897547f34ecde05f5dcdeb817833959de312c02ff25",
+    "gate.json": "9239566897d2500b077b4f6b3475ae2ce60a57acdf01c83438879c74eda9f581",
+    "human-review.csv": "9492724e1b5cf168d1ce0ab1716c8293baece0be2ab65690232ee07ea7c32d9f",
+    "validation-challenge-outputs.json": "95afbe86d761f8bb22d0330f92e02bc84708c8d8610f5038d9d6224c052ae14a",
+    "validation-reference-outputs.json": "a3d421a76378e2018bf001ad748bfbafb8f4d8fbb298c0963c0e865d32f8b5d4",
+    "validation.jsonl": "6b353e3986cee7bd64402643eab38ee0d106043da3ade844367679b58370598e"
+  }
+}

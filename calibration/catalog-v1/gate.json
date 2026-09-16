@@ -1,0 +1,16 @@
+{
+  "min_accuracy": {
+    "schema_valid": 1,
+    "field_accuracy": 1,
+    "material_correct": 1,
+    "weight_correct": 1,
+    "country_correct": 1,
+    "record_exact": 1
+  },
+  "max_regressions": 0,
+  "critical_tag": "critical",
+  "min_coverage": 1,
+  "max_target_error_rate": 0,
+  "evaluator_errors": "fail",
+  "max_p95_latency_ms": null
+}

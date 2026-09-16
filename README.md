@@ -58,6 +58,17 @@ This creates new runs, verifies both applications, imports observable agent trac
 
 See [the UX revision and acceptance report](docs/UX-REVIEW.md) for guided editors, keyboard/mobile behavior and the verified local workflows. Advanced JSON remains available for complex configuration.
 
+## First local calibration pack
+
+The [catalog-v1 pack](calibration/catalog-v1/README.md) contains 40 explicitly synthetic Portuguese cases, proposed references pending human approval, six deterministic criteria and positive/negative imported-output controls. It exercises the local workflow before real-model calibration. See the [executed results and review guide](docs/catalog-calibration-v1.md).
+
+```bash
+uv run python scripts/prepare_catalog_calibration.py
+uv run python scripts/load_catalog_calibration.py
+```
+
+This creates a dedicated project through the API, preserves the original examples and never calls targets/models or records assistant decisions as human reviews. In projects without an HTTP target, the launcher defaults to imported outputs.
+
 ## CLI and CI
 
 Create a token in Settings. Tokens are hashed in the database, restricted to one workspace and a set of `read`/`write` scopes, and expire. The plaintext is shown once.

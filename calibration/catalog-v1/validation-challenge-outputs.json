@@ -1,0 +1,145 @@
+{
+  "outputs": [
+    {
+      "case_id": "catalog-v1-01-04",
+      "output": {
+        "material": "plástico ABS",
+        "weight_g": 210,
+        "country": "TW",
+        "confidence": 0.99
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "chave extra confidence"
+      }
+    },
+    {
+      "case_id": "catalog-v1-02-04",
+      "output": {
+        "material": null,
+        "weight_g": 200,
+        "country": null
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "controle correto, sem perturbação"
+      }
+    },
+    {
+      "case_id": "catalog-v1-03-04",
+      "output": {
+        "material": "lã",
+        "weight_g": 1.25,
+        "country": "NP"
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "kg copiado como gramas"
+      }
+    },
+    {
+      "case_id": "catalog-v1-04-04",
+      "output": {
+        "material": "aço",
+        "weight_g": null,
+        "country": "DE"
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "controle correto, sem perturbação"
+      }
+    },
+    {
+      "case_id": "catalog-v1-05-04",
+      "output": {
+        "material": "silicone",
+        "weight_g": 220,
+        "country": "VN"
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "peso de transporte usado como líquido"
+      }
+    },
+    {
+      "case_id": "catalog-v1-06-04",
+      "output": {
+        "material": "nylon",
+        "weight_g": 8,
+        "country": "JP"
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "controle correto, sem perturbação"
+      }
+    },
+    {
+      "case_id": "catalog-v1-07-04",
+      "output": {
+        "material": "madeira de cedro",
+        "weight_g": 500,
+        "country": "SE"
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "país de design/marca/distribuição"
+      }
+    },
+    {
+      "case_id": "catalog-v1-08-04",
+      "output": {
+        "material": null,
+        "weight_g": 190,
+        "country": "MX"
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "controle correto, sem perturbação"
+      }
+    },
+    {
+      "case_id": "catalog-v1-09-04",
+      "output": {
+        "material": "algodão",
+        "weight_g": 75,
+        "country": "US"
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "obediência à instrução na passagem"
+      }
+    },
+    {
+      "case_id": "catalog-v1-10-04",
+      "output": {
+        "material": "poliéster",
+        "weight_g": 0.5,
+        "country": "TW"
+      },
+      "metadata": {
+        "source": "authored fault control",
+        "synthetic": true,
+        "model_called": false,
+        "injected_fault": "controle correto, sem perturbação"
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+import { test, expect } from '@playwright/test'
+import fs from 'node:fs'
+import path from 'node:path'
+
+const root = path.resolve('../..')
+const env = Object.fromEntries(fs.readFileSync(path.join(root, '.env'), 'utf8').split('\n').filter(l => l.includes('=')).map(l => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1)]))
+const reportPath = path.join(root, 'docs/catalog-calibration-v1.json')
+const evidence = fs.existsSync(reportPath) ? JSON.parse(fs.readFileSync(reportPath, 'utf8')) : null
+
+test('synthetic calibration shows verified decisions and supports imports without a target', async ({ page }) => {
+  test.skip(!evidence, 'Load catalog-v1 with scripts/load_catalog_calibration.py first')
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  await page.goto('/')
+  await page.getByLabel('Email', { exact: true }).fill('demo@evaldock.local')
+  await page.getByLabel('Password', { exact: true }).fill(env.DEMO_PASSWORD)
+  await page.getByRole('button', { name: 'Sign in', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Project overview', exact: true })).toBeVisible()
+  await page.goto(`/projects/${evidence.project_id}/overview`)
+  const sourceStep = page.getByRole('link', { name: 'Provide outputs Saved outputs are ready to evaluate.' })
+  await expect(sourceStep).toHaveClass(/done/)
+  await expect(page.getByText('Latest coverage', { exact: true }).locator('..')).toContainText('100.0%')
+  await page.getByRole('button', { name: 'New experiment', exact: true }).click()
+  await expect(page.getByRole('combobox', { name: 'Execution mode', exact: true })).toHaveValue('imported')
+  await expect(page.getByRole('combobox', { name: 'Target version', exact: true })).toHaveCount(0)
+  await page.getByRole('dialog').getByRole('button', { name: 'Close dialog', exact: true }).click()
+  await page.getByRole('link', { name: 'Compare', exact: true }).click()
+  await page.getByLabel('Comparison metric', { exact: true }).selectOption('record_exact')
+  await expect(page.getByRole('tab', { name: 'All cases 30', exact: true })).toBeVisible()
+  await expect(page.getByRole('tab', { name: 'Regressions 20', exact: true })).toBeVisible()
+  await page.getByRole('tab', { name: 'Regressions 20', exact: true }).click()
+  await page.getByLabel('Filter by tag', { exact: true }).selectOption('instrucao')
+  await expect(page.getByRole('tab', { name: 'Regressions 2', exact: true })).toBeVisible()
+  await page.getByRole('button', { name: /catalog-v1-09-01/i }).click()
+  await expect(page.getByRole('heading', { name: 'catalog-v1-09-01 replicate 0', exact: true })).toBeVisible()
+  await expect(page.locator('.reference-grid')).toContainText('human_review_status')
+  await page.getByRole('button', { name: 'Clear filters', exact: true }).click()
+  await page.getByLabel('Baseline experiment', { exact: true }).selectOption(evidence.runs.validation.baseline_id)
+  await page.getByLabel('Candidate experiment', { exact: true }).selectOption(evidence.runs.validation.challenge_id)
+  await expect(page.getByRole('tab', { name: 'All cases 10', exact: true })).toBeVisible()
+  await expect(page.getByRole('tab', { name: 'Regressions 5', exact: true })).toBeVisible()
+  await page.getByRole('link', { name: 'Human review', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Calibration queue 80', exact: true })).toBeVisible()
+  await page.getByLabel('Search review cases', { exact: true }).fill('controle negativo · 30 calibração')
+  await expect(page.getByRole('heading', { name: 'Calibration queue 30', exact: true })).toBeVisible()
+  expect(errors).toEqual([])
+})

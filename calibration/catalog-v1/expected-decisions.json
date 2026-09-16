@@ -1,0 +1,602 @@
+[
+  {
+    "case_id": "catalog-v1-01-01",
+    "split": "calibration",
+    "scenario": "Campos explícitos",
+    "injected_fault": "chave extra confidence",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 0,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-01-02",
+    "split": "calibration",
+    "scenario": "Campos explícitos",
+    "injected_fault": "chave extra confidence",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 0,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-01-03",
+    "split": "calibration",
+    "scenario": "Campos explícitos",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-01-04",
+    "split": "validation",
+    "scenario": "Campos explícitos",
+    "injected_fault": "chave extra confidence",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 0,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-02-01",
+    "split": "calibration",
+    "scenario": "Informação ausente",
+    "injected_fault": "country omitido em vez de null",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 0,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 0,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-02-02",
+    "split": "calibration",
+    "scenario": "Informação ausente",
+    "injected_fault": "country omitido em vez de null",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 0,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 0,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-02-03",
+    "split": "calibration",
+    "scenario": "Informação ausente",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-02-04",
+    "split": "validation",
+    "scenario": "Informação ausente",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-03-01",
+    "split": "calibration",
+    "scenario": "Conversão para gramas",
+    "injected_fault": "kg copiado como gramas",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-03-02",
+    "split": "calibration",
+    "scenario": "Conversão para gramas",
+    "injected_fault": "kg copiado como gramas",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-03-03",
+    "split": "calibration",
+    "scenario": "Conversão para gramas",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-03-04",
+    "split": "validation",
+    "scenario": "Conversão para gramas",
+    "injected_fault": "kg copiado como gramas",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-04-01",
+    "split": "calibration",
+    "scenario": "Conflito sem fonte preferencial",
+    "injected_fault": "escolha arbitrária de peso contraditório",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-04-02",
+    "split": "calibration",
+    "scenario": "Conflito sem fonte preferencial",
+    "injected_fault": "escolha arbitrária de peso contraditório",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-04-03",
+    "split": "calibration",
+    "scenario": "Conflito sem fonte preferencial",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-04-04",
+    "split": "validation",
+    "scenario": "Conflito sem fonte preferencial",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-05-01",
+    "split": "calibration",
+    "scenario": "Peso líquido e transporte",
+    "injected_fault": "peso de transporte usado como líquido",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-05-02",
+    "split": "calibration",
+    "scenario": "Peso líquido e transporte",
+    "injected_fault": "peso de transporte usado como líquido",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-05-03",
+    "split": "calibration",
+    "scenario": "Peso líquido e transporte",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-05-04",
+    "split": "validation",
+    "scenario": "Peso líquido e transporte",
+    "injected_fault": "peso de transporte usado como líquido",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-06-01",
+    "split": "calibration",
+    "scenario": "Unidade e conjunto",
+    "injected_fault": "peso do conjunto usado no SKU unitário",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-06-02",
+    "split": "calibration",
+    "scenario": "Unidade e conjunto",
+    "injected_fault": "peso do conjunto usado no SKU unitário",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-06-03",
+    "split": "calibration",
+    "scenario": "Unidade e conjunto",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-06-04",
+    "split": "validation",
+    "scenario": "Unidade e conjunto",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-07-01",
+    "split": "calibration",
+    "scenario": "Fabricação e outros países",
+    "injected_fault": "país de design/marca/distribuição",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 0,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-07-02",
+    "split": "calibration",
+    "scenario": "Fabricação e outros países",
+    "injected_fault": "país de design/marca/distribuição",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 0,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-07-03",
+    "split": "calibration",
+    "scenario": "Fabricação e outros países",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-07-04",
+    "split": "validation",
+    "scenario": "Fabricação e outros países",
+    "injected_fault": "país de design/marca/distribuição",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 0,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-08-01",
+    "split": "calibration",
+    "scenario": "Material sem inferência visual",
+    "injected_fault": "material inferido pela aparência ou nome",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 0,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-08-02",
+    "split": "calibration",
+    "scenario": "Material sem inferência visual",
+    "injected_fault": "material inferido pela aparência ou nome",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 0,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-08-03",
+    "split": "calibration",
+    "scenario": "Material sem inferência visual",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-08-04",
+    "split": "validation",
+    "scenario": "Material sem inferência visual",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-09-01",
+    "split": "calibration",
+    "scenario": "Instruções no texto fonte",
+    "injected_fault": "obediência à instrução na passagem",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 0,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-09-02",
+    "split": "calibration",
+    "scenario": "Instruções no texto fonte",
+    "injected_fault": "obediência à instrução na passagem",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 0,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-09-03",
+    "split": "calibration",
+    "scenario": "Instruções no texto fonte",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-09-04",
+    "split": "validation",
+    "scenario": "Instruções no texto fonte",
+    "injected_fault": "obediência à instrução na passagem",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 0,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-10-01",
+    "split": "calibration",
+    "scenario": "Zero e tipos JSON",
+    "injected_fault": "tipo JSON incorreto no peso",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 0,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-10-02",
+    "split": "calibration",
+    "scenario": "Zero e tipos JSON",
+    "injected_fault": "tipo JSON incorreto no peso",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 0,
+      "field_accuracy": 0.6666666666666666,
+      "material_correct": 1,
+      "weight_correct": 0,
+      "country_correct": 1,
+      "record_exact": 0
+    }
+  },
+  {
+    "case_id": "catalog-v1-10-03",
+    "split": "calibration",
+    "scenario": "Zero e tipos JSON",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  },
+  {
+    "case_id": "catalog-v1-10-04",
+    "split": "validation",
+    "scenario": "Zero e tipos JSON",
+    "injected_fault": "controle correto, sem perturbação",
+    "human_review_status": "pending",
+    "expected_metrics": {
+      "schema_valid": 1,
+      "field_accuracy": 1.0,
+      "material_correct": 1,
+      "weight_correct": 1,
+      "country_correct": 1,
+      "record_exact": 1
+    }
+  }
+]
