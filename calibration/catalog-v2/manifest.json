@@ -1,0 +1,37 @@
+{
+  "pack": "catalog-v2",
+  "provenance": "assistant-authored synthetic",
+  "human_approved": false,
+  "live_model_calls": 0,
+  "calibration_cases": 30,
+  "validation_cases": 10,
+  "scenarios": {
+    "explicit": 4,
+    "missing": 4,
+    "units": 4,
+    "conflict": 4,
+    "packaging": 4,
+    "unit": 4,
+    "origin": 4,
+    "material": 4,
+    "instruction": 4,
+    "zero_types": 4
+  },
+  "expected_challenge_failures": {
+    "calibration": 20,
+    "validation": 5
+  },
+  "sha256": {
+    "RUBRIC.md": "6cd3af5ab433b6ee122a865000cff70b83b93ca73731991070868708776982c9",
+    "calibration-challenge-outputs.json": "221be484ba2e7646a25e32cdc9abbe007b244353eea47ae3e5cc814783fdeee4",
+    "calibration-reference-outputs.json": "0e56b4ca418f99db520baab7ac5360d3fc69496f5d5f33d70e4a62e260fb5747",
+    "calibration.jsonl": "98aff9970eeeb2ebd48812556524dac0131f24fc23904c1b7ce0efdfd69cf1b1",
+    "evaluators.json": "cc754867f10246b25576b7a15e454de0972be7f5a36c3b31b5f160b64840ae86",
+    "expected-decisions.json": "2dc3fb93e3ac8a6d87971744d6ea839cc2e161a431af072f58d5c0d70a7ce1f2",
+    "gate.json": "9239566897d2500b077b4f6b3475ae2ce60a57acdf01c83438879c74eda9f581",
+    "human-review.csv": "83e473b2f714812a972c3e59a0ee418ef45fb876244f1f7e81008564420fa627",
+    "validation-challenge-outputs.json": "e74c44e89699ecfbdbe02f1bc3e123293948c10bf89e3b711ae443c75671bf61",
+    "validation-reference-outputs.json": "a7488e512db4c0064ebcc578a9dfc8206a019252970fe51ccc8a517b9e2d5b51",
+    "validation.jsonl": "a9b7fff9e74fd349832d6344660f9c7b82aa64a4e49b90b6d7b13e549b2e9e24"
+  }
+}

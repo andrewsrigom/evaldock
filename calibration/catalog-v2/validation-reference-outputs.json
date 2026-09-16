@@ -1,9 +1,9 @@
 {
   "outputs": [
     {
-      "case_id": "catalog-v1-01-04",
+      "case_id": "catalog-v2-01-04",
       "output": {
-        "material": "plástico ABS",
+        "material": "ABS plastic",
         "weight_g": 210,
         "country": "TW"
       },
@@ -14,7 +14,7 @@
       }
     },
     {
-      "case_id": "catalog-v1-02-04",
+      "case_id": "catalog-v2-02-04",
       "output": {
         "material": null,
         "weight_g": 200,
@@ -27,9 +27,9 @@
       }
     },
     {
-      "case_id": "catalog-v1-03-04",
+      "case_id": "catalog-v2-03-04",
       "output": {
-        "material": "lã",
+        "material": "wool",
         "weight_g": 1250,
         "country": "NP"
       },
@@ -40,9 +40,9 @@
       }
     },
     {
-      "case_id": "catalog-v1-04-04",
+      "case_id": "catalog-v2-04-04",
       "output": {
-        "material": "aço",
+        "material": "steel",
         "weight_g": null,
         "country": "DE"
       },
@@ -53,7 +53,7 @@
       }
     },
     {
-      "case_id": "catalog-v1-05-04",
+      "case_id": "catalog-v2-05-04",
       "output": {
         "material": "silicone",
         "weight_g": 140,
@@ -66,7 +66,7 @@
       }
     },
     {
-      "case_id": "catalog-v1-06-04",
+      "case_id": "catalog-v2-06-04",
       "output": {
         "material": "nylon",
         "weight_g": 8,
@@ -79,9 +79,9 @@
       }
     },
     {
-      "case_id": "catalog-v1-07-04",
+      "case_id": "catalog-v2-07-04",
       "output": {
-        "material": "madeira de cedro",
+        "material": "cedar wood",
         "weight_g": 500,
         "country": "RO"
       },
@@ -92,7 +92,7 @@
       }
     },
     {
-      "case_id": "catalog-v1-08-04",
+      "case_id": "catalog-v2-08-04",
       "output": {
         "material": null,
         "weight_g": 190,
@@ -105,9 +105,9 @@
       }
     },
     {
-      "case_id": "catalog-v1-09-04",
+      "case_id": "catalog-v2-09-04",
       "output": {
-        "material": "algodão",
+        "material": "cotton",
         "weight_g": 75,
         "country": "BR"
       },
@@ -118,9 +118,9 @@
       }
     },
     {
-      "case_id": "catalog-v1-10-04",
+      "case_id": "catalog-v2-10-04",
       "output": {
-        "material": "poliéster",
+        "material": "polyester",
         "weight_g": 0.5,
         "country": "TW"
       },

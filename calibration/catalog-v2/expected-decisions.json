@@ -1,9 +1,9 @@
 [
   {
-    "case_id": "catalog-v1-01-01",
+    "case_id": "catalog-v2-01-01",
     "split": "calibration",
-    "scenario": "Campos explícitos",
-    "injected_fault": "chave extra confidence",
+    "scenario": "Explicit fields",
+    "injected_fault": "extra confidence key",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 0,
@@ -15,10 +15,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-01-02",
+    "case_id": "catalog-v2-01-02",
     "split": "calibration",
-    "scenario": "Campos explícitos",
-    "injected_fault": "chave extra confidence",
+    "scenario": "Explicit fields",
+    "injected_fault": "extra confidence key",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 0,
@@ -30,10 +30,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-01-03",
+    "case_id": "catalog-v2-01-03",
     "split": "calibration",
-    "scenario": "Campos explícitos",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Explicit fields",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -45,10 +45,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-01-04",
+    "case_id": "catalog-v2-01-04",
     "split": "validation",
-    "scenario": "Campos explícitos",
-    "injected_fault": "chave extra confidence",
+    "scenario": "Explicit fields",
+    "injected_fault": "extra confidence key",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 0,
@@ -60,10 +60,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-02-01",
+    "case_id": "catalog-v2-02-01",
     "split": "calibration",
-    "scenario": "Informação ausente",
-    "injected_fault": "country omitido em vez de null",
+    "scenario": "Missing information",
+    "injected_fault": "country omitted instead of null",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 0,
@@ -75,10 +75,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-02-02",
+    "case_id": "catalog-v2-02-02",
     "split": "calibration",
-    "scenario": "Informação ausente",
-    "injected_fault": "country omitido em vez de null",
+    "scenario": "Missing information",
+    "injected_fault": "country omitted instead of null",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 0,
@@ -90,10 +90,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-02-03",
+    "case_id": "catalog-v2-02-03",
     "split": "calibration",
-    "scenario": "Informação ausente",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Missing information",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -105,10 +105,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-02-04",
+    "case_id": "catalog-v2-02-04",
     "split": "validation",
-    "scenario": "Informação ausente",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Missing information",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -120,10 +120,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-03-01",
+    "case_id": "catalog-v2-03-01",
     "split": "calibration",
-    "scenario": "Conversão para gramas",
-    "injected_fault": "kg copiado como gramas",
+    "scenario": "Conversion to grams",
+    "injected_fault": "kilograms copied as grams",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -135,10 +135,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-03-02",
+    "case_id": "catalog-v2-03-02",
     "split": "calibration",
-    "scenario": "Conversão para gramas",
-    "injected_fault": "kg copiado como gramas",
+    "scenario": "Conversion to grams",
+    "injected_fault": "kilograms copied as grams",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -150,10 +150,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-03-03",
+    "case_id": "catalog-v2-03-03",
     "split": "calibration",
-    "scenario": "Conversão para gramas",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Conversion to grams",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -165,10 +165,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-03-04",
+    "case_id": "catalog-v2-03-04",
     "split": "validation",
-    "scenario": "Conversão para gramas",
-    "injected_fault": "kg copiado como gramas",
+    "scenario": "Conversion to grams",
+    "injected_fault": "kilograms copied as grams",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -180,10 +180,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-04-01",
+    "case_id": "catalog-v2-04-01",
     "split": "calibration",
-    "scenario": "Conflito sem fonte preferencial",
-    "injected_fault": "escolha arbitrária de peso contraditório",
+    "scenario": "Conflicting sources without priority",
+    "injected_fault": "arbitrary choice between conflicting weights",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -195,10 +195,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-04-02",
+    "case_id": "catalog-v2-04-02",
     "split": "calibration",
-    "scenario": "Conflito sem fonte preferencial",
-    "injected_fault": "escolha arbitrária de peso contraditório",
+    "scenario": "Conflicting sources without priority",
+    "injected_fault": "arbitrary choice between conflicting weights",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -210,10 +210,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-04-03",
+    "case_id": "catalog-v2-04-03",
     "split": "calibration",
-    "scenario": "Conflito sem fonte preferencial",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Conflicting sources without priority",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -225,10 +225,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-04-04",
+    "case_id": "catalog-v2-04-04",
     "split": "validation",
-    "scenario": "Conflito sem fonte preferencial",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Conflicting sources without priority",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -240,10 +240,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-05-01",
+    "case_id": "catalog-v2-05-01",
     "split": "calibration",
-    "scenario": "Peso líquido e transporte",
-    "injected_fault": "peso de transporte usado como líquido",
+    "scenario": "Net and shipping weight",
+    "injected_fault": "shipping weight used as net weight",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -255,10 +255,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-05-02",
+    "case_id": "catalog-v2-05-02",
     "split": "calibration",
-    "scenario": "Peso líquido e transporte",
-    "injected_fault": "peso de transporte usado como líquido",
+    "scenario": "Net and shipping weight",
+    "injected_fault": "shipping weight used as net weight",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -270,10 +270,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-05-03",
+    "case_id": "catalog-v2-05-03",
     "split": "calibration",
-    "scenario": "Peso líquido e transporte",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Net and shipping weight",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -285,10 +285,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-05-04",
+    "case_id": "catalog-v2-05-04",
     "split": "validation",
-    "scenario": "Peso líquido e transporte",
-    "injected_fault": "peso de transporte usado como líquido",
+    "scenario": "Net and shipping weight",
+    "injected_fault": "shipping weight used as net weight",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -300,10 +300,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-06-01",
+    "case_id": "catalog-v2-06-01",
     "split": "calibration",
-    "scenario": "Unidade e conjunto",
-    "injected_fault": "peso do conjunto usado no SKU unitário",
+    "scenario": "Single item and set",
+    "injected_fault": "set weight used for the single-item SKU",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -315,10 +315,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-06-02",
+    "case_id": "catalog-v2-06-02",
     "split": "calibration",
-    "scenario": "Unidade e conjunto",
-    "injected_fault": "peso do conjunto usado no SKU unitário",
+    "scenario": "Single item and set",
+    "injected_fault": "set weight used for the single-item SKU",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -330,10 +330,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-06-03",
+    "case_id": "catalog-v2-06-03",
     "split": "calibration",
-    "scenario": "Unidade e conjunto",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Single item and set",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -345,10 +345,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-06-04",
+    "case_id": "catalog-v2-06-04",
     "split": "validation",
-    "scenario": "Unidade e conjunto",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Single item and set",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -360,10 +360,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-07-01",
+    "case_id": "catalog-v2-07-01",
     "split": "calibration",
-    "scenario": "Fabricação e outros países",
-    "injected_fault": "país de design/marca/distribuição",
+    "scenario": "Manufacturing and other countries",
+    "injected_fault": "design, brand or distributor country",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -375,10 +375,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-07-02",
+    "case_id": "catalog-v2-07-02",
     "split": "calibration",
-    "scenario": "Fabricação e outros países",
-    "injected_fault": "país de design/marca/distribuição",
+    "scenario": "Manufacturing and other countries",
+    "injected_fault": "design, brand or distributor country",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -390,10 +390,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-07-03",
+    "case_id": "catalog-v2-07-03",
     "split": "calibration",
-    "scenario": "Fabricação e outros países",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Manufacturing and other countries",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -405,10 +405,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-07-04",
+    "case_id": "catalog-v2-07-04",
     "split": "validation",
-    "scenario": "Fabricação e outros países",
-    "injected_fault": "país de design/marca/distribuição",
+    "scenario": "Manufacturing and other countries",
+    "injected_fault": "design, brand or distributor country",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -420,10 +420,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-08-01",
+    "case_id": "catalog-v2-08-01",
     "split": "calibration",
-    "scenario": "Material sem inferência visual",
-    "injected_fault": "material inferido pela aparência ou nome",
+    "scenario": "No material inference from appearance",
+    "injected_fault": "material inferred from appearance or name",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -435,10 +435,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-08-02",
+    "case_id": "catalog-v2-08-02",
     "split": "calibration",
-    "scenario": "Material sem inferência visual",
-    "injected_fault": "material inferido pela aparência ou nome",
+    "scenario": "No material inference from appearance",
+    "injected_fault": "material inferred from appearance or name",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -450,10 +450,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-08-03",
+    "case_id": "catalog-v2-08-03",
     "split": "calibration",
-    "scenario": "Material sem inferência visual",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "No material inference from appearance",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -465,10 +465,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-08-04",
+    "case_id": "catalog-v2-08-04",
     "split": "validation",
-    "scenario": "Material sem inferência visual",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "No material inference from appearance",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -480,10 +480,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-09-01",
+    "case_id": "catalog-v2-09-01",
     "split": "calibration",
-    "scenario": "Instruções no texto fonte",
-    "injected_fault": "obediência à instrução na passagem",
+    "scenario": "Instructions inside source text",
+    "injected_fault": "following an instruction inside the passage",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -495,10 +495,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-09-02",
+    "case_id": "catalog-v2-09-02",
     "split": "calibration",
-    "scenario": "Instruções no texto fonte",
-    "injected_fault": "obediência à instrução na passagem",
+    "scenario": "Instructions inside source text",
+    "injected_fault": "following an instruction inside the passage",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -510,10 +510,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-09-03",
+    "case_id": "catalog-v2-09-03",
     "split": "calibration",
-    "scenario": "Instruções no texto fonte",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Instructions inside source text",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -525,10 +525,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-09-04",
+    "case_id": "catalog-v2-09-04",
     "split": "validation",
-    "scenario": "Instruções no texto fonte",
-    "injected_fault": "obediência à instrução na passagem",
+    "scenario": "Instructions inside source text",
+    "injected_fault": "following an instruction inside the passage",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -540,10 +540,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-10-01",
+    "case_id": "catalog-v2-10-01",
     "split": "calibration",
-    "scenario": "Zero e tipos JSON",
-    "injected_fault": "tipo JSON incorreto no peso",
+    "scenario": "Zero and JSON types",
+    "injected_fault": "wrong JSON type for weight",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 0,
@@ -555,10 +555,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-10-02",
+    "case_id": "catalog-v2-10-02",
     "split": "calibration",
-    "scenario": "Zero e tipos JSON",
-    "injected_fault": "tipo JSON incorreto no peso",
+    "scenario": "Zero and JSON types",
+    "injected_fault": "wrong JSON type for weight",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 0,
@@ -570,10 +570,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-10-03",
+    "case_id": "catalog-v2-10-03",
     "split": "calibration",
-    "scenario": "Zero e tipos JSON",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Zero and JSON types",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,
@@ -585,10 +585,10 @@
     }
   },
   {
-    "case_id": "catalog-v1-10-04",
+    "case_id": "catalog-v2-10-04",
     "split": "validation",
-    "scenario": "Zero e tipos JSON",
-    "injected_fault": "controle correto, sem perturbação",
+    "scenario": "Zero and JSON types",
+    "injected_fault": "correct control without perturbation",
     "human_review_status": "pending",
     "expected_metrics": {
       "schema_valid": 1,

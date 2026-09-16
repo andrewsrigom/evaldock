@@ -4,11 +4,11 @@ import path from 'node:path'
 
 const root = path.resolve('../..')
 const env = Object.fromEntries(fs.readFileSync(path.join(root, '.env'), 'utf8').split('\n').filter(l => l.includes('=')).map(l => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1)]))
-const reportPath = path.join(root, 'docs/catalog-calibration-v1.json')
+const reportPath = path.join(root, 'docs/catalog-calibration-v2.json')
 const evidence = fs.existsSync(reportPath) ? JSON.parse(fs.readFileSync(reportPath, 'utf8')) : null
 
 test('synthetic calibration shows verified decisions and supports imports without a target', async ({ page }) => {
-  test.skip(!evidence, 'Load catalog-v1 with scripts/load_catalog_calibration.py first')
+  test.skip(!evidence, 'Load catalog-v2 with scripts/load_catalog_calibration.py first')
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
@@ -29,10 +29,10 @@ test('synthetic calibration shows verified decisions and supports imports withou
   await expect(page.getByRole('tab', { name: 'All cases 30', exact: true })).toBeVisible()
   await expect(page.getByRole('tab', { name: 'Regressions 20', exact: true })).toBeVisible()
   await page.getByRole('tab', { name: 'Regressions 20', exact: true }).click()
-  await page.getByLabel('Filter by tag', { exact: true }).selectOption('instrucao')
+  await page.getByLabel('Filter by tag', { exact: true }).selectOption('instruction')
   await expect(page.getByRole('tab', { name: 'Regressions 2', exact: true })).toBeVisible()
-  await page.getByRole('button', { name: /catalog-v1-09-01/i }).click()
-  await expect(page.getByRole('heading', { name: 'catalog-v1-09-01 replicate 0', exact: true })).toBeVisible()
+  await page.getByRole('button', { name: /catalog-v2-09-01/i }).click()
+  await expect(page.getByRole('heading', { name: 'catalog-v2-09-01 replicate 0', exact: true })).toBeVisible()
   await expect(page.locator('.reference-grid')).toContainText('human_review_status')
   await page.getByRole('button', { name: 'Clear filters', exact: true }).click()
   await page.getByLabel('Baseline experiment', { exact: true }).selectOption(evidence.runs.validation.baseline_id)
@@ -41,7 +41,7 @@ test('synthetic calibration shows verified decisions and supports imports withou
   await expect(page.getByRole('tab', { name: 'Regressions 5', exact: true })).toBeVisible()
   await page.getByRole('link', { name: 'Human review', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Calibration queue 80', exact: true })).toBeVisible()
-  await page.getByLabel('Search review cases', { exact: true }).fill('controle negativo · 30 calibração')
+  await page.getByLabel('Search review cases', { exact: true }).fill('negative control · 30 calibration')
   await expect(page.getByRole('heading', { name: 'Calibration queue 30', exact: true })).toBeVisible()
   expect(errors).toEqual([])
 })

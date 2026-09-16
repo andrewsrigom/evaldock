@@ -1,6 +1,6 @@
 [
   {
-    "name": "Formato do registro · catálogo v1",
+    "name": "Record format · catalog v2",
     "config": {
       "kind": "json_schema",
       "metric_key": "schema_valid",
@@ -49,7 +49,7 @@
     }
   },
   {
-    "name": "Acurácia dos três campos · catálogo v1",
+    "name": "Three-field accuracy · catalog v2",
     "config": {
       "kind": "field_comparison",
       "metric_key": "field_accuracy",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "name": "Material correto · catálogo v1",
+    "name": "Correct material · catalog v2",
     "config": {
       "kind": "field_comparison",
       "metric_key": "material_correct",
@@ -93,7 +93,7 @@
     }
   },
   {
-    "name": "Peso correto em gramas · catálogo v1",
+    "name": "Correct weight in grams · catalog v2",
     "config": {
       "kind": "field_comparison",
       "metric_key": "weight_correct",
@@ -114,7 +114,7 @@
     }
   },
   {
-    "name": "País de fabricação correto · catálogo v1",
+    "name": "Correct manufacturing country · catalog v2",
     "config": {
       "kind": "field_comparison",
       "metric_key": "country_correct",
@@ -135,7 +135,7 @@
     }
   },
   {
-    "name": "Registro completo correto · catálogo v1",
+    "name": "Exact complete record · catalog v2",
     "config": {
       "kind": "exact_match",
       "metric_key": "record_exact",

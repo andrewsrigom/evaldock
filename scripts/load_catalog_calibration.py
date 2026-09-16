@@ -1,4 +1,4 @@
-"""Load and verify catalog-v1 through the public API; no targets, models or human reviews.
+"""Load and verify catalog-v2 through the public API; no targets, models or human reviews.
 
 Reuses this pack's resources and runs on subsequent invocations. Stops on divergence.
 Credentials are read from the local .env via Settings and never written to reports.
@@ -15,11 +15,11 @@ from evaldock.config import settings
 from evaldock.contracts import EvaluatorConfig, parse_jsonl
 
 ROOT = Path(__file__).resolve().parents[1]
-PACK = ROOT / "calibration" / "catalog-v1"
-NAME = "Calibração de catálogo · sintética v1"
-DESCRIPTION = "catalog-v1 | 40 casos sintéticos: 30 calibração + 10 validação. Referências propostas pelo assistente; aprovação humana pendente. Execuções de controle importadas; nenhuma IA ou integração externa."
-STATE = ROOT / "work" / "catalog-calibration-state.json"
-REPORT = ROOT / "docs" / "catalog-calibration-v1.json"
+PACK = ROOT / "calibration" / "catalog-v2"
+NAME = "Catalog calibration · synthetic v2"
+DESCRIPTION = "catalog-v2 | 40 English synthetic cases: 30 calibration + 10 validation. Assistant-proposed references; human approval pending. Imported control outputs; no AI or external integration."
+STATE = ROOT / "work" / "catalog-calibration-v2-state.json"
+REPORT = ROOT / "docs" / "catalog-calibration-v2.json"
 
 
 def read(name):
@@ -111,16 +111,16 @@ def main():
         versions = {}
         for split, rows in datasets.items():
             title = (
-                "Calibração · 30 casos sintéticos v1"
+                "Calibration · 30 English synthetic cases v2"
                 if split == "calibration"
-                else "Validação reservada · 10 casos sintéticos v1"
+                else "Held-out validation · 10 English synthetic cases v2"
             )
             versions[split] = resource(
                 "dataset",
                 title,
                 {
                     "held_out": split == "validation",
-                    "description": f"catalog-v1: {split}; referências propostas pelo assistente, sem aprovação humana. Ver RUBRIC.md e human-review.csv.",
+                    "description": f"catalog-v2: {split}; assistant-proposed English references, without human approval. See RUBRIC.md and human-review.csv.",
                 },
                 rows,
             )
@@ -134,10 +134,10 @@ def main():
         ]
         suite = resource(
             "suite",
-            "Critérios determinísticos · catálogo v1",
+            "Deterministic criteria · catalog v2",
             {
                 "evaluator_version_ids": evaluator_ids,
-                "description": "Seis critérios objetivos. Controles sintéticos; não mede qualidade de modelo nem aprovação humana.",
+                "description": "Six objective criteria. Synthetic controls; not a measure of model quality or human approval.",
             },
         )
         current_gate = request("GET", f"/projects/{project_id}/gate")
@@ -151,7 +151,7 @@ def main():
         runs = {}
 
         def run(split, kind, title, baseline_name):
-            name = f"{title} · {'30 calibração' if split == 'calibration' else '10 validação'} v1"
+            name = f"{title} · {'30 calibration' if split == 'calibration' else '10 validation'} v2"
             existing = [e for e in detail["experiments"] if e["name"] == name]
             assert len(existing) <= 1
             if existing:
@@ -214,9 +214,9 @@ def main():
 
         # The suite and oracle are frozen before either split is executed.
         for split in ("validation", "calibration"):
-            baseline_name = "main" if split == "calibration" else "validation-v1"
+            baseline_name = "main" if split == "calibration" else "validation-v2"
             baseline = run(
-                split, "reference", "Referência sintética · controle positivo", baseline_name
+                split, "reference", "Synthetic reference · positive control", baseline_name
             )
             existing_baseline = next(
                 (b for b in detail["baselines"] if b["name"] == baseline_name), None
@@ -228,9 +228,7 @@ def main():
                     f"/projects/{project_id}/baselines",
                     json={"experiment_id": baseline["id"], "name": baseline_name},
                 )
-            challenge = run(
-                split, "challenge", "Falhas injetadas · controle negativo", baseline_name
-            )
+            challenge = run(split, "challenge", "Injected faults · negative control", baseline_name)
             assert challenge["baseline_id"] == baseline["id"]
             comparison = request(
                 "GET",
@@ -278,10 +276,12 @@ def main():
         current_ids = {p["id"] for p in request("GET", "/projects")}
         assert original_ids <= current_ids
         results = {
-            "pack": "catalog-v1",
+            "pack": "catalog-v2",
             "project_id": project_id,
             "project_url": f"{config.public_origin}/projects/{project_id}/overview",
             "synthetic": True,
+            "language": "en-US",
+            "supersedes_pack": "catalog-v1",
             "human_approved": False,
             "live_model_calls": 0,
             "sample_target_calls": after - before,

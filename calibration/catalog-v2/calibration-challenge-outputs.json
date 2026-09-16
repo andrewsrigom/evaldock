@@ -1,9 +1,9 @@
 {
   "outputs": [
     {
-      "case_id": "catalog-v1-01-01",
+      "case_id": "catalog-v2-01-01",
       "output": {
-        "material": "alumínio",
+        "material": "aluminum",
         "weight_g": 450,
         "country": "BR",
         "confidence": 0.99
@@ -12,13 +12,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "chave extra confidence"
+        "injected_fault": "extra confidence key"
       }
     },
     {
-      "case_id": "catalog-v1-01-02",
+      "case_id": "catalog-v2-01-02",
       "output": {
-        "material": "cerâmica",
+        "material": "ceramic",
         "weight_g": 320,
         "country": "PT",
         "confidence": 0.99
@@ -27,13 +27,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "chave extra confidence"
+        "injected_fault": "extra confidence key"
       }
     },
     {
-      "case_id": "catalog-v1-01-03",
+      "case_id": "catalog-v2-01-03",
       "output": {
-        "material": "algodão",
+        "material": "cotton",
         "weight_g": 180,
         "country": "IN"
       },
@@ -41,37 +41,37 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-02-01",
+      "case_id": "catalog-v2-02-01",
       "output": {
-        "material": "madeira",
+        "material": "wood",
         "weight_g": 600
       },
       "metadata": {
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "country omitido em vez de null"
+        "injected_fault": "country omitted instead of null"
       }
     },
     {
-      "case_id": "catalog-v1-02-02",
+      "case_id": "catalog-v2-02-02",
       "output": {
-        "material": "palha",
+        "material": "straw",
         "weight_g": null
       },
       "metadata": {
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "country omitido em vez de null"
+        "injected_fault": "country omitted instead of null"
       }
     },
     {
-      "case_id": "catalog-v1-02-03",
+      "case_id": "catalog-v2-02-03",
       "output": {
         "material": null,
         "weight_g": null,
@@ -81,13 +81,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-03-01",
+      "case_id": "catalog-v2-03-01",
       "output": {
-        "material": "vidro",
+        "material": "glass",
         "weight_g": 0.8,
         "country": "PL"
       },
@@ -95,13 +95,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "kg copiado como gramas"
+        "injected_fault": "kilograms copied as grams"
       }
     },
     {
-      "case_id": "catalog-v1-03-02",
+      "case_id": "catalog-v2-03-02",
       "output": {
-        "material": "madeira de carvalho",
+        "material": "oak wood",
         "weight_g": 3.2,
         "country": "DK"
       },
@@ -109,13 +109,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "kg copiado como gramas"
+        "injected_fault": "kilograms copied as grams"
       }
     },
     {
-      "case_id": "catalog-v1-03-03",
+      "case_id": "catalog-v2-03-03",
       "output": {
-        "material": "bambu",
+        "material": "bamboo",
         "weight_g": 350,
         "country": "VN"
       },
@@ -123,13 +123,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-04-01",
+      "case_id": "catalog-v2-04-01",
       "output": {
-        "material": "borracha",
+        "material": "rubber",
         "weight_g": 50,
         "country": "MX"
       },
@@ -137,13 +137,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "escolha arbitrária de peso contraditório"
+        "injected_fault": "arbitrary choice between conflicting weights"
       }
     },
     {
-      "case_id": "catalog-v1-04-02",
+      "case_id": "catalog-v2-04-02",
       "output": {
-        "material": "resina",
+        "material": "resin",
         "weight_g": 45,
         "country": "ES"
       },
@@ -151,13 +151,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "escolha arbitrária de peso contraditório"
+        "injected_fault": "arbitrary choice between conflicting weights"
       }
     },
     {
-      "case_id": "catalog-v1-04-03",
+      "case_id": "catalog-v2-04-03",
       "output": {
-        "material": "mármore",
+        "material": "marble",
         "weight_g": null,
         "country": "IT"
       },
@@ -165,13 +165,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-05-01",
+      "case_id": "catalog-v2-05-01",
       "output": {
-        "material": "aço inoxidável",
+        "material": "stainless steel",
         "weight_g": 410,
         "country": "CN"
       },
@@ -179,13 +179,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "peso de transporte usado como líquido"
+        "injected_fault": "shipping weight used as net weight"
       }
     },
     {
-      "case_id": "catalog-v1-05-02",
+      "case_id": "catalog-v2-05-02",
       "output": {
-        "material": "lã",
+        "material": "wool",
         "weight_g": 1200,
         "country": "NP"
       },
@@ -193,13 +193,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "peso de transporte usado como líquido"
+        "injected_fault": "shipping weight used as net weight"
       }
     },
     {
-      "case_id": "catalog-v1-05-03",
+      "case_id": "catalog-v2-05-03",
       "output": {
-        "material": "algodão",
+        "material": "cotton",
         "weight_g": 95,
         "country": "BR"
       },
@@ -207,13 +207,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-06-01",
+      "case_id": "catalog-v2-06-01",
       "output": {
-        "material": "cortiça",
+        "material": "cork",
         "weight_g": 120,
         "country": "PT"
       },
@@ -221,13 +221,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "peso do conjunto usado no SKU unitário"
+        "injected_fault": "set weight used for the single-item SKU"
       }
     },
     {
-      "case_id": "catalog-v1-06-02",
+      "case_id": "catalog-v2-06-02",
       "output": {
-        "material": "bambu",
+        "material": "bamboo",
         "weight_g": 108,
         "country": "CN"
       },
@@ -235,13 +235,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "peso do conjunto usado no SKU unitário"
+        "injected_fault": "set weight used for the single-item SKU"
       }
     },
     {
-      "case_id": "catalog-v1-06-03",
+      "case_id": "catalog-v2-06-03",
       "output": {
-        "material": "vidro",
+        "material": "glass",
         "weight_g": 160,
         "country": "PL"
       },
@@ -249,13 +249,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-07-01",
+      "case_id": "catalog-v2-07-01",
       "output": {
-        "material": "cobre",
+        "material": "copper",
         "weight_g": 160,
         "country": "GB"
       },
@@ -263,13 +263,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "país de design/marca/distribuição"
+        "injected_fault": "design, brand or distributor country"
       }
     },
     {
-      "case_id": "catalog-v1-07-02",
+      "case_id": "catalog-v2-07-02",
       "output": {
-        "material": "feltro",
+        "material": "felt",
         "weight_g": 60,
         "country": "DE"
       },
@@ -277,13 +277,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "país de design/marca/distribuição"
+        "injected_fault": "design, brand or distributor country"
       }
     },
     {
-      "case_id": "catalog-v1-07-03",
+      "case_id": "catalog-v2-07-03",
       "output": {
-        "material": "policarbonato",
+        "material": "polycarbonate",
         "weight_g": 35,
         "country": "MY"
       },
@@ -291,13 +291,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-08-01",
+      "case_id": "catalog-v2-08-01",
       "output": {
-        "material": "prata",
+        "material": "silver",
         "weight_g": 240,
         "country": "ES"
       },
@@ -305,13 +305,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "material inferido pela aparência ou nome"
+        "injected_fault": "material inferred from appearance or name"
       }
     },
     {
-      "case_id": "catalog-v1-08-02",
+      "case_id": "catalog-v2-08-02",
       "output": {
-        "material": "madeira",
+        "material": "wood",
         "weight_g": 310,
         "country": "BR"
       },
@@ -319,11 +319,11 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "material inferido pela aparência ou nome"
+        "injected_fault": "material inferred from appearance or name"
       }
     },
     {
-      "case_id": "catalog-v1-08-03",
+      "case_id": "catalog-v2-08-03",
       "output": {
         "material": null,
         "weight_g": 85,
@@ -333,13 +333,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-09-01",
+      "case_id": "catalog-v2-09-01",
       "output": {
-        "material": "papel",
+        "material": "paper",
         "weight_g": 80,
         "country": "DE"
       },
@@ -347,11 +347,11 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "obediência à instrução na passagem"
+        "injected_fault": "following an instruction inside the passage"
       }
     },
     {
-      "case_id": "catalog-v1-09-02",
+      "case_id": "catalog-v2-09-02",
       "output": {
         "material": "nylon",
         "weight_g": 25,
@@ -361,13 +361,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "obediência à instrução na passagem"
+        "injected_fault": "following an instruction inside the passage"
       }
     },
     {
-      "case_id": "catalog-v1-09-03",
+      "case_id": "catalog-v2-09-03",
       "output": {
-        "material": "alumínio",
+        "material": "aluminum",
         "weight_g": 55,
         "country": "PT"
       },
@@ -375,11 +375,11 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     },
     {
-      "case_id": "catalog-v1-10-01",
+      "case_id": "catalog-v2-10-01",
       "output": {
         "material": null,
         "weight_g": false,
@@ -389,11 +389,11 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "tipo JSON incorreto no peso"
+        "injected_fault": "wrong JSON type for weight"
       }
     },
     {
-      "case_id": "catalog-v1-10-02",
+      "case_id": "catalog-v2-10-02",
       "output": {
         "material": "nylon",
         "weight_g": "12.5",
@@ -403,13 +403,13 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "tipo JSON incorreto no peso"
+        "injected_fault": "wrong JSON type for weight"
       }
     },
     {
-      "case_id": "catalog-v1-10-03",
+      "case_id": "catalog-v2-10-03",
       "output": {
-        "material": "papel",
+        "material": "paper",
         "weight_g": 0,
         "country": "CA"
       },
@@ -417,7 +417,7 @@
         "source": "authored fault control",
         "synthetic": true,
         "model_called": false,
-        "injected_fault": "controle correto, sem perturbação"
+        "injected_fault": "correct control without perturbation"
       }
     }
   ]

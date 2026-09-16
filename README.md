@@ -60,7 +60,7 @@ See [the UX revision and acceptance report](docs/UX-REVIEW.md) for guided editor
 
 ## First local calibration pack
 
-The [catalog-v1 pack](calibration/catalog-v1/README.md) contains 40 explicitly synthetic Portuguese cases, proposed references pending human approval, six deterministic criteria and positive/negative imported-output controls. It exercises the local workflow before real-model calibration. See the [executed results and review guide](docs/catalog-calibration-v1.md).
+The [catalog-v2 pack](calibration/catalog-v2/README.md) contains 40 explicitly synthetic English cases, proposed references pending human approval, six deterministic criteria and positive/negative imported-output controls. It exercises the local workflow before real-model calibration. See the [executed results and review guide](docs/catalog-calibration-v2.md).
 
 ```bash
 uv run python scripts/prepare_catalog_calibration.py
