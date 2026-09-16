@@ -141,4 +141,4 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, checks and contri
 
 ## License
 
-A license has not been selected yet. This repository does not currently include a `LICENSE` file.
+Licensed under the [MIT License](LICENSE). Dependencies retain their respective licenses.

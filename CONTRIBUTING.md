@@ -1,5 +1,7 @@
 # Contributing to EvalDock
 
+Contributions are licensed under the project's [MIT License](LICENSE).
+
 Keep changes focused on a concrete workflow or defect. Application copy, code comments, fixtures and documentation use English.
 
 ## Development setup

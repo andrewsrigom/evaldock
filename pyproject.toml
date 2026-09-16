@@ -3,6 +3,8 @@ name = "evaldock"
 version = "0.1.0"
 description = "Generic AI evaluation and regression workbench"
 requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
 dependencies = [
   "fastapi>=0.115,<1", "uvicorn[standard]>=0.34,<1", "pydantic>=2.10,<3",
   "pydantic-settings>=2.7,<3", "sqlalchemy[asyncio]>=2.0.38,<2.1",
