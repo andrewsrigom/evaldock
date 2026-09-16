@@ -50,3 +50,9 @@ npm run e2e
 ```
 
 Browser journeys require the running local stack and its generated `.env`. They create persisted verification data; use a disposable workspace/database for repeated CI runs. Traces and authentication artifacts remain ignored by Git.
+
+## Simplicity pass, 2026-09-16
+
+Removed promotional panels, repeated header/footer copy and completed setup steps. Overview prioritizes results, baseline and recent runs. Settings keep credentials and active tokens visible; members, activity, notes and revoked tokens expand on demand. Evidence, coverage and actionable errors remain accessible. English copy remains the project default.
+
+Validation: 9 frontend tests, strict typing, production build and 2 read-only browser journeys. The journeys cover imports, comparison, source evidence, mobile layout and expanding workspace members. No new verification projects or accounts were created.

@@ -17,8 +17,6 @@ test('synthetic calibration shows verified decisions and supports imports withou
   await page.getByRole('button', { name: 'Sign in', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Project overview', exact: true })).toBeVisible()
   await page.goto(`/projects/${evidence.project_id}/overview`)
-  const sourceStep = page.getByRole('link', { name: 'Provide outputs Saved outputs are ready to evaluate.' })
-  await expect(sourceStep).toHaveClass(/done/)
   await expect(page.getByText('Latest coverage', { exact: true }).locator('..')).toContainText('100.0%')
   await page.getByRole('button', { name: 'New experiment', exact: true }).click()
   await expect(page.getByRole('combobox', { name: 'Execution mode', exact: true })).toHaveValue('imported')
