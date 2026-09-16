@@ -1,0 +1,168 @@
+{
+  "pack": "catalog-ai-v1",
+  "model": "gpt-5.4-mini-2026-03-17",
+  "project_id": "862802ec-280d-4e46-8a75-031b0eceb944",
+  "target_version_id": "fcc86e2c-e3b0-4ada-aeb2-b0c987073092",
+  "judge_version_id": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd",
+  "suite_version_id": "b94d5799-e249-4eed-8488-9191c5973a0e",
+  "config_sha256": "0d86b7985520a0c06e774896375b6966e903823dc184a1a888f23d2c400a8454",
+  "dataset_versions": {
+    "calibration": "f5d8791f-90d4-4709-8a62-d8fc2740d6b4",
+    "validation": "03e7f326-22e5-4351-b256-1c2c0eeef4c1"
+  },
+  "source_manifest_sha256": "337da197d6e58850dd4de1af7111823f40844e1f2e2ca665d1ac1b4a3b141ac0",
+  "max_provider_calls": 56,
+  "max_output_tokens_per_call": 2000,
+  "automatic_model_retries": 0,
+  "concurrency": 2,
+  "control_imports": [
+    {
+      "case_id": "public-v1-toaks-750",
+      "replicate": 0,
+      "output": {
+        "material": "titanium",
+        "weight_g": 103,
+        "country": "CN"
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-750",
+      "replicate": 1,
+      "output": {
+        "material": "titanium",
+        "weight_g": 86,
+        "country": "CN"
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-550",
+      "replicate": 0,
+      "output": {
+        "material": "grade 1 titanium",
+        "weight_g": 72,
+        "country": null
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-550",
+      "replicate": 1,
+      "output": {
+        "material": "titanium",
+        "weight_g": 72,
+        "country": null
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-450",
+      "replicate": 0,
+      "output": {
+        "material": "titanium",
+        "weight_g": 76,
+        "country": "CN"
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-450",
+      "replicate": 1,
+      "output": {
+        "material": "titanium",
+        "weight_g": 76,
+        "country": "US"
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-spoon",
+      "replicate": 0,
+      "output": {
+        "material": "titanium",
+        "weight_g": 19,
+        "country": "CN"
+      }
+    },
+    {
+      "case_id": "public-v1-toaks-spoon",
+      "replicate": 1,
+      "output": {
+        "material": "titanium",
+        "weight_g": 0.65,
+        "country": "CN"
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-wide-32",
+      "replicate": 0,
+      "output": {
+        "material": "Tritan Renew",
+        "weight_g": 177.25,
+        "country": "US"
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-wide-32",
+      "replicate": 1,
+      "output": {
+        "material": "Tritan Renew",
+        "weight_g": 32,
+        "country": "US"
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-silo",
+      "replicate": 0,
+      "output": {
+        "material": "Tritan Renew",
+        "weight_g": 209,
+        "country": "US"
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-silo",
+      "replicate": 1,
+      "output": {
+        "material": "Tritan Renew",
+        "weight_g": 209,
+        "country": "CN"
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-ultralite-32",
+      "replicate": 0,
+      "output": {
+        "material": "HDPE",
+        "weight_g": 106.25,
+        "country": null
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-ultralite-32",
+      "replicate": 1,
+      "output": {
+        "material": "HDPE",
+        "weight_g": 106.25,
+        "country": "US"
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-cap",
+      "replicate": 0,
+      "output": {
+        "material": null,
+        "weight_g": null,
+        "country": null
+      }
+    },
+    {
+      "case_id": "public-v1-nalgene-cap",
+      "replicate": 1,
+      "output": {
+        "material": "Tritan Renew",
+        "weight_g": null,
+        "country": null
+      }
+    }
+  ],
+  "control_design": "Replicate 0 is the reviewed reference. Replicate 1 has one incorrect field. Control labels are not sent to the judge.",
+  "human_approved": false,
+  "blind_validation": false,
+  "judge_used_as_release_gate": false
+}

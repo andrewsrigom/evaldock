@@ -1,0 +1,1273 @@
+{
+  "project_id": "862802ec-280d-4e46-8a75-031b0eceb944",
+  "name": "OpenAI validation v2",
+  "dataset_version_id": "03e7f326-22e5-4351-b256-1c2c0eeef4c1",
+  "target_version_id": "fcc86e2c-e3b0-4ada-aeb2-b0c987073092",
+  "suite_version_id": "92c0fc90-fc28-4057-afb8-79f2ad06a3ea",
+  "baseline_id": "aeb2d858-ec6d-4475-a31b-bd277115fc01",
+  "parent_id": null,
+  "mode": "http",
+  "status": "completed",
+  "repetitions": 1,
+  "concurrency": 2,
+  "options": {
+    "warmup": 0,
+    "target_calls": 4,
+    "max_target_calls": 4
+  },
+  "dispatch_pending": false,
+  "cancel_requested": false,
+  "started_at": "2026-09-16T17:48:52.935956Z",
+  "finished_at": "2026-09-16T17:49:04.961898Z",
+  "id": "200694b1-c14f-47fd-8b32-6c8aea346d4e",
+  "created_at": "2026-09-16T17:48:51.266662Z",
+  "target_limits": {
+    "concurrency": 2,
+    "requests_per_second": 2.0,
+    "timeout_seconds": 120.0
+  },
+  "executions": [
+    {
+      "experiment_id": "200694b1-c14f-47fd-8b32-6c8aea346d4e",
+      "case_id": "public-v1-nalgene-narrow-32",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": null,
+        "material": "HDPE",
+        "weight_g": 102.75
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "fixture": false,
+        "provider": "openai",
+        "revision": null,
+        "parameters": {
+          "reasoning_effort": "low",
+          "max_output_tokens": 2000
+        },
+        "response_id": "resp_0853f43c1a4d6d56016aaad685adb087d099d263033399373a",
+        "target_cost": null,
+        "target_usage": {
+          "input_tokens": 375,
+          "total_tokens": 422,
+          "output_tokens": 47,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "output_tokens_details": {
+            "reasoning_tokens": 19
+          }
+        },
+        "prompt_version": "catalog-openai-v1",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": 1646.1630209814757,
+      "evaluation_latency_ms": 3179.4189139909577,
+      "target_error": null,
+      "late_completion": false,
+      "id": "a917073d-5b72-4115-ae95-a524f4965de1",
+      "created_at": "2026-09-16T17:48:51.279221Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "validation",
+          "volume-versus-mass"
+        ],
+        "input": {
+          "passage": "Capacity: 32 fluid oz\nMaterial: HDPE\nWeight: 3.625 oz (102.75 g)\nOpening: narrow mouth"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "validation",
+          "language": "en-US",
+          "challenge": "volume-versus-mass"
+        },
+        "case_id": "public-v1-nalgene-narrow-32",
+        "context": {
+          "product": "Nalgene 32oz Narrow Mouth Ultralite Bottle",
+          "source_url": "https://nalgene.com/product/ultralite-32oz-narrow-mouth-nalgene/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Use this narrow-mouth variant, not the wide-mouth product. Do not infer its manufacturing country from other SKUs.",
+          "reference_passage": "Capacity: 32 fluid oz\nMaterial: HDPE\nWeight: 3.625 oz (102.75 g)\nOpening: narrow mouth",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": "HDPE",
+          "weight_g": 102.75
+        },
+        "references": [
+          "https://nalgene.com/product/ultralite-32oz-narrow-mouth-nalgene/"
+        ],
+        "acceptance_criteria": "Use this narrow-mouth variant, not the wide-mouth product. Do not infer its manufacturing country from other SKUs."
+      },
+      "case_fingerprint": "b7d044e943fd458d4eb54de4f6b1d38b01b89eb79e14d37b4065fdeb207eef61",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 102.75,
+                "passed": true,
+                "expected": 102.75
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 708,
+              "total_tokens": 866,
+              "output_tokens": 158,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 41
+              }
+            },
+            "rubric_version": "catalog-source-support-v2",
+            "judge_input_scope": "context_only",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "“Material: HDPE”",
+            "“Weight: 3.625 oz (102.75 g)”",
+            "No country of origin is stated in the passage."
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are supported. material = HDPE matches “Material: HDPE”; weight_g = 102.75 matches “Weight: 3.625 oz (102.75 g)”; country = null is supported because the passage gives no manufacturing/origin country for the body.",
+          "evaluator_version": "6ca63624-34d2-4bda-8013-de7d9f2595d4"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "HDPE",
+                "passed": true,
+                "expected": "HDPE"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "HDPE",
+                "passed": true,
+                "expected": "HDPE"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 102.75,
+                "passed": true,
+                "expected": 102.75
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "200694b1-c14f-47fd-8b32-6c8aea346d4e",
+      "case_id": "public-v1-nalgene-ultralite-16",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": null,
+        "material": "HDPE",
+        "weight_g": 56.75
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "fixture": false,
+        "provider": "openai",
+        "revision": null,
+        "parameters": {
+          "reasoning_effort": "low",
+          "max_output_tokens": 2000
+        },
+        "response_id": "resp_06d3fe1969474ceb016aaad685c57887d0a262b65b6684844d",
+        "target_cost": null,
+        "target_usage": {
+          "input_tokens": 374,
+          "total_tokens": 421,
+          "output_tokens": 47,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "output_tokens_details": {
+            "reasoning_tokens": 19
+          }
+        },
+        "prompt_version": "catalog-openai-v1",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": 1463.9460410107858,
+      "evaluation_latency_ms": 2895.550554007059,
+      "target_error": null,
+      "late_completion": false,
+      "id": "930479da-fb6f-49f5-a107-aae2d7ce6162",
+      "created_at": "2026-09-16T17:48:51.279236Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "validation",
+          "absent-origin"
+        ],
+        "input": {
+          "passage": "Capacity: 16 fluid oz\nMaterial: high density polyethylene\nWeight: 2 oz (56.75 g)\nOpening: wide mouth"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "validation",
+          "language": "en-US",
+          "challenge": "absent-origin"
+        },
+        "case_id": "public-v1-nalgene-ultralite-16",
+        "context": {
+          "product": "Nalgene 16oz Wide Mouth Ultralite Bottle",
+          "source_url": "https://nalgene.com/product/16oz-wide-mouth-ultralite/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Use the manufacturer specification, not customer measurements. Manufacturing country is absent from the selected description and table.",
+          "reference_passage": "Capacity: 16 fluid oz\nMaterial: high density polyethylene\nWeight: 2 oz (56.75 g)\nOpening: wide mouth",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": "HDPE",
+          "weight_g": 56.75
+        },
+        "references": [
+          "https://nalgene.com/product/16oz-wide-mouth-ultralite/"
+        ],
+        "acceptance_criteria": "Use the manufacturer specification, not customer measurements. Manufacturing country is absent from the selected description and table."
+      },
+      "case_fingerprint": "3d0a0cc66fa304f318574a6c8c050eb789e2ae8adc6f3e827f46206fa49dbd2c",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 56.75,
+                "passed": true,
+                "expected": 56.75
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "HDPE",
+                "passed": true,
+                "expected": "HDPE"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 699,
+              "total_tokens": 870,
+              "output_tokens": 171,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 56
+              }
+            },
+            "rubric_version": "catalog-source-support-v2",
+            "judge_input_scope": "context_only",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "“Material: high density polyethylene”",
+            "“Weight: 2 oz (56.75 g)”",
+            "No country of manufacture/origin is stated in the passage."
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are supported by the passage. material=HDPE matches “Material: high density polyethylene”; weight_g=56.75 matches “Weight: 2 oz (56.75 g)”; country=null is supported because the passage gives no manufacturing/origin country.",
+          "evaluator_version": "6ca63624-34d2-4bda-8013-de7d9f2595d4"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "HDPE",
+                "passed": true,
+                "expected": "HDPE"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 56.75,
+                "passed": true,
+                "expected": 56.75
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "200694b1-c14f-47fd-8b32-6c8aea346d4e",
+      "case_id": "public-v1-toaks-650",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": null,
+        "material": "grade 1 titanium",
+        "weight_g": 80
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "fixture": false,
+        "provider": "openai",
+        "revision": null,
+        "parameters": {
+          "reasoning_effort": "low",
+          "max_output_tokens": 2000
+        },
+        "response_id": "resp_06cd9fde03ce655f016aaad68a149487d0a9688821002bcdc8",
+        "target_cost": null,
+        "target_usage": {
+          "input_tokens": 400,
+          "total_tokens": 476,
+          "output_tokens": 76,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "output_tokens_details": {
+            "reasoning_tokens": 48
+          }
+        },
+        "prompt_version": "catalog-openai-v1",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": 1737.7135239948984,
+      "evaluation_latency_ms": 4981.712592008989,
+      "target_error": null,
+      "late_completion": false,
+      "id": "0134f107-b6cd-4f2b-a3ae-3beddefb7f49",
+      "created_at": "2026-09-16T17:48:51.279243Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "validation",
+          "design-only"
+        ],
+        "input": {
+          "passage": "Material: uncoated Grade 1 Titanium\nWeight with lid: 2.8 oz (80 g)\nWeight without lid: 2.1 oz (70 g)\nCapacity: 650 ml\nDesigned in the USA\nA mesh storage sack is supplied"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "validation",
+          "language": "en-US",
+          "challenge": "design-only"
+        },
+        "case_id": "public-v1-toaks-650",
+        "context": {
+          "product": "TOAKS Ultralight Titanium 650ml Pot",
+          "source_url": "https://www.toaksoutdoor.com/products/pot-650-l",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Use the published metric weight for the assembly. The ounce/gram figures for the bare pot disagree; do not silently fix the source. Only design location is supplied.",
+          "reference_passage": "Material: uncoated Grade 1 Titanium\nWeight with lid: 2.8 oz (80 g)\nWeight without lid: 2.1 oz (70 g)\nCapacity: 650 ml\nDesigned in the USA\nA mesh storage sack is supplied",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": "grade 1 titanium",
+          "weight_g": 80
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/pot-650-l"
+        ],
+        "acceptance_criteria": "Use the published metric weight for the assembly. The ounce/gram figures for the bare pot disagree; do not silently fix the source. Only design location is supplied."
+      },
+      "case_fingerprint": "0f2caf9b3c625166ef0ac9bd8eb54402c0d7691da8775da2cf39ac52bfd5765d",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 80,
+                "passed": true,
+                "expected": 80
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "grade 1 titanium",
+                "passed": true,
+                "expected": "grade 1 titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "grade 1 titanium",
+                "passed": true,
+                "expected": "grade 1 titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 80,
+                "passed": true,
+                "expected": 80
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 736,
+              "total_tokens": 968,
+              "output_tokens": 232,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 103
+              }
+            },
+            "rubric_version": "catalog-source-support-v2",
+            "judge_input_scope": "context_only",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "“Material: uncoated Grade 1 Titanium”",
+            "“Weight with lid: 2.8 oz (80 g)”",
+            "“Designed in the USA”"
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are supported. Material matches “Material: uncoated Grade 1 Titanium.” Weight_g matches “Weight with lid: 2.8 oz (80 g),” which supports 80. Country is correctly null because the passage only says “Designed in the USA,” which does not establish the body’s manufacturing/origin country.",
+          "evaluator_version": "6ca63624-34d2-4bda-8013-de7d9f2595d4"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "200694b1-c14f-47fd-8b32-6c8aea346d4e",
+      "case_id": "public-v1-toaks-900",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": "CN",
+        "material": "titanium",
+        "weight_g": 116
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "fixture": false,
+        "provider": "openai",
+        "revision": null,
+        "parameters": {
+          "reasoning_effort": "low",
+          "max_output_tokens": 2000
+        },
+        "response_id": "resp_0c5fa21a5b9d70bd016aaad68a922087d0b78976f9a7075fbb",
+        "target_cost": null,
+        "target_usage": {
+          "input_tokens": 398,
+          "total_tokens": 475,
+          "output_tokens": 77,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "output_tokens_details": {
+            "reasoning_tokens": 50
+          }
+        },
+        "prompt_version": "catalog-openai-v1",
+        "requested_model": "gpt-5.4-mini-2026-03-17",
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": 2356.6732140025124,
+      "evaluation_latency_ms": 3956.1488890030887,
+      "target_error": null,
+      "late_completion": false,
+      "id": "8930b99d-ef46-4533-8677-d7c99dafdf66",
+      "created_at": "2026-09-16T17:48:51.279249Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "validation",
+          "assembly-weight"
+        ],
+        "input": {
+          "passage": "Material: titanium, uncoated\nPot weight without lid: 3.2 oz (92 g)\nPot weight with lid: 4.1 oz (116 g)\nCapacity: 900 ml\nDesigned in the USA\nManufactured in China"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "validation",
+          "language": "en-US",
+          "challenge": "assembly-weight"
+        },
+        "case_id": "public-v1-toaks-900",
+        "context": {
+          "product": "TOAKS Titanium 900ml D115mm Pot",
+          "source_url": "https://www.toaksoutdoor.com/products/pot-900-d115",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Select the D115mm variant with its lid. Exclude the storage sack and bare-pot alternative.",
+          "reference_passage": "Material: titanium, uncoated\nPot weight without lid: 3.2 oz (92 g)\nPot weight with lid: 4.1 oz (116 g)\nCapacity: 900 ml\nDesigned in the USA\nManufactured in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "CN",
+          "material": "titanium",
+          "weight_g": 116
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/pot-900-d115"
+        ],
+        "acceptance_criteria": "Select the D115mm variant with its lid. Exclude the storage sack and bare-pot alternative."
+      },
+      "case_fingerprint": "89672e539284979f14a1fa296bb7567422ca69da0e8b2092a9c955bae60297d0",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 116,
+                "passed": true,
+                "expected": 116
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 116,
+                "passed": true,
+                "expected": 116
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 722,
+              "total_tokens": 860,
+              "output_tokens": 138,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 31
+              }
+            },
+            "rubric_version": "catalog-source-support-v2",
+            "judge_input_scope": "context_only",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "Material: titanium, uncoated",
+            "Pot weight with lid: 4.1 oz (116 g)",
+            "Manufactured in China"
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are supported by the passage: material is titanium (“Material: titanium, uncoated”); weight is 116 g (“Pot weight with lid: 4.1 oz (116 g)”); country is CN (“Manufactured in China”).",
+          "evaluator_version": "6ca63624-34d2-4bda-8013-de7d9f2595d4"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        }
+      ],
+      "reviews": []
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "target_errors": 0,
+    "execution_states": {
+      "completed": 4
+    },
+    "metrics": {
+      "schema_valid": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual"
+          ]
+        },
+        "denominator": 4,
+        "scored": 4,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "decision_denominator": 4,
+        "variability": {
+          "n": 4,
+          "mean": 1.0,
+          "stddev": 0.0,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "field_accuracy": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 4,
+        "scored": 4,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "decision_denominator": 4,
+        "variability": {
+          "n": 4,
+          "mean": 1.0,
+          "stddev": 0.0,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "material_correct": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 4,
+        "scored": 4,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "decision_denominator": 4,
+        "variability": {
+          "n": 4,
+          "mean": 1.0,
+          "stddev": 0.0,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "weight_correct": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 4,
+        "scored": 4,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "decision_denominator": 4,
+        "variability": {
+          "n": 4,
+          "mean": 1.0,
+          "stddev": 0.0,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "country_correct": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 4,
+        "scored": 4,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "decision_denominator": 4,
+        "variability": {
+          "n": 4,
+          "mean": 1.0,
+          "stddev": 0.0,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "record_exact": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 4,
+        "scored": 4,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "decision_denominator": 4,
+        "variability": {
+          "n": 4,
+          "mean": 1.0,
+          "stddev": 0.0,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "source_support": {
+        "definition": {
+          "direction": "higher",
+          "threshold": null,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "context"
+          ]
+        },
+        "denominator": 4,
+        "scored": 4,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "decision_denominator": 4,
+        "variability": {
+          "n": 4,
+          "mean": 1.0,
+          "stddev": 0.0,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      }
+    },
+    "target_latency_ms": {
+      "n": 4,
+      "mean": 1801.123949997418,
+      "stddev": 335.5434765766221,
+      "p95": 2356.6732140025124,
+      "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+    },
+    "evaluation_latency_ms": {
+      "n": 4,
+      "mean": 3753.2077372525237,
+      "stddev": 808.5818985895133,
+      "p95": 4981.712592008989,
+      "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+    },
+    "target_cost": {
+      "total_usd": null,
+      "available_count": 0,
+      "denominator": 4,
+      "provenance": "unavailable"
+    },
+    "judge_cost": {
+      "total_usd": null,
+      "available_count": 0,
+      "denominator": 4,
+      "provenance": "unavailable"
+    }
+  },
+  "calibration": {
+    "reviewed_decisions": 0,
+    "agreement": null,
+    "disagreements": [],
+    "policy": "Latest assessment per reviewer, execution and metric; automated judgments preserved"
+  },
+  "gate": {
+    "passed": true,
+    "exit_code": 0,
+    "quality_failures": [],
+    "infrastructure_errors": [],
+    "policy": {
+      "min_accuracy": {
+        "record_exact": 1.0,
+        "schema_valid": 1.0,
+        "field_accuracy": 1.0,
+        "weight_correct": 1.0,
+        "country_correct": 1.0,
+        "material_correct": 1.0
+      },
+      "max_regressions": 0,
+      "critical_tag": "critical",
+      "max_target_error_rate": 0.0,
+      "min_coverage": 1.0,
+      "evaluator_errors": "fail",
+      "max_p95_latency_ms": null
+    },
+    "pinned_baseline_id": "aeb2d858-ec6d-4475-a31b-bd277115fc01"
+  },
+  "accepted": true
+}

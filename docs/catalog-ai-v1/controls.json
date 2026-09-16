@@ -1,0 +1,3821 @@
+{
+  "project_id": "862802ec-280d-4e46-8a75-031b0eceb944",
+  "name": "AI judge controls v1",
+  "dataset_version_id": "f5d8791f-90d4-4709-8a62-d8fc2740d6b4",
+  "target_version_id": null,
+  "suite_version_id": "b94d5799-e249-4eed-8488-9191c5973a0e",
+  "baseline_id": "dd969a03-8979-423f-800e-a670715bdf67",
+  "parent_id": null,
+  "mode": "imported",
+  "status": "completed",
+  "repetitions": 2,
+  "concurrency": 2,
+  "options": {
+    "warmup": 0,
+    "max_target_calls": null
+  },
+  "dispatch_pending": false,
+  "cancel_requested": false,
+  "started_at": "2026-09-16T17:39:59.894908Z",
+  "finished_at": "2026-09-16T17:40:30.163629Z",
+  "id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+  "created_at": "2026-09-16T17:39:58.530491Z",
+  "target_limits": null,
+  "executions": [
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-nalgene-cap",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": null,
+        "material": null,
+        "weight_g": null
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 6766.3910610135645,
+      "target_error": null,
+      "late_completion": false,
+      "id": "257f2163-6c18-4133-a2dd-0e4ec8a2c51e",
+      "created_at": "2026-09-16T17:39:58.546281Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "abstention"
+        ],
+        "input": {
+          "passage": "Replacement cap for the 16oz wide mouth bottle\nSeparate color choices are available for the base, strap and button"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "abstention"
+        },
+        "case_id": "public-v1-nalgene-cap",
+        "context": {
+          "product": "Nalgene 16oz Wide Mouth Cap",
+          "source_url": "https://nalgene.com/product/16oz-wide-mouth-cap-2/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "The selected product section supplies color options but no composition, mass or manufacturing country. Bottle capacity does not describe cap weight.",
+          "reference_passage": "Replacement cap for the 16oz wide mouth bottle\nSeparate color choices are available for the base, strap and button",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": null,
+          "weight_g": null
+        },
+        "references": [
+          "https://nalgene.com/product/16oz-wide-mouth-cap-2/"
+        ],
+        "acceptance_criteria": "The selected product section supplies color options but no composition, mass or manufacturing country. Bottle capacity does not describe cap weight."
+      },
+      "case_fingerprint": "27c63da2f49974df1693ac0d58db0f599c16e8060b956bdb43118579dba52bf7",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 806,
+              "total_tokens": 920,
+              "output_tokens": 114,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 37
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Replacement cap for the 16oz wide mouth bottle\"",
+            "\"Separate color choices are available for the base, strap and button\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are null, and the passage does not establish material, weight, or manufacturing country for the cap.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-nalgene-cap",
+      "replicate": 1,
+      "status": "completed",
+      "output": {
+        "country": null,
+        "material": "Tritan Renew",
+        "weight_g": null
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 6772.858737997012,
+      "target_error": null,
+      "late_completion": false,
+      "id": "9423080e-e2ef-4f94-a424-dc1bc97398d3",
+      "created_at": "2026-09-16T17:39:58.546296Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "abstention"
+        ],
+        "input": {
+          "passage": "Replacement cap for the 16oz wide mouth bottle\nSeparate color choices are available for the base, strap and button"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "abstention"
+        },
+        "case_id": "public-v1-nalgene-cap",
+        "context": {
+          "product": "Nalgene 16oz Wide Mouth Cap",
+          "source_url": "https://nalgene.com/product/16oz-wide-mouth-cap-2/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "The selected product section supplies color options but no composition, mass or manufacturing country. Bottle capacity does not describe cap weight.",
+          "reference_passage": "Replacement cap for the 16oz wide mouth bottle\nSeparate color choices are available for the base, strap and button",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": null,
+          "weight_g": null
+        },
+        "references": [
+          "https://nalgene.com/product/16oz-wide-mouth-cap-2/"
+        ],
+        "acceptance_criteria": "The selected product section supplies color options but no composition, mass or manufacturing country. Bottle capacity does not describe cap weight."
+      },
+      "case_fingerprint": "27c63da2f49974df1693ac0d58db0f599c16e8060b956bdb43118579dba52bf7",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "mismatch",
+                "actual": "Tritan Renew",
+                "passed": false,
+                "expected": null
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [
+            "/material"
+          ],
+          "metric_key": "field_accuracy",
+          "explanation": "2/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "mismatch",
+                "actual": "Tritan Renew",
+                "passed": false,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [
+            "/material"
+          ],
+          "metric_key": "material_correct",
+          "explanation": "0/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Output differs from reference",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 0.3333333333333333,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 810,
+              "total_tokens": 1004,
+              "output_tokens": 194,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 101
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Replacement cap for the 16oz wide mouth bottle\"",
+            "\"Separate color choices are available for the base, strap and button\"",
+            "No composition, mass, or manufacturing country is stated in the passage."
+          ],
+          "metric_key": "source_support",
+          "explanation": "Only weight_g and country are supported as null; material is unsupported by the passage.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-nalgene-silo",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": "US",
+        "material": "Tritan Renew",
+        "weight_g": 209
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 4949.376261007274,
+      "target_error": null,
+      "late_completion": false,
+      "id": "e3a6fa20-841d-4539-8dfa-0ba01e096b64",
+      "created_at": "2026-09-16T17:39:58.546303Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "component-origin"
+        ],
+        "input": {
+          "passage": "Capacity: 48 fluid oz\nMaterial: Tritan Renew\nWeight: 7.375 oz (209 g)\nBottle made in the USA\nCap made in China"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "component-origin"
+        },
+        "case_id": "public-v1-nalgene-silo",
+        "context": {
+          "product": "Nalgene 48oz Wide Mouth Silo Bottle",
+          "source_url": "https://nalgene.com/product/48oz-wide-mouth-silo-bottle/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "The country field concerns the primary bottle body; the cap has a separately stated origin.",
+          "reference_passage": "Capacity: 48 fluid oz\nMaterial: Tritan Renew\nWeight: 7.375 oz (209 g)\nBottle made in the USA\nCap made in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "US",
+          "material": "Tritan Renew",
+          "weight_g": 209
+        },
+        "references": [
+          "https://nalgene.com/product/48oz-wide-mouth-silo-bottle/"
+        ],
+        "acceptance_criteria": "The country field concerns the primary bottle body; the cap has a separately stated origin."
+      },
+      "case_fingerprint": "c36af186c6746faa7b3aef0b506e92cafdad49caeb1b0f5bc82a633afb74d726",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "Tritan Renew",
+                "passed": true,
+                "expected": "Tritan Renew"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "US",
+                "passed": true,
+                "expected": "US"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "Tritan Renew",
+                "passed": true,
+                "expected": "Tritan Renew"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 209,
+                "passed": true,
+                "expected": 209
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "US",
+                "passed": true,
+                "expected": "US"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 209,
+                "passed": true,
+                "expected": 209
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 838,
+              "total_tokens": 952,
+              "output_tokens": 114,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 41
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: Tritan Renew\"",
+            "\"Weight: 7.375 oz (209 g)\"",
+            "\"Bottle made in the USA\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are directly supported by the passage and correctly scoped to the bottle body.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-nalgene-silo",
+      "replicate": 1,
+      "status": "completed",
+      "output": {
+        "country": "CN",
+        "material": "Tritan Renew",
+        "weight_g": 209
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 5148.679656005697,
+      "target_error": null,
+      "late_completion": false,
+      "id": "fc394c67-6c50-4e00-908f-d590cbd78f9f",
+      "created_at": "2026-09-16T17:39:58.546309Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "component-origin"
+        ],
+        "input": {
+          "passage": "Capacity: 48 fluid oz\nMaterial: Tritan Renew\nWeight: 7.375 oz (209 g)\nBottle made in the USA\nCap made in China"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "component-origin"
+        },
+        "case_id": "public-v1-nalgene-silo",
+        "context": {
+          "product": "Nalgene 48oz Wide Mouth Silo Bottle",
+          "source_url": "https://nalgene.com/product/48oz-wide-mouth-silo-bottle/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "The country field concerns the primary bottle body; the cap has a separately stated origin.",
+          "reference_passage": "Capacity: 48 fluid oz\nMaterial: Tritan Renew\nWeight: 7.375 oz (209 g)\nBottle made in the USA\nCap made in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "US",
+          "material": "Tritan Renew",
+          "weight_g": 209
+        },
+        "references": [
+          "https://nalgene.com/product/48oz-wide-mouth-silo-bottle/"
+        ],
+        "acceptance_criteria": "The country field concerns the primary bottle body; the cap has a separately stated origin."
+      },
+      "case_fingerprint": "c36af186c6746faa7b3aef0b506e92cafdad49caeb1b0f5bc82a633afb74d726",
+      "results": [
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Output differs from reference",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "Tritan Renew",
+                "passed": true,
+                "expected": "Tritan Renew"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 209,
+                "passed": true,
+                "expected": 209
+              },
+              {
+                "path": "/country",
+                "state": "mismatch",
+                "actual": "CN",
+                "passed": false,
+                "expected": "US"
+              }
+            ]
+          },
+          "evidence": [
+            "/country"
+          ],
+          "metric_key": "field_accuracy",
+          "explanation": "2/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "Tritan Renew",
+                "passed": true,
+                "expected": "Tritan Renew"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 209,
+                "passed": true,
+                "expected": 209
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "mismatch",
+                "actual": "CN",
+                "passed": false,
+                "expected": "US"
+              }
+            ]
+          },
+          "evidence": [
+            "/country"
+          ],
+          "metric_key": "country_correct",
+          "explanation": "0/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 838,
+              "total_tokens": 1065,
+              "output_tokens": 227,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 109
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: Tritan Renew\"",
+            "\"Weight: 7.375 oz (209 g)\"",
+            "\"Bottle made in the USA\"",
+            "\"Cap made in China\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "Material and weight are supported by the passage, but the country field is not: the passage says the bottle/body is made in the USA, while China applies to the cap only. The provided country value CN is therefore unsupported and incorrectly scoped.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-nalgene-ultralite-32",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": null,
+        "material": "HDPE",
+        "weight_g": 106.25
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 5009.473139012698,
+      "target_error": null,
+      "late_completion": false,
+      "id": "6577ad07-2a6c-4117-9a36-6afa9f50b2a7",
+      "created_at": "2026-09-16T17:39:58.546315Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "absent-origin"
+        ],
+        "input": {
+          "passage": "Capacity: 32 fluid oz\nMaterial: high density polyethylene (HDPE)\nWeight: 3.75 oz (106.25 g)\nOpening: wide mouth"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "absent-origin"
+        },
+        "case_id": "public-v1-nalgene-ultralite-32",
+        "context": {
+          "product": "Nalgene 32oz Wide Mouth Ultralite Bottle",
+          "source_url": "https://nalgene.com/product/32oz-wide-mouth-ultralite-bottle/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "The selected description and specification table do not state manufacture. Customer comments and replies are outside the supplied evidence.",
+          "reference_passage": "Capacity: 32 fluid oz\nMaterial: high density polyethylene (HDPE)\nWeight: 3.75 oz (106.25 g)\nOpening: wide mouth",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": "HDPE",
+          "weight_g": 106.25
+        },
+        "references": [
+          "https://nalgene.com/product/32oz-wide-mouth-ultralite-bottle/"
+        ],
+        "acceptance_criteria": "The selected description and specification table do not state manufacture. Customer comments and replies are outside the supplied evidence."
+      },
+      "case_fingerprint": "41cb6e4dffd15ab2ce65c44b18d09c0573252d94ec5b613eba43e37241c1b1ac",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 106.25,
+                "passed": true,
+                "expected": 106.25
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "HDPE",
+                "passed": true,
+                "expected": "HDPE"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "HDPE",
+                "passed": true,
+                "expected": "HDPE"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 106.25,
+                "passed": true,
+                "expected": 106.25
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 842,
+              "total_tokens": 976,
+              "output_tokens": 134,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 38
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: high density polyethylene (HDPE)\"",
+            "\"Weight: 3.75 oz (106.25 g)\"",
+            "No manufacturing/origin country is stated in the passage."
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are supported or correctly null-scoped by the passage: material is explicit, weight is explicit in grams, and country is not stated.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-nalgene-ultralite-32",
+      "replicate": 1,
+      "status": "completed",
+      "output": {
+        "country": "US",
+        "material": "HDPE",
+        "weight_g": 106.25
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 5661.769179016119,
+      "target_error": null,
+      "late_completion": false,
+      "id": "e0d6b86d-7b4c-48d4-8dd3-7f471bc3d7bf",
+      "created_at": "2026-09-16T17:39:58.546321Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "absent-origin"
+        ],
+        "input": {
+          "passage": "Capacity: 32 fluid oz\nMaterial: high density polyethylene (HDPE)\nWeight: 3.75 oz (106.25 g)\nOpening: wide mouth"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "absent-origin"
+        },
+        "case_id": "public-v1-nalgene-ultralite-32",
+        "context": {
+          "product": "Nalgene 32oz Wide Mouth Ultralite Bottle",
+          "source_url": "https://nalgene.com/product/32oz-wide-mouth-ultralite-bottle/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "The selected description and specification table do not state manufacture. Customer comments and replies are outside the supplied evidence.",
+          "reference_passage": "Capacity: 32 fluid oz\nMaterial: high density polyethylene (HDPE)\nWeight: 3.75 oz (106.25 g)\nOpening: wide mouth",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": "HDPE",
+          "weight_g": 106.25
+        },
+        "references": [
+          "https://nalgene.com/product/32oz-wide-mouth-ultralite-bottle/"
+        ],
+        "acceptance_criteria": "The selected description and specification table do not state manufacture. Customer comments and replies are outside the supplied evidence."
+      },
+      "case_fingerprint": "41cb6e4dffd15ab2ce65c44b18d09c0573252d94ec5b613eba43e37241c1b1ac",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "HDPE",
+                "passed": true,
+                "expected": "HDPE"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "mismatch",
+                "actual": "US",
+                "passed": false,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [
+            "/country"
+          ],
+          "metric_key": "country_correct",
+          "explanation": "0/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "HDPE",
+                "passed": true,
+                "expected": "HDPE"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 106.25,
+                "passed": true,
+                "expected": 106.25
+              },
+              {
+                "path": "/country",
+                "state": "mismatch",
+                "actual": "US",
+                "passed": false,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [
+            "/country"
+          ],
+          "metric_key": "field_accuracy",
+          "explanation": "2/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Output differs from reference",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 106.25,
+                "passed": true,
+                "expected": 106.25
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 843,
+              "total_tokens": 1018,
+              "output_tokens": 175,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 83
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: high density polyethylene (HDPE)\"",
+            "\"Weight: 3.75 oz (106.25 g)\"",
+            "No manufacturing or origin country is stated in the supplied passage."
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are supported or correctly null-scoped by the passage: material and weight are explicit; country is not stated.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-nalgene-wide-32",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": "US",
+        "material": "Tritan Renew",
+        "weight_g": 177.25
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 3428.967760002706,
+      "target_error": null,
+      "late_completion": false,
+      "id": "186a99ab-edda-4146-8d0d-0f6a6f8dc652",
+      "created_at": "2026-09-16T17:39:58.546327Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "volume-versus-mass"
+        ],
+        "input": {
+          "passage": "Capacity: 32 fluid oz\nMaterial: Tritan Renew\nWeight: 6.25 oz (177.25 g)\nCountry of origin: USA"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "volume-versus-mass"
+        },
+        "case_id": "public-v1-nalgene-wide-32",
+        "context": {
+          "product": "Nalgene 32oz Wide Mouth Bottle",
+          "source_url": "https://nalgene.com/product/32oz-wide-mouth-bottle/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Capacity in fluid ounces is not mass. Preserve the manufacturer-provided grams and material trade name.",
+          "reference_passage": "Capacity: 32 fluid oz\nMaterial: Tritan Renew\nWeight: 6.25 oz (177.25 g)\nCountry of origin: USA",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "US",
+          "material": "Tritan Renew",
+          "weight_g": 177.25
+        },
+        "references": [
+          "https://nalgene.com/product/32oz-wide-mouth-bottle/"
+        ],
+        "acceptance_criteria": "Capacity in fluid ounces is not mass. Preserve the manufacturer-provided grams and material trade name."
+      },
+      "case_fingerprint": "4701dd30237ca6146fedfea9f739db3af148192054ab1501ac649c0190f51b45",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 177.25,
+                "passed": true,
+                "expected": 177.25
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "US",
+                "passed": true,
+                "expected": "US"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 834,
+              "total_tokens": 948,
+              "output_tokens": 114,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 16
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: Tritan Renew\"",
+            "\"Weight: 6.25 oz (177.25 g)\"",
+            "\"Country of origin: USA\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three requested fields are directly supported by the passage and correctly scoped: material is Tritan Renew, weight is 177.25 g, and country of origin is USA, which maps to US.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "Tritan Renew",
+                "passed": true,
+                "expected": "Tritan Renew"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 177.25,
+                "passed": true,
+                "expected": 177.25
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "US",
+                "passed": true,
+                "expected": "US"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "Tritan Renew",
+                "passed": true,
+                "expected": "Tritan Renew"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-nalgene-wide-32",
+      "replicate": 1,
+      "status": "completed",
+      "output": {
+        "country": "US",
+        "material": "Tritan Renew",
+        "weight_g": 32
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 2129.8630469827913,
+      "target_error": null,
+      "late_completion": false,
+      "id": "1e0536de-e521-40da-99ba-516fcd433a74",
+      "created_at": "2026-09-16T17:39:58.546333Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "volume-versus-mass"
+        ],
+        "input": {
+          "passage": "Capacity: 32 fluid oz\nMaterial: Tritan Renew\nWeight: 6.25 oz (177.25 g)\nCountry of origin: USA"
+        },
+        "slices": {
+          "brand": "Nalgene",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "volume-versus-mass"
+        },
+        "case_id": "public-v1-nalgene-wide-32",
+        "context": {
+          "product": "Nalgene 32oz Wide Mouth Bottle",
+          "source_url": "https://nalgene.com/product/32oz-wide-mouth-bottle/",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Capacity in fluid ounces is not mass. Preserve the manufacturer-provided grams and material trade name.",
+          "reference_passage": "Capacity: 32 fluid oz\nMaterial: Tritan Renew\nWeight: 6.25 oz (177.25 g)\nCountry of origin: USA",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "US",
+          "material": "Tritan Renew",
+          "weight_g": 177.25
+        },
+        "references": [
+          "https://nalgene.com/product/32oz-wide-mouth-bottle/"
+        ],
+        "acceptance_criteria": "Capacity in fluid ounces is not mass. Preserve the manufacturer-provided grams and material trade name."
+      },
+      "case_fingerprint": "4701dd30237ca6146fedfea9f739db3af148192054ab1501ac649c0190f51b45",
+      "results": [
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "Tritan Renew",
+                "passed": true,
+                "expected": "Tritan Renew"
+              },
+              {
+                "path": "/weight_g",
+                "state": "mismatch",
+                "actual": 32,
+                "passed": false,
+                "expected": 177.25
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "US",
+                "passed": true,
+                "expected": "US"
+              }
+            ]
+          },
+          "evidence": [
+            "/weight_g"
+          ],
+          "metric_key": "field_accuracy",
+          "explanation": "2/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Output differs from reference",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "mismatch",
+                "actual": 32,
+                "passed": false,
+                "expected": 177.25
+              }
+            ]
+          },
+          "evidence": [
+            "/weight_g"
+          ],
+          "metric_key": "weight_correct",
+          "explanation": "0/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "Tritan Renew",
+                "passed": true,
+                "expected": "Tritan Renew"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "US",
+                "passed": true,
+                "expected": "US"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 832,
+              "total_tokens": 926,
+              "output_tokens": 94,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 22
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: Tritan Renew\"",
+            "\"Weight: 6.25 oz (177.25 g)\"",
+            "\"Country of origin: USA\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are directly supported by the reference passage and correctly scoped.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-toaks-450",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": "CN",
+        "material": "titanium",
+        "weight_g": 76
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 2847.3256359866355,
+      "target_error": null,
+      "late_completion": false,
+      "id": "9658d26d-5d8c-4fe8-9bb4-a565be0091cc",
+      "created_at": "2026-09-16T17:39:58.546338Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "design-versus-origin"
+        ],
+        "input": {
+          "passage": "Material: uncoated titanium\nWeight: 2.7 oz (76 g)\nCapacity: 450 ml\nWall thickness: 0.5 mm\nDesigned in the USA\nManufactured in China"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "design-versus-origin"
+        },
+        "case_id": "public-v1-toaks-450",
+        "context": {
+          "product": "TOAKS Titanium 450ml Cup, 0.5mm version",
+          "source_url": "https://www.toaksoutdoor.com/products/cup-450",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Use the specified 0.5mm variant and manufacturing country.",
+          "reference_passage": "Material: uncoated titanium\nWeight: 2.7 oz (76 g)\nCapacity: 450 ml\nWall thickness: 0.5 mm\nDesigned in the USA\nManufactured in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "CN",
+          "material": "titanium",
+          "weight_g": 76
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/cup-450"
+        ],
+        "acceptance_criteria": "Use the specified 0.5mm variant and manufacturing country."
+      },
+      "case_fingerprint": "80b28be7ffa37e196096017209f1ddfa5382545551885985830250c9a83c0ea9",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 76,
+                "passed": true,
+                "expected": 76
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 76,
+                "passed": true,
+                "expected": 76
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 849,
+              "total_tokens": 984,
+              "output_tokens": 135,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 37
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: uncoated titanium\" supports material as titanium.",
+            "\"Weight: 2.7 oz (76 g)\" supports weight_g as 76.",
+            "\"Manufactured in China\" supports country as CN."
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are supported by the reference passage and correctly scoped: material=titanium, weight_g=76, country=CN.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-toaks-450",
+      "replicate": 1,
+      "status": "completed",
+      "output": {
+        "country": "US",
+        "material": "titanium",
+        "weight_g": 76
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 2509.475044993451,
+      "target_error": null,
+      "late_completion": false,
+      "id": "74f91107-d948-403f-9adc-088795c3832a",
+      "created_at": "2026-09-16T17:39:58.546343Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "design-versus-origin"
+        ],
+        "input": {
+          "passage": "Material: uncoated titanium\nWeight: 2.7 oz (76 g)\nCapacity: 450 ml\nWall thickness: 0.5 mm\nDesigned in the USA\nManufactured in China"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "design-versus-origin"
+        },
+        "case_id": "public-v1-toaks-450",
+        "context": {
+          "product": "TOAKS Titanium 450ml Cup, 0.5mm version",
+          "source_url": "https://www.toaksoutdoor.com/products/cup-450",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Use the specified 0.5mm variant and manufacturing country.",
+          "reference_passage": "Material: uncoated titanium\nWeight: 2.7 oz (76 g)\nCapacity: 450 ml\nWall thickness: 0.5 mm\nDesigned in the USA\nManufactured in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "CN",
+          "material": "titanium",
+          "weight_g": 76
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/cup-450"
+        ],
+        "acceptance_criteria": "Use the specified 0.5mm variant and manufacturing country."
+      },
+      "case_fingerprint": "80b28be7ffa37e196096017209f1ddfa5382545551885985830250c9a83c0ea9",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "mismatch",
+                "actual": "US",
+                "passed": false,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [
+            "/country"
+          ],
+          "metric_key": "country_correct",
+          "explanation": "0/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 76,
+                "passed": true,
+                "expected": 76
+              },
+              {
+                "path": "/country",
+                "state": "mismatch",
+                "actual": "US",
+                "passed": false,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [
+            "/country"
+          ],
+          "metric_key": "field_accuracy",
+          "explanation": "2/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Output differs from reference",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 849,
+              "total_tokens": 1012,
+              "output_tokens": 163,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 69
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: uncoated titanium\"",
+            "\"Weight: 2.7 oz (76 g)\"",
+            "\"Manufactured in China\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "Material and weight are supported; country is not. The passage says the product was manufactured in China, so the correct country code is CN, not US.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 76,
+                "passed": true,
+                "expected": 76
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-toaks-550",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": null,
+        "material": "grade 1 titanium",
+        "weight_g": 72
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 2509.1869570023846,
+      "target_error": null,
+      "late_completion": false,
+      "id": "8a7bf789-e0ed-4676-8a9a-3f09b5ae63f7",
+      "created_at": "2026-09-16T17:39:58.546348Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "design-only"
+        ],
+        "input": {
+          "passage": "Material: uncoated Grade 1 Titanium\nWeight with lid: 2.6 oz (72 g)\nWeight without lid: 2.1 oz (60 g)\nCapacity: 550 ml\nDesigned in the USA\nA mesh storage sack is supplied"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "design-only"
+        },
+        "case_id": "public-v1-toaks-550",
+        "context": {
+          "product": "TOAKS Ultralight Titanium 550ml Pot",
+          "source_url": "https://www.toaksoutdoor.com/products/pot-550-l",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Keep the material grade. The selected manufacturer specification identifies design location only, so manufacturing country is unknown.",
+          "reference_passage": "Material: uncoated Grade 1 Titanium\nWeight with lid: 2.6 oz (72 g)\nWeight without lid: 2.1 oz (60 g)\nCapacity: 550 ml\nDesigned in the USA\nA mesh storage sack is supplied",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": "grade 1 titanium",
+          "weight_g": 72
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/pot-550-l"
+        ],
+        "acceptance_criteria": "Keep the material grade. The selected manufacturer specification identifies design location only, so manufacturing country is unknown."
+      },
+      "case_fingerprint": "4f02f21f04d432a3aa0a365824a7d2eb6d8e8a77dac2ac79a5bb9fcf361cfec8",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "grade 1 titanium",
+                "passed": true,
+                "expected": "grade 1 titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "grade 1 titanium",
+                "passed": true,
+                "expected": "grade 1 titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 72,
+                "passed": true,
+                "expected": 72
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 877,
+              "total_tokens": 1025,
+              "output_tokens": 148,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 44
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "“Material: uncoated Grade 1 Titanium” supports material = “grade 1 titanium”.",
+            "“Weight with lid: 2.6 oz (72 g)” supports weight_g = 72.",
+            "“Designed in the USA” is design location only, so country is not established and null is correct."
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are supported or correctly null-scoped by the passage.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 72,
+                "passed": true,
+                "expected": 72
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-toaks-550",
+      "replicate": 1,
+      "status": "completed",
+      "output": {
+        "country": null,
+        "material": "titanium",
+        "weight_g": 72
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 2673.5697289987,
+      "target_error": null,
+      "late_completion": false,
+      "id": "067df220-497f-4cf1-9b65-42a65d839dca",
+      "created_at": "2026-09-16T17:39:58.546354Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "design-only"
+        ],
+        "input": {
+          "passage": "Material: uncoated Grade 1 Titanium\nWeight with lid: 2.6 oz (72 g)\nWeight without lid: 2.1 oz (60 g)\nCapacity: 550 ml\nDesigned in the USA\nA mesh storage sack is supplied"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "design-only"
+        },
+        "case_id": "public-v1-toaks-550",
+        "context": {
+          "product": "TOAKS Ultralight Titanium 550ml Pot",
+          "source_url": "https://www.toaksoutdoor.com/products/pot-550-l",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Keep the material grade. The selected manufacturer specification identifies design location only, so manufacturing country is unknown.",
+          "reference_passage": "Material: uncoated Grade 1 Titanium\nWeight with lid: 2.6 oz (72 g)\nWeight without lid: 2.1 oz (60 g)\nCapacity: 550 ml\nDesigned in the USA\nA mesh storage sack is supplied",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": null,
+          "material": "grade 1 titanium",
+          "weight_g": 72
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/pot-550-l"
+        ],
+        "acceptance_criteria": "Keep the material grade. The selected manufacturer specification identifies design location only, so manufacturing country is unknown."
+      },
+      "case_fingerprint": "4f02f21f04d432a3aa0a365824a7d2eb6d8e8a77dac2ac79a5bb9fcf361cfec8",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "mismatch",
+                "actual": "titanium",
+                "passed": false,
+                "expected": "grade 1 titanium"
+              }
+            ]
+          },
+          "evidence": [
+            "/material"
+          ],
+          "metric_key": "material_correct",
+          "explanation": "0/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Output differs from reference",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "mismatch",
+                "actual": "titanium",
+                "passed": false,
+                "expected": "grade 1 titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 72,
+                "passed": true,
+                "expected": 72
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": null,
+                "passed": true,
+                "expected": null
+              }
+            ]
+          },
+          "evidence": [
+            "/material"
+          ],
+          "metric_key": "field_accuracy",
+          "explanation": "2/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 72,
+                "passed": true,
+                "expected": 72
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 876,
+              "total_tokens": 1056,
+              "output_tokens": 180,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 87
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: uncoated Grade 1 Titanium\"",
+            "\"Weight with lid: 2.6 oz (72 g)\"",
+            "\"Designed in the USA\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "Weight and country are supported; material is underspecified because the passage explicitly says \"Grade 1 Titanium,\" not just titanium.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-toaks-750",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": "CN",
+        "material": "titanium",
+        "weight_g": 103
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 2934.779837989481,
+      "target_error": null,
+      "late_completion": false,
+      "id": "b8c19a17-b437-4c0c-ad40-91267e717bb5",
+      "created_at": "2026-09-16T17:39:58.546359Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "assembly-weight"
+        ],
+        "input": {
+          "passage": "Material: titanium, uncoated\nPot weight without lid: 3 oz (86 g)\nPot weight with lid: 3.6 oz (103 g)\nCapacity: 750 ml\nDesigned in the USA\nManufactured in China"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "assembly-weight"
+        },
+        "case_id": "public-v1-toaks-750",
+        "context": {
+          "product": "TOAKS Titanium 750ml Pot",
+          "source_url": "https://www.toaksoutdoor.com/products/pot-750",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Select the assembled pot and lid, not the bare pot. Design location does not establish manufacture.",
+          "reference_passage": "Material: titanium, uncoated\nPot weight without lid: 3 oz (86 g)\nPot weight with lid: 3.6 oz (103 g)\nCapacity: 750 ml\nDesigned in the USA\nManufactured in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "CN",
+          "material": "titanium",
+          "weight_g": 103
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/pot-750"
+        ],
+        "acceptance_criteria": "Select the assembled pot and lid, not the bare pot. Design location does not establish manufacture."
+      },
+      "case_fingerprint": "205d00744a04eb0a123f37073464a3b5fa19739a7a10185155b5b21a1464d6dc",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 103,
+                "passed": true,
+                "expected": 103
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 864,
+              "total_tokens": 993,
+              "output_tokens": 129,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 32
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: titanium, uncoated\"",
+            "\"Pot weight with lid: 3.6 oz (103 g)\"",
+            "\"Manufactured in China\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three fields are directly supported by the passage and correctly scoped: material is titanium, weight is the with-lid mass of 103 g, and country is China (CN).",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 103,
+                "passed": true,
+                "expected": 103
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-toaks-750",
+      "replicate": 1,
+      "status": "completed",
+      "output": {
+        "country": "CN",
+        "material": "titanium",
+        "weight_g": 86
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 3313.9884500124026,
+      "target_error": null,
+      "late_completion": false,
+      "id": "ca799d2a-5a95-447c-bdc8-241ab1dc4ddd",
+      "created_at": "2026-09-16T17:39:58.546365Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "assembly-weight"
+        ],
+        "input": {
+          "passage": "Material: titanium, uncoated\nPot weight without lid: 3 oz (86 g)\nPot weight with lid: 3.6 oz (103 g)\nCapacity: 750 ml\nDesigned in the USA\nManufactured in China"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "assembly-weight"
+        },
+        "case_id": "public-v1-toaks-750",
+        "context": {
+          "product": "TOAKS Titanium 750ml Pot",
+          "source_url": "https://www.toaksoutdoor.com/products/pot-750",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Select the assembled pot and lid, not the bare pot. Design location does not establish manufacture.",
+          "reference_passage": "Material: titanium, uncoated\nPot weight without lid: 3 oz (86 g)\nPot weight with lid: 3.6 oz (103 g)\nCapacity: 750 ml\nDesigned in the USA\nManufactured in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "CN",
+          "material": "titanium",
+          "weight_g": 103
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/pot-750"
+        ],
+        "acceptance_criteria": "Select the assembled pot and lid, not the bare pot. Design location does not establish manufacture."
+      },
+      "case_fingerprint": "205d00744a04eb0a123f37073464a3b5fa19739a7a10185155b5b21a1464d6dc",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "mismatch",
+                "actual": 86,
+                "passed": false,
+                "expected": 103
+              }
+            ]
+          },
+          "evidence": [
+            "/weight_g"
+          ],
+          "metric_key": "weight_correct",
+          "explanation": "0/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "mismatch",
+                "actual": 86,
+                "passed": false,
+                "expected": 103
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [
+            "/weight_g"
+          ],
+          "metric_key": "field_accuracy",
+          "explanation": "2/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Output differs from reference",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 864,
+              "total_tokens": 1048,
+              "output_tokens": 184,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 72
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: titanium, uncoated\"",
+            "\"Pot weight without lid: 3 oz (86 g)\"",
+            "\"Pot weight with lid: 3.6 oz (103 g)\"",
+            "\"Manufactured in China\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "Material and country are supported by the passage; weight_g is not, because the assembled pot with lid is 103 g, not 86 g.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-toaks-spoon",
+      "replicate": 0,
+      "status": "completed",
+      "output": {
+        "country": "CN",
+        "material": "titanium",
+        "weight_g": 19
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 3117.749838012969,
+      "target_error": null,
+      "late_completion": false,
+      "id": "dfe4c3f9-e94f-4ad3-9090-0427cfdb6c23",
+      "created_at": "2026-09-16T17:39:58.546370Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "metric-priority"
+        ],
+        "input": {
+          "passage": "Material: uncoated titanium\nWeight: 0.65 oz (19 g)\nLength: 220 mm\nDesigned in the USA\nManufactured in China"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "metric-priority"
+        },
+        "case_id": "public-v1-toaks-spoon",
+        "context": {
+          "product": "TOAKS Titanium Long Handle Spoon with Polished Bowl, SLV-11",
+          "source_url": "https://www.toaksoutdoor.com/products/slv-11",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Use the current specification table for SLV-11. A polished surface does not change the material.",
+          "reference_passage": "Material: uncoated titanium\nWeight: 0.65 oz (19 g)\nLength: 220 mm\nDesigned in the USA\nManufactured in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "CN",
+          "material": "titanium",
+          "weight_g": 19
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/slv-11"
+        ],
+        "acceptance_criteria": "Use the current specification table for SLV-11. A polished surface does not change the material."
+      },
+      "case_fingerprint": "8cd7073a9b5b34f6ad783e07856566150719b17647ac2bda04c70f9a70d4877f",
+      "results": [
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 19,
+                "passed": true,
+                "expected": 19
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "weight_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "match",
+                "actual": 19,
+                "passed": true,
+                "expected": 19
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "field_accuracy",
+          "explanation": "3/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Exact match",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 839,
+              "total_tokens": 954,
+              "output_tokens": 115,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 26
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "“Material: uncoated titanium”",
+            "“Weight: 0.65 oz (19 g)”",
+            "“Manufactured in China”"
+          ],
+          "metric_key": "source_support",
+          "explanation": "All three requested fields are directly supported by the passage and match the reference: material is titanium, weight is 19 g, and manufacturing country is China (CN).",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "experiment_id": "9f5b952b-200b-450b-a855-61847d0c69fc",
+      "case_id": "public-v1-toaks-spoon",
+      "replicate": 1,
+      "status": "completed",
+      "output": {
+        "country": "CN",
+        "material": "titanium",
+        "weight_g": 0.65
+      },
+      "output_present": true,
+      "trace": null,
+      "metadata": {
+        "source": "imported",
+        "imported_metadata": {},
+        "target_cost_provenance": "unavailable"
+      },
+      "target_latency_ms": null,
+      "evaluation_latency_ms": 2875.99908397533,
+      "target_error": null,
+      "late_completion": false,
+      "id": "18b462d3-b464-4701-8653-48a23d8bcfe6",
+      "created_at": "2026-09-16T17:39:58.546376Z",
+      "case": {
+        "tags": [
+          "public-source",
+          "curated-paraphrase",
+          "calibration",
+          "metric-priority"
+        ],
+        "input": {
+          "passage": "Material: uncoated titanium\nWeight: 0.65 oz (19 g)\nLength: 220 mm\nDesigned in the USA\nManufactured in China"
+        },
+        "slices": {
+          "brand": "TOAKS",
+          "split": "calibration",
+          "language": "en-US",
+          "challenge": "metric-priority"
+        },
+        "case_id": "public-v1-toaks-spoon",
+        "context": {
+          "product": "TOAKS Titanium Long Handle Spoon with Polished Bowl, SLV-11",
+          "source_url": "https://www.toaksoutdoor.com/products/slv-11",
+          "observed_on": "2026-09-16",
+          "evidence_scope": "Assistant-curated paraphrase of manufacturer product description/specification; not raw HTML or a complete page snapshot.",
+          "rubric_version": "catalog-public-v1",
+          "label_rationale": "Use the current specification table for SLV-11. A polished surface does not change the material.",
+          "reference_passage": "Material: uncoated titanium\nWeight: 0.65 oz (19 g)\nLength: 220 mm\nDesigned in the USA\nManufactured in China",
+          "human_review_status": "pending",
+          "assistant_review_status": "reviewed"
+        },
+        "expected": {
+          "country": "CN",
+          "material": "titanium",
+          "weight_g": 19
+        },
+        "references": [
+          "https://www.toaksoutdoor.com/products/slv-11"
+        ],
+        "acceptance_criteria": "Use the current specification table for SLV-11. A polished surface does not change the material."
+      },
+      "case_fingerprint": "8cd7073a9b5b34f6ad783e07856566150719b17647ac2bda04c70f9a70d4877f",
+      "results": [
+        {
+          "score": 0.6666666666666666,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              },
+              {
+                "path": "/weight_g",
+                "state": "mismatch",
+                "actual": 0.65,
+                "passed": false,
+                "expected": 19
+              },
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [
+            "/weight_g"
+          ],
+          "metric_key": "field_accuracy",
+          "explanation": "2/3 fields match",
+          "evaluator_version": "38a9426c-9b30-4b6a-9667-a5aa52cf0725"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "record_exact",
+          "explanation": "Output differs from reference",
+          "evaluator_version": "b2596243-6790-4c84-96d5-41435e983b99"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/material",
+                "state": "match",
+                "actual": "titanium",
+                "passed": true,
+                "expected": "titanium"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "material_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "aed4239a-e80f-4149-ab66-568046a06c66"
+        },
+        {
+          "score": 0.6667,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "judge_cost": null,
+            "judge_mode": "live",
+            "judge_model": "gpt-5.4-mini-2026-03-17",
+            "judge_usage": {
+              "input_tokens": 841,
+              "total_tokens": 992,
+              "output_tokens": 151,
+              "input_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0
+              },
+              "output_tokens_details": {
+                "reasoning_tokens": 64
+              }
+            },
+            "rubric_version": "catalog-source-support-v1",
+            "judge_cost_provenance": "unavailable"
+          },
+          "evidence": [
+            "\"Material: uncoated titanium\"",
+            "\"Weight: 0.65 oz (19 g)\"",
+            "\"Manufactured in China\""
+          ],
+          "metric_key": "source_support",
+          "explanation": "Material and country are supported by the passage; weight is not, because the passage states 19 g, not 0.65 g.",
+          "evaluator_version": "3ff17555-fb72-46a3-a0ea-24fbde3d60bd"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {},
+          "evidence": [],
+          "metric_key": "schema_valid",
+          "explanation": "Output satisfies schema",
+          "evaluator_version": "e0521a75-ecb9-4ef7-891b-ca4eeba7c8a2"
+        },
+        {
+          "score": 1.0,
+          "value": null,
+          "passed": true,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/country",
+                "state": "match",
+                "actual": "CN",
+                "passed": true,
+                "expected": "CN"
+              }
+            ]
+          },
+          "evidence": [],
+          "metric_key": "country_correct",
+          "explanation": "1/1 fields match",
+          "evaluator_version": "416f57fb-41ac-464f-8e37-80f2a891c04d"
+        },
+        {
+          "score": 0.0,
+          "value": null,
+          "passed": false,
+          "status": "scored",
+          "details": {
+            "fields": [
+              {
+                "path": "/weight_g",
+                "state": "mismatch",
+                "actual": 0.65,
+                "passed": false,
+                "expected": 19
+              }
+            ]
+          },
+          "evidence": [
+            "/weight_g"
+          ],
+          "metric_key": "weight_correct",
+          "explanation": "0/1 fields match",
+          "evaluator_version": "60bc8a96-cf95-404a-8052-70df0ac48806"
+        }
+      ],
+      "reviews": []
+    }
+  ],
+  "summary": {
+    "total": 16,
+    "target_errors": 0,
+    "execution_states": {
+      "completed": 16
+    },
+    "metrics": {
+      "schema_valid": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual"
+          ]
+        },
+        "denominator": 16,
+        "scored": 16,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 1.0,
+        "passed": 16,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "decision_denominator": 16,
+        "variability": {
+          "n": 16,
+          "mean": 1.0,
+          "stddev": 0.0,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "field_accuracy": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 16,
+        "scored": 16,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 0.8333333333333333,
+        "passed": 8,
+        "failed": 8,
+        "pass_rate": 0.5,
+        "decision_denominator": 16,
+        "variability": {
+          "n": 16,
+          "mean": 0.8333333333333333,
+          "stddev": 0.16666666666666669,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "material_correct": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 16,
+        "scored": 16,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 0.875,
+        "passed": 14,
+        "failed": 2,
+        "pass_rate": 0.875,
+        "decision_denominator": 16,
+        "variability": {
+          "n": 16,
+          "mean": 0.875,
+          "stddev": 0.33071891388307384,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "weight_correct": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 16,
+        "scored": 16,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 0.8125,
+        "passed": 13,
+        "failed": 3,
+        "pass_rate": 0.8125,
+        "decision_denominator": 16,
+        "variability": {
+          "n": 16,
+          "mean": 0.8125,
+          "stddev": 0.3903123748998999,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "country_correct": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 16,
+        "scored": 16,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 0.8125,
+        "passed": 13,
+        "failed": 3,
+        "pass_rate": 0.8125,
+        "decision_denominator": 16,
+        "variability": {
+          "n": 16,
+          "mean": 0.8125,
+          "stddev": 0.3903123748998999,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "record_exact": {
+        "definition": {
+          "direction": "higher",
+          "threshold": 1.0,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "reference"
+          ]
+        },
+        "denominator": 16,
+        "scored": 16,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 0.5,
+        "passed": 8,
+        "failed": 8,
+        "pass_rate": 0.5,
+        "decision_denominator": 16,
+        "variability": {
+          "n": 16,
+          "mean": 0.5,
+          "stddev": 0.5,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      },
+      "source_support": {
+        "definition": {
+          "direction": "higher",
+          "threshold": null,
+          "value_type": "number",
+          "aggregation": "mean",
+          "required_inputs": [
+            "actual",
+            "context"
+          ]
+        },
+        "denominator": 16,
+        "scored": 16,
+        "coverage": 1.0,
+        "not_applicable": 0,
+        "errors": 0,
+        "missing": 0,
+        "mean": 0.85416875,
+        "passed": 10,
+        "failed": 6,
+        "pass_rate": 0.625,
+        "decision_denominator": 16,
+        "variability": {
+          "n": 16,
+          "mean": 0.85416875,
+          "stddev": 0.2030562919586415,
+          "p95": 1.0,
+          "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+        }
+      }
+    },
+    "target_latency_ms": {
+      "n": 0,
+      "mean": null,
+      "stddev": null,
+      "p95": null,
+      "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+    },
+    "evaluation_latency_ms": {
+      "n": 16,
+      "mean": 3915.590838625576,
+      "stddev": 1504.8206403233205,
+      "p95": 6772.858737997012,
+      "p95_method": "nearest rank: sorted[ceil(0.95*n)-1]"
+    },
+    "target_cost": {
+      "total_usd": null,
+      "available_count": 0,
+      "denominator": 16,
+      "provenance": "unavailable"
+    },
+    "judge_cost": {
+      "total_usd": null,
+      "available_count": 0,
+      "denominator": 16,
+      "provenance": "unavailable"
+    }
+  },
+  "calibration": {
+    "reviewed_decisions": 0,
+    "agreement": null,
+    "disagreements": [],
+    "policy": "Latest assessment per reviewer, execution and metric; automated judgments preserved"
+  },
+  "controls": {
+    "correct_accepted": 8,
+    "correct_total": 8,
+    "incorrect_rejected": 6,
+    "incorrect_total": 8,
+    "max_score_error": 0.33333333333333337
+  },
+  "accepted": false
+}

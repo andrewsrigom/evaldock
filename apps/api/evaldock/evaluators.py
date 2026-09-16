@@ -97,6 +97,10 @@ def validate_evaluator(ev: EvaluatorConfig) -> None:
             raise ValueError("Judge mode must explicitly be fixture or live")
         if cfg.get("template", "correctness") not in JUDGE_TEMPLATES:
             raise ValueError("Unsupported judge template")
+        if cfg.get("input_scope", "evaluation") not in {"evaluation", "context_only"}:
+            raise ValueError("Unsupported judge input scope")
+        if cfg.get("input_scope") == "context_only" and cfg.get("template") != "context_support":
+            raise ValueError("Context-only inputs require the context-support template")
         if not cfg.get("rubric") or not cfg.get("rubric_version"):
             raise ValueError("A versioned rubric is required")
         if cfg.get("mode") == "live" and (not cfg.get("model") or not cfg.get("credential_id")):
@@ -304,6 +308,12 @@ async def evaluate(
         template = cfg.get("template", "correctness")
         if template == "context_support" and data.context is None:
             return na("Context support requires supplied context")
+        # Keep evidence-only judging separate from reference-based correctness checks.
+        judgment_data = (
+            {"actual": data.actual, "context": data.context}
+            if cfg.get("input_scope") == "context_only"
+            else data.model_dump()
+        )
         instruction = (
             JUDGE_TEMPLATES[template]
             + "\nRubric: "
@@ -325,7 +335,7 @@ async def evaluate(
                     {
                         "role": "user",
                         "content": json.dumps(
-                            {"untrusted_evaluation_data": data.model_dump()}, ensure_ascii=False
+                            {"untrusted_evaluation_data": judgment_data}, ensure_ascii=False
                         ),
                     },
                 ],
@@ -346,6 +356,7 @@ async def evaluate(
                 details={
                     "judge_mode": "live",
                     "judge_model": cfg["model"],
+                    "judge_input_scope": cfg.get("input_scope", "evaluation"),
                     "rubric_version": cfg["rubric_version"],
                     "judge_usage": response.usage.model_dump() if response.usage else None,
                     "judge_cost": None,

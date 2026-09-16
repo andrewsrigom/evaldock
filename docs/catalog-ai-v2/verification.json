@@ -1,0 +1,27 @@
+{
+  "backend_tests_passed": 78,
+  "browser_journeys_passed_this_revision": 1,
+  "typecheck": "passed",
+  "lint": "passed",
+  "provider_calls": {
+    "generation": 20,
+    "judge": 52,
+    "total": 72
+  },
+  "attempts": [
+    {
+      "phase": "target",
+      "status": "succeeded",
+      "count": 20
+    },
+    {
+      "phase": "evaluator",
+      "status": "succeeded",
+      "count": 364
+    }
+  ],
+  "secret_in_checked_logs_or_reports": false,
+  "environment_secret_copied_to_database": false,
+  "environment_file_in_runtime_images": false,
+  "active_pilot_experiments": 0
+}

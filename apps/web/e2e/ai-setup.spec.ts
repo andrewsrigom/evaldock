@@ -18,6 +18,14 @@ test('prepared AI pilot needs only a key and preserves offline use', async ({ pa
   await page.getByRole('button', { name: 'Sign in', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Project overview', exact: true })).toBeVisible()
   const base = `/projects/${setup.project_id}`
+  const credentialsUrl = `/api/projects/${setup.project_id}/credentials`
+  const credentialsRoute = `**${credentialsUrl}`
+  // Exercise setup without changing the server's configured key or making model calls.
+  await page.route(credentialsRoute, async route => {
+    const response = await route.fetch()
+    const credentials = await response.json()
+    await route.fulfill({ json: credentials.map((c: Record<string, unknown>) => ({ ...c, configured: false, value: '' })) })
+  })
   await page.goto(`${base}/settings`)
   await expect(page.getByRole('heading', { name: 'OpenAI API key', exact: true })).toBeVisible()
   await expect(page.getByText('Not configured', { exact: true })).toBeVisible()
@@ -39,9 +47,8 @@ test('prepared AI pilot needs only a key and preserves offline use', async ({ pa
   await dialog.getByRole('combobox', { name: 'Evaluation suite', exact: true }).selectOption({ label: 'Catalog public-source criteria v1 · v1' })
   await expect(dialog.getByText('Set OPENAI_API_KEY in the server .env', { exact: false })).not.toBeVisible()
   await dialog.getByRole('button', { name: 'Close dialog', exact: true }).click()
-  const credentialsUrl = `/api/projects/${setup.project_id}/credentials`
   const credentials = await (await page.request.get(credentialsUrl)).json()
-  const credentialsRoute = `**${credentialsUrl}`
+  await page.unroute(credentialsRoute)
   await page.route(credentialsRoute, route => route.fulfill({ json: credentials.map((c: Record<string, unknown>) => ({ ...c, configured: true, value: '••••••••' })) }))
   await page.getByRole('button', { name: 'New experiment', exact: true }).click()
   await dialog.getByRole('combobox', { name: 'Execution mode', exact: true }).selectOption('http')
