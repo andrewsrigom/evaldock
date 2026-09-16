@@ -6,7 +6,7 @@
   <strong>A workbench for engineers to evaluate application behavior and catch regressions before release.</strong>
 </p>
 <p align="center">
-  <a href="#quick-start">Quick start</a> · <a href="docs/README.md">Documentation</a> · <a href="CONTRIBUTING.md#reporting-bugs">Report a bug</a>
+  <a href="#quick-start">Quick start</a> · <a href="docs/README.md">Documentation</a> · <a href="https://github.com/andrewsrigom/evaldock/issues">Report a bug</a>
 </p>
 
 ![Baseline and candidate comparison in EvalDock](docs/screenshots/comparison-desktop.png)
@@ -44,9 +44,9 @@ Only case input goes to the target. Evaluators receive their configured referenc
 
 ### Installation
 
-From the downloaded or cloned repository root:
-
 ```bash
+git clone https://github.com/andrewsrigom/evaldock.git
+cd evaldock
 python3 scripts/configure.py
 docker compose up -d --build
 docker compose exec -T api uv run python -m evaldock.seed

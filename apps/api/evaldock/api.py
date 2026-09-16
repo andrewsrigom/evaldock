@@ -238,6 +238,8 @@ async def tokens(
 async def revoke_token(
     token_id: str, who: Principal = Depends(principal), db: AsyncSession = Depends(get_db)
 ) -> dict[str, bool]:
+    if who.token:
+        raise HTTPException(403, "Use a browser session to revoke tokens")
     token = await db.get(ApiToken, token_id)
     if not token or token.user_id != who.user.id:
         raise HTTPException(404, "Token not found")

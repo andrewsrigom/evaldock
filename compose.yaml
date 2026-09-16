@@ -58,7 +58,10 @@ services:
       samples:
         condition: service_started
   samples:
-    <<: *backend
+    build:
+      context: .
+      dockerfile: infra/api.Dockerfile
+    restart: unless-stopped
     command: ["uv", "run", "uvicorn", "examples.targets:app", "--host", "0.0.0.0", "--port", "8090"]
     ports:
       - "127.0.0.1:8099:8090"

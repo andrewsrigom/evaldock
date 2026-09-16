@@ -18,11 +18,19 @@ async function login(page: Page) {
   await expect(page.getByRole('heading', { name: 'Project overview', exact: true })).toBeVisible()
 }
 
+async function requireLiveCalibration(page: Page) {
+  const response = await page.request.get(`/api/experiments/${calibration.runs.validation.id}`)
+  test.skip(response.status() === 404, 'Live calibration evidence is not loaded in this installation')
+  expect(response.ok()).toBe(true)
+  expect((await response.json()).project_id).toBe(setup.project_id)
+}
+
 test('report, comparison and release checks form a clear read-only journey', async ({ page }) => {
   test.skip(!setup || !evidence || !calibration, 'Load the calibrated catalog pilot first')
   const errors: string[] = [], mutations: string[] = []
   page.on('pageerror', e => errors.push(e.message))
   await login(page)
+  await requireLiveCalibration(page)
   // Block unexpected writes, including target tests and model calls, during this review.
   await page.route('**/api/**', async route => {
     if (!['GET', 'HEAD', 'OPTIONS'].includes(route.request().method())) {
@@ -91,6 +99,7 @@ test('report, comparison and release checks form a clear read-only journey', asy
 test('mobile navigation and editing stay usable without page overflow', async ({ page }) => {
   test.skip(!setup || !calibration, 'Load the calibrated catalog pilot first')
   await login(page)
+  await requireLiveCalibration(page)
   await page.setViewportSize({ width: 390, height: 844 })
   const base = `/projects/${setup.project_id}`
   const urls = [`${base}/overview`, `${base}/compare`, `${base}/gates`, `/experiments/${calibration.runs.validation.id}`, `${base}/datasets`, `${base}/settings`]

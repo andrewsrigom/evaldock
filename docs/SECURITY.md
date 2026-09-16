@@ -3,13 +3,13 @@
 ## Access and data protection
 
 - Argon2 password hashing; random server-side sessions expire and use HttpOnly, SameSite=Strict cookies. Non-GET cookie-authenticated operations require the configured Origin and a CSRF header. Local HTTP defaults `COOKIE_SECURE=false`; use HTTPS and `true` beyond local development.
-- Hashed expiring API tokens scoped to one workspace and read/write capabilities. Owner/editor/viewer authorization is enforced at project, version, experiment, execution, artifact, credential and event endpoints. Owners add workspace members. Viewers cannot modify project data.
+- Hashed expiring API tokens scoped to one workspace and read/write capabilities. Owner/editor/viewer authorization is enforced at project, version, experiment, execution, artifact, credential and event endpoints. Owners add workspace members. Viewers cannot modify project data. Token creation and revocation require a browser session.
 - Credentials are Fernet-encrypted with an externally supplied APP_KEY, absent from Git and masked in responses. External-library errors are sanitized. No real provider keys are seeded. Key rotation/re-encryption and a managed secret backend are not implemented.
 - Egress validates protocol, credentials, query strings, DNS and all resolved addresses; pins validated addresses for the request; retains the original TLS hostname; ignores ambient HTTP proxies; rejects redirects, metadata/link-local/unspecified destinations and unallowlisted private addresses. Exact-origin admin allowlists support local sample services. Timeout, response-size, target concurrency and request-rate limits are explicit.
 - Schema evaluation uses standards-based JSON Schema; schema references must be local fragments to avoid remote schema fetches. Mapping uses fixed fields and JSON Pointer; no arbitrary Python/JavaScript or expression templates are executed.
 - Dataset/reference data never enters target requests. Judge input is untrusted and separated from system grading instructions, without tools. Human review remains separate from original judgments. This is not a guarantee that every model will resist prompt injection.
 - Immutable version/case data is protected at API and PostgreSQL trigger layers. Project/version kinds are checked relationally. Report downloads authorize the owning project before accessing the local storage key.
-- Services bind to loopback host ports in Compose. The web server sets CSP, nosniff and frame-ancestor restrictions. Passwords and keys are generated locally, never hard-coded.
+- Services bind to loopback host ports in Compose. The sample targets receive no application credentials or artifact volume. The web server sets CSP, nosniff and frame-ancestor restrictions. Passwords and keys are generated locally, never hard-coded.
 
 ## Deployment limits
 
@@ -26,4 +26,4 @@
 
 ## Reporting vulnerabilities
 
-Report suspected vulnerabilities privately to the repository owner or maintainer. A dedicated reporting address has not been configured yet. Do not put credentials, session tokens or sensitive evaluation data in public issues.
+Use [private vulnerability reporting](https://github.com/andrewsrigom/evaldock/security/advisories/new) for suspected vulnerabilities. Do not put credentials, session tokens or sensitive evaluation data in public issues.

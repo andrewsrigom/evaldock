@@ -20,7 +20,7 @@ from evaldock.models import (
     Workspace,
 )
 from evaldock.security import digest, passwords
-from sqlalchemy import text
+from sqlalchemy import select, text
 from sqlalchemy.exc import DBAPIError
 
 pytestmark = pytest.mark.asyncio(loop_scope="session")
@@ -323,3 +323,60 @@ async def test_cookie_sessions_csrf_and_logout():
         ).status_code == 200
         assert (await client.get("/api/auth/me")).status_code == 401
     await token_client.aclose()
+
+
+@pytest.mark.parametrize(
+    "role,scopes",
+    [("owner", ["read"]), ("owner", ["read", "write"]), ("viewer", ["read"])],
+)
+async def test_token_revocation_requires_browser_session(role, scopes):
+    project, user, token_client = await setup_project(role)
+    async with Session() as db:
+        caller = await db.scalar(select(ApiToken).where(ApiToken.user_id == user.id))
+        caller.scopes = scopes
+        other = Workspace(name="Other workspace")
+        db.add(other)
+        await db.flush()
+        db.add(Membership(workspace_id=other.id, user_id=user.id, role=role))
+        targets = [
+            ApiToken(
+                user_id=user.id,
+                workspace_id=workspace_id,
+                name="Revocation target",
+                digest=digest(uid()),
+                scopes=["read"],
+                expires_at=now() + timedelta(hours=1),
+            )
+            for workspace_id in [project.workspace_id, other.id]
+        ]
+        db.add_all(targets)
+        await db.commit()
+        target_ids = [token.id for token in targets]
+    try:
+        for token_id in target_ids:
+            response = await token_client.delete(f"/api/tokens/{token_id}")
+            assert response.status_code == 403
+        async with Session() as db:
+            for token_id in target_ids:
+                token = await db.get(ApiToken, token_id)
+                assert token.revoked is False
+        async with httpx.AsyncClient(
+            transport=httpx.ASGITransport(app=app), base_url="http://test"
+        ) as browser:
+            login = await browser.post(
+                "/api/auth/login", json={"email": user.email, "password": "test-password-long"}
+            )
+            assert login.status_code == 200
+            for token_id in target_ids:
+                assert (await browser.delete(f"/api/tokens/{token_id}")).status_code == 403
+                response = await browser.delete(
+                    f"/api/tokens/{token_id}",
+                    headers={"Origin": settings().public_origin, "X-EvalDock-CSRF": "1"},
+                )
+                assert response.status_code == 200
+            async with Session() as db:
+                for token_id in target_ids:
+                    token = await db.get(ApiToken, token_id)
+                    assert token.revoked is True
+    finally:
+        await token_client.aclose()

@@ -63,6 +63,6 @@ Describe the problem, resulting behavior and relevant verification. Include scre
 
 ## Reporting bugs
 
-Include the affected workflow, reproduction steps, expected versus actual behavior, environment and sanitized error output. Attach a minimal fixture or screenshot when useful. Send the report to the maintainer.
+Include the affected workflow, reproduction steps, expected versus actual behavior, environment and sanitized error output. Attach a minimal fixture or screenshot when useful. Open an [issue](https://github.com/andrewsrigom/evaldock/issues).
 
 For suspected vulnerabilities, use the private reporting guidance in [SECURITY.md](docs/SECURITY.md).
