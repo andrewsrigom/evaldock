@@ -36,7 +36,7 @@ test('viewer can inspect versions and manage only read tokens; editing stays pro
   await page.getByLabel('Token name').fill('Temporary read token')
   await page.getByLabel('Expires in (days)').fill('7')
   await page.getByRole('button', { name: 'Create token', exact: true }).click()
-  await expect(page.getByText('Copy your token now')).toBeVisible()
+  await expect(page.getByText('Copy this token before leaving.', { exact: true })).toBeVisible()
   const tokens = await (await page.request.get('/api/tokens')).json()
   expect(tokens[0].scopes).toEqual(['read'])
   await page.getByRole('button', { name: 'Hide token' }).click()
