@@ -26,7 +26,3 @@ Start with the 30 calibration cases. Read the passage, verify every reference an
 The ten validation cases were separated by scenario before execution. They verify the frozen configuration but remain visible and synthetic, so they are not a blind test or evidence of model quality. Reserve fresh real cases after repeated prompt tuning.
 
 For the first AI criterion, assess support by the source: every extracted value must be grounded and abstentions justified. Compare judge decisions to labels independently approved by a person, investigate false approvals/rejections by scenario, and rescore saved outputs. Enable the judge only after selecting the provider/model/credential and approving this rubric.
-
-## Revision history
-
-v2 corrects the language of the initial Portuguese v1 pack. It has new case IDs and separate runs. Existing v1 cases and outputs remain unchanged in the local database to preserve their evaluation history; they are superseded by this English pack. The original files remain available in Git history at commit 7c4feea.

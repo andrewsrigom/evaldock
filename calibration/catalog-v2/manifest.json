@@ -22,7 +22,7 @@
     "validation": 5
   },
   "sha256": {
-    "RUBRIC.md": "6cd3af5ab433b6ee122a865000cff70b83b93ca73731991070868708776982c9",
+    "RUBRIC.md": "d1d0a09acf8ff648cf71376036b4442f509d8a3f2eb40a2976cf62536ed2ae1d",
     "calibration-challenge-outputs.json": "221be484ba2e7646a25e32cdc9abbe007b244353eea47ae3e5cc814783fdeee4",
     "calibration-reference-outputs.json": "0e56b4ca418f99db520baab7ac5360d3fc69496f5d5f33d70e4a62e260fb5747",
     "calibration.jsonl": "98aff9970eeeb2ebd48812556524dac0131f24fc23904c1b7ce0efdfd69cf1b1",
