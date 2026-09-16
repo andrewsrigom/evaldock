@@ -3,11 +3,13 @@ from types import SimpleNamespace
 
 import pytest
 from evaldock import evaluators, targets
+from evaldock.config import settings
 from evaldock.contracts import Judgment, Launch
 from evaldock.db import Session
 from evaldock.execution import launch, run_experiment
 from evaldock.models import Credential, Experiment
 from evaldock.security import decrypt
+from pydantic import SecretStr
 from sqlalchemy import func, select
 from test_integration import add_resource, setup_project
 from test_openai_target import SCHEMA, mock_transport
@@ -57,7 +59,8 @@ async def test_slot_rotation_permissions_and_no_secret_disclosure():
             ).status_code == 403
 
 
-async def test_preflight_and_complete_native_generation_judgment_flow(monkeypatch):
+@pytest.mark.parametrize("environment", [False, True])
+async def test_preflight_and_complete_native_generation_judgment_flow(monkeypatch, environment):
     project, _, client = await setup_project()
     async with client:
         slot = (
@@ -65,6 +68,12 @@ async def test_preflight_and_complete_native_generation_judgment_flow(monkeypatc
                 f"/api/projects/{project.id}/credentials/slot", json={"name": "OpenAI"}
             )
         ).json()
+
+        if environment:
+            monkeypatch.setattr(settings(), "openai_credential_id", slot["id"])
+            monkeypatch.setattr(settings(), "openai_api_key", SecretStr(""))
+            row = (await client.get(f"/api/projects/{project.id}/credentials")).json()[0]
+            assert row["source"] == "environment" and row["configured"] is False
 
         async def validate(url):
             return ["8.8.8.8"]
@@ -157,7 +166,19 @@ async def test_preflight_and_complete_native_generation_judgment_flow(monkeypatc
             f"/api/projects/{project.id}/credentials/{slot['id']}",
             json={"value": "test-only-secret"},
         )
-        assert saved.status_code == 200
+        if environment:
+            assert saved.status_code == 422 and "server .env" in saved.text
+            monkeypatch.setattr(settings(), "openai_api_key", SecretStr("test-only-secret"))
+            status = await client.get(f"/api/projects/{project.id}/credentials")
+            assert status.json()[0]["configured"] is True
+            assert "test-only-secret" not in status.text
+            async with Session() as db:
+                stored = await db.get(Credential, slot["id"])
+                assert decrypt(stored.ciphertext) == "", (
+                    "Environment key must not be copied to the database"
+                )
+        else:
+            assert saved.status_code == 200
         sent = mock_transport(monkeypatch)
         judge_requests = []
 

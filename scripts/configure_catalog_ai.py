@@ -2,12 +2,55 @@
 
 import copy
 import json
+import os
+import tempfile
 from pathlib import Path
 
 import httpx
 from evaldock.config import settings
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def bind_environment(path: Path, credential_id: str) -> None:
+    """Preserve all existing secrets; write only a non-secret credential binding."""
+    from dotenv import dotenv_values
+
+    values = dotenv_values(path)
+    existing = values.get("OPENAI_CREDENTIAL_ID")
+    if existing and existing != credential_id:
+        raise ValueError(
+            "OPENAI_CREDENTIAL_ID already binds another credential; existing .env retained"
+        )
+    content = path.read_text()
+    lines = content.splitlines()
+    if "OPENAI_API_KEY" not in values:
+        lines += ["", "# Shared by the prepared OpenAI target and judge.", "OPENAI_API_KEY="]
+    if "OPENAI_CREDENTIAL_ID" not in values:
+        lines += [
+            "# Managed binding; keep this value when changing the API key.",
+            f"OPENAI_CREDENTIAL_ID={credential_id}",
+        ]
+    elif not existing:
+        import re
+
+        lines = [
+            f"OPENAI_CREDENTIAL_ID={credential_id}"
+            if re.match(r"^(?:export\s+)?OPENAI_CREDENTIAL_ID\s*=", line.strip())
+            else line
+            for line in lines
+        ]
+    updated = "\n".join(lines) + "\n"
+    if updated != content:
+        with tempfile.NamedTemporaryFile(mode="w", dir=path.parent, delete=False) as handle:
+            handle.write(updated)
+            temporary = Path(handle.name)
+        try:
+            temporary.chmod(0o600)
+            os.replace(temporary, path)
+        finally:
+            temporary.unlink(missing_ok=True)
+    path.chmod(0o600)
 
 
 def main():
@@ -90,6 +133,7 @@ def main():
         )
         after = request("GET", f"/projects/{project_id}")
         assert before_experiments == {e["id"] for e in after["experiments"]}
+        bind_environment(ROOT / ".env", credential["id"])
         result = {
             "project_id": project_id,
             "settings_url": f"{config.public_origin}/projects/{project_id}/settings",
@@ -97,7 +141,8 @@ def main():
             "judge_version_id": judge_id,
             "suite_version_id": suite_id,
             "model": preset["target"]["model"],
-            "credential_configured": credential["configured"],
+            "credential_configured": bool(config.openai_api_key.get_secret_value().strip()),
+            "credential_source": "environment",
             "model_calls_during_setup": 0,
         }
         (ROOT / "docs/ai-setup.json").write_text(json.dumps(result, indent=2) + "\n")

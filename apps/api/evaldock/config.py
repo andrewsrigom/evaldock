@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -7,6 +8,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
     database_url: str = "postgresql+psycopg://evaldock:evaldock@localhost:5492/evaldock"
     app_key: str = ""
+    openai_api_key: SecretStr = SecretStr("")
+    openai_credential_id: str = ""
     allowed_target_origins: str = ""
     public_origin: str = "http://localhost:5188"
     cookie_secure: bool = False

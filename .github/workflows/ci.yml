@@ -59,6 +59,8 @@ jobs:
       - run: uv run python scripts/load_catalog_calibration.py
       - run: uv run python scripts/load_public_catalog.py
       - run: uv run python scripts/configure_catalog_ai.py
+      - run: docker compose up -d --no-deps --force-recreate api worker
+      - run: uv run python scripts/wait_ready.py
       - run: npm ci && npx playwright install --with-deps chromium && npm run e2e
         working-directory: apps/web
       - uses: actions/upload-artifact@v4

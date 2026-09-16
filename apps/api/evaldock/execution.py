@@ -23,7 +23,7 @@ from .models import (
     TestCase,
     Version,
 )
-from .security import decrypt
+from .security import credential_location, credential_secret
 from .targets import invoke
 
 TERMINAL = {"completed", "partially_failed", "failed", "canceled"}
@@ -50,9 +50,11 @@ async def launch(
         if (
             not credential
             or credential.project_id != project_id
-            or not decrypt(credential.ciphertext).strip()
+            or not credential_secret(credential).strip()
         ):
-            raise ValueError("Add the required API key in Settings before launching")
+            raise ValueError(
+                f"Add the required API key in {credential_location(credential)} before launching"
+            )
     cases = list(
         (
             await db.scalars(
@@ -262,7 +264,7 @@ async def evaluate_execution(execution_id: str) -> None:
             credential = (
                 await db.get(Credential, config.credential_id) if config.credential_id else None
             )
-            secret = decrypt(credential.ciphertext) if credential else None
+            secret = credential_secret(credential) if credential else None
         async with Session() as db:
             used = (
                 await db.scalar(
@@ -372,7 +374,7 @@ async def evaluate_execution(execution_id: str) -> None:
                 if ev.config.get("credential_id")
                 else None
             )
-            secret = decrypt(credential.ciphertext) if credential else None
+            secret = credential_secret(credential) if credential else None
         data = EvaluationInput(
             case_input=case.payload["input"],
             reference=case.payload.get("expected"),

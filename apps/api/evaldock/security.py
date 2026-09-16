@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from .config import settings
 from .db import get_db, now
-from .models import ApiToken, Membership, Project, SessionRecord, User
+from .models import ApiToken, Credential, Membership, Project, SessionRecord, User
 
 passwords = PasswordHasher()
 
@@ -31,6 +31,26 @@ def encrypt(value: str) -> str:
 
 def decrypt(value: str) -> str:
     return Fernet(settings().app_key.encode()).decrypt(value.encode()).decode()
+
+
+def credential_source(credential: Credential) -> str:
+    # An explicit administrator binding keeps the server key scoped to one credential.
+    # A same-named credential in another project must never inherit this key.
+    return "environment" if credential.id == settings().openai_credential_id else "database"
+
+
+def credential_secret(credential: Credential) -> str:
+    if credential_source(credential) == "environment":
+        return settings().openai_api_key.get_secret_value().strip()
+    return decrypt(credential.ciphertext)
+
+
+def credential_location(credential: Credential | None) -> str:
+    return (
+        "the server .env"
+        if credential and credential_source(credential) == "environment"
+        else "Settings"
+    )
 
 
 @dataclass

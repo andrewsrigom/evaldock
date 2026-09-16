@@ -4,7 +4,9 @@ x-backend: &backend
     context: .
     dockerfile: infra/api.Dockerfile
   env_file: .env
-  environment:
+  environment: &backend-environment
+    OPENAI_API_KEY: ""
+    OPENAI_CREDENTIAL_ID: ""
     DATABASE_URL: postgresql+psycopg://evaldock:${POSTGRES_PASSWORD}@db:5432/evaldock
     ARTIFACT_DIR: /data/artifacts
   volumes:
@@ -36,6 +38,10 @@ services:
         condition: service_healthy
   api:
     <<: *backend
+    environment: &ai-environment
+      <<: *backend-environment
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_CREDENTIAL_ID: ${OPENAI_CREDENTIAL_ID:-}
     command: ["uv", "run", "uvicorn", "evaldock.api:app", "--host", "0.0.0.0", "--port", "8080"]
     ports:
       - "127.0.0.1:8088:8080"
@@ -44,6 +50,7 @@ services:
         condition: service_completed_successfully
   worker:
     <<: *backend
+    environment: *ai-environment
     command: ["uv", "run", "python", "-m", "evaldock.worker"]
     depends_on:
       migrate:

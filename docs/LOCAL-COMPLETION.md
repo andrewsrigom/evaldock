@@ -17,7 +17,7 @@ Both candidate gates passed. All 24 executions and 144 metric decisions were che
 
 ## Checks
 
-- 69 backend tests, 9 frontend tests and 3 browser journeys passed.
+- 73 backend tests, 9 frontend tests and 3 browser journeys passed.
 - Type checking, static analysis and production build passed.
 - Desktop and mobile views inspected; no page errors in the browser journeys.
 - Thirty synthetic calibration references reviewed by the assistant; historical evidence preserved.
@@ -28,6 +28,6 @@ For reproduction, see `calibration/catalog-public-v1/README.md`. Source evidence
 
 ## OpenAI setup
 
-Open [project settings](http://localhost:5188/projects/862802ec-280d-4e46-8a75-031b0eceb944/settings), enter the key in **OpenAI API key**, and select **Save API key**. New experiments default to eight calibration cases, native structured generation and six deterministic criteria plus one source-support AI review.
+Set `OPENAI_API_KEY` in the project root `.env`, then run `docker compose up -d --no-deps --force-recreate api worker` from that directory. New experiments default to eight calibration cases, native structured generation and six deterministic criteria plus one source-support AI review.
 
-The protocol and worker flow were verified with a simulated provider, including absent keys, key rotation, permissions, invalid responses and saved results. Browser checks verified the credential form, launch gating, preset editor and mobile layout. No live provider request was made. Account access and model quality require the first keyed run.
+The protocol and worker flow were verified with a simulated provider, including environment-backed keys, project isolation, absent keys, key rotation, permissions, invalid responses and saved results. Browser checks verified environment configuration status, launch gating, preset editor and mobile layout. No live provider request was made. Account access and model quality require the first keyed run.

@@ -71,13 +71,14 @@ This creates a dedicated project through the API, preserves the original example
 
 ## Ready-to-use AI pilot
 
-In **Catalog extraction · public-source pilot → Settings**, paste your OpenAI key into **API key** and select **Save API key**. Then choose **New experiment → Launch experiment**. The model, extraction prompt, structured output schema and evaluation suite are already prepared. Saving a key does not make a provider request.
+Set `OPENAI_API_KEY` in the project root `.env`, then run `docker compose up -d --no-deps --force-recreate api worker`. In **Catalog extraction · public-source pilot**, choose **New experiment → Launch experiment**. The model, extraction prompt, structured output schema and evaluation suite are already prepared.
 
 To prepare the same pilot in a new installation:
 
 ```bash
 uv run python scripts/load_public_catalog.py
 uv run python scripts/configure_catalog_ai.py
+docker compose up -d --no-deps --force-recreate api worker
 ```
 
 The default run uses eight calibration inputs and up to eight AI reviews. Usage is billed by OpenAI. See [AI setup](docs/AI-READINESS.md) for settings and verification limits. No API key is included in this repository.

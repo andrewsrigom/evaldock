@@ -42,7 +42,9 @@ from .models import (
 from .reports import json_bytes, record, report, store
 from .security import (
     Principal,
-    decrypt,
+    credential_location,
+    credential_secret,
+    credential_source,
     digest,
     encrypt,
     passwords,
@@ -443,12 +445,13 @@ class SecretSlot(Contract):
 
 
 def credential_status(credential: Credential) -> dict[str, Any]:
-    configured = bool(decrypt(credential.ciphertext).strip())
+    configured = bool(credential_secret(credential).strip())
     return {
         "id": credential.id,
         "name": credential.name,
         "value": "••••••••" if configured else "",
         "configured": configured,
+        "source": credential_source(credential),
     }
 
 
@@ -492,6 +495,8 @@ async def update_credential(
     credential = await db.get(Credential, credential_id)
     if not credential or credential.project_id != project_id:
         raise HTTPException(404, "Credential not found")
+    if credential_source(credential) == "environment":
+        raise ValueError("This key is managed through OPENAI_API_KEY in the server .env")
     if not body.value.strip():
         raise ValueError("Enter a nonempty API key")
     credential.ciphertext = encrypt(body.value.strip())
@@ -549,9 +554,11 @@ async def test_target(
     if config.credential_id and (
         not credential
         or credential.project_id != project.id
-        or not decrypt(credential.ciphertext).strip()
+        or not credential_secret(credential).strip()
     ):
-        raise ValueError("Add the target API key in Settings before testing")
+        raise ValueError(
+            f"Add the target API key in {credential_location(credential)} before testing"
+        )
     from .execution import target_slot
 
     try:
@@ -560,7 +567,7 @@ async def test_target(
                 config,
                 body.input,
                 "evaldock:test:" + uid(),
-                decrypt(credential.ciphertext) if credential else None,
+                credential_secret(credential) if credential else None,
             )
     except Exception as exc:
         raise HTTPException(

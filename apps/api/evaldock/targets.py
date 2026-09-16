@@ -119,7 +119,7 @@ async def invoke(
     config: TargetConfig, case_input: Any, idempotency_key: str, secret: str | None = None
 ) -> dict[str, Any]:
     if config.kind == "openai" and not secret:
-        raise ValueError("Add your OpenAI API key in Settings before launching")
+        raise ValueError("OpenAI API key is not configured")
     addresses = await validate_destination(config.endpoint)
     headers = {"Accept": "application/json"}
     if config.idempotency_header:

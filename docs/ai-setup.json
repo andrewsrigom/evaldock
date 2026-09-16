@@ -6,5 +6,6 @@
   "suite_version_id": "b94d5799-e249-4eed-8488-9191c5973a0e",
   "model": "gpt-5.4-mini-2026-03-17",
   "credential_configured": false,
+  "credential_source": "environment",
   "model_calls_during_setup": 0
 }
