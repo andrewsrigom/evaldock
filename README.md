@@ -9,7 +9,9 @@
   <a href="#quick-start">Quick start</a> · <a href="docs/README.md">Documentation</a> · <a href="https://github.com/andrewsrigom/evaldock/issues">Report a bug</a>
 </p>
 
-![Baseline and candidate comparison in EvalDock](docs/screenshots/comparison-desktop.png)
+[![EvalDock: compare runs, inspect a regression and check the release policy](docs/media/evaldock-demo.gif)](https://github.com/andrewsrigom/evaldock/raw/refs/heads/main/docs/media/evaldock-demo.mp4)
+
+[Download the full demo](https://github.com/andrewsrigom/evaldock/raw/refs/heads/main/docs/media/evaldock-demo.mp4) (MP4, 54 seconds, no audio). Recorded locally with synthetic catalog data.
 
 ## Why EvalDock exists
 
