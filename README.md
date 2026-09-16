@@ -1,4 +1,7 @@
-# EvalDock
+<p align="center">
+  <img src="apps/web/public/brand/evaldock-mark.png" width="88" height="88" alt="EvalDock logo">
+</p>
+<h1 align="center">EvalDock</h1>
 
 A runnable, project-specific AI evaluation and regression workbench. FastAPI, PostgreSQL, a separate Procrastinate worker, and Vue 3. The two bundled applications are **deterministic fixtures**, not evidence of model quality.
 
