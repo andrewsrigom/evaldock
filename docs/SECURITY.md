@@ -23,3 +23,7 @@
 - Datasets, targets, evaluators, suites and gates have guided forms with version selectors and validation. Arbitrary input/output JSON, JSON Schema and tool argument schemas retain validated JSON fields. There is no graphical JSON Schema builder, bulk review assignment or customizable chart dashboard. Unsaved drafts are protected by navigation/unload warnings but are not autosaved across browser crashes.
 - Authenticated polling is used instead of SSE. Experiment lists currently show the latest 100 runs and the review queue includes the latest 10 terminal experiments.
 - Local Compose images include development tooling for reproducibility; a hardened production image and deployment design remain future work.
+
+## Reporting vulnerabilities
+
+Report suspected vulnerabilities privately to the repository owner or maintainer. A dedicated reporting address has not been configured yet. Do not put credentials, session tokens or sensitive evaluation data in public issues.

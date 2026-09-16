@@ -3,174 +3,142 @@
 </p>
 <h1 align="center">EvalDock</h1>
 
-A runnable, project-specific AI evaluation and regression workbench. FastAPI, PostgreSQL, a separate Procrastinate worker, and Vue 3. The two bundled applications are **deterministic fixtures**, not evidence of model quality.
+**A workbench for engineers to evaluate AI outputs, compare changes, and catch regressions before release.**
 
-## Start locally
+[Local demo](http://localhost:5188) · [Documentation](docs/README.md) · [Report a bug](CONTRIBUTING.md#reporting-bugs)
 
-Requires Docker Compose. Python and uv are needed only for local development and the CLI.
+![Baseline and candidate comparison in EvalDock](docs/portfolio/comparison-desktop.png)
+
+## Why this exists
+
+A promising output does not tell you whether a prompt or model change improves the whole application. EvalDock turns saved examples into repeatable experiments, so engineers can inspect regressions, preserve evidence, and make release decisions against explicit criteria.
+
+## What it does
+
+- **Compare changes:** pair baseline and candidate results, filter regressions, and inspect field-level differences.
+- **Preserve evidence:** version datasets, targets and evaluation suites; retain outputs, attempts and independent human assessments.
+- **Check releases:** enforce score, coverage, error and regression limits; export JSON/JUnit reports and CI exit codes.
+- **Evaluate different systems:** call JSON HTTP targets, use OpenAI structured generation, or import existing outputs and traces.
+
+## How it works
+
+```mermaid
+flowchart LR
+    A["Versioned dataset"] --> B["Run target or import outputs"]
+    B --> C["Evaluate against pinned criteria"]
+    C --> D["Compare with baseline"]
+    D --> E["Review evidence and check release"]
+```
+
+Only case input goes to the target. Evaluators use the configured reference or context, while human reviews remain separate from automated judgments. Saved outputs can be rescored without calling the target again.
+
+### Architecture
+
+| Area | Technology | Responsibility |
+| --- | --- | --- |
+| Application | Vue 3, TypeScript, Vite, FastAPI | Editors, comparison UI and scoped API |
+| Data | PostgreSQL 17, SQLAlchemy, Alembic | Versioned resources, results and audit records |
+| Jobs | Procrastinate, PostgreSQL | Durable execution, retries and worker recovery |
+| AI | OpenAI Responses API, Pydantic, JSON Schema | Structured generation and validated judgments |
+| Observability | Persisted events, attempts and usage metadata | Inspect progress, failures, latency and token usage |
+| Local runtime | Docker Compose, nginx | Run the stack and proxy same-origin requests |
+
+See [architecture and delivery semantics](docs/ARCHITECTURE.md).
+
+## Quick start
+
+### Requirements
+
+- Docker with Compose v2.
+- Python 3.12+ for local configuration; application runtimes run inside Docker.
+- On Windows, use WSL for the commands below.
+
+### Installation
+
+From the downloaded or cloned repository root:
 
 ```bash
-cd /home/andrews/projects/evaldock
 python3 scripts/configure.py
 docker compose up -d --build
 docker compose exec -T api uv run python -m evaldock.seed
 ```
 
-Open **http://localhost:5188**. Sign in as `demo@evaldock.local`. `scripts/configure.py` generates a random local password and encryption key in the ignored, mode-0600 `.env`. Retrieve your local password with `grep '^DEMO_PASSWORD=' .env`. The seed is idempotent and retains existing data and passwords.
+Open [http://localhost:5188](http://localhost:5188). Sign in as `demo@evaldock.local` using `DEMO_PASSWORD` from the generated root `.env`.
 
-On this WSL machine, Docker's inherited Windows credential helper could not execute. The working project-specific alternative is:
+Configuration generates local secrets and preserves an existing `.env`. The seeded catalog and support examples are deterministic and require no provider key. See the [workflow guide](docs/WORKFLOWS.md#start-locally) for ports and troubleshooting.
 
-```bash
-mkdir -p work/docker-config
-printf '{}' > work/docker-config/config.json
-DOCKER_CONFIG="$PWD/work/docker-config" docker compose up -d --build
-```
+## Usage
 
-This uses public images and does not modify your global Docker configuration. The project runs on the Linux filesystem at `/home/andrews/projects/evaldock`, not under `/mnt/c`.
+1. Open **Catalog extraction** and launch a baseline with its dataset, baseline target and release suite.
+2. In the completed report, expand **Run details & actions** and choose **Pin baseline**.
+3. Launch a candidate with the same dataset and suite. Open **Compare** to inspect improvements and regressions.
+4. Review a case, then open **Release checks** to apply the saved policy or export a report.
 
-| Service | Local address |
-|---|---|
-| Web and proxied API | http://localhost:5188 |
-| FastAPI / OpenAPI | http://localhost:8088/docs |
-| Sample targets | http://localhost:8099 |
-| PostgreSQL | 127.0.0.1:5492 |
-
-The Compose project is named `evaldock`. Database and artifact volumes persist across restarts. `docker compose down` stops services without deleting data. Do not add `-v` unless you intend to delete the local database and artifacts.
-
-## Complete walkthrough
-
-1. In **Datasets**, inspect the 24-case held-out dataset. Each case has JSON input, optional expected output/context, tags, slices and labeling notes. Use the guided case editor to add, duplicate and edit cases. Enable “Reference output provided” to distinguish an explicit null from a missing reference. Saving creates a new immutable version. Upload or paste JSONL, validate it, then apply the preview to the draft. Export any version through its download action.
-2. In **Targets**, use the guided connection form to inspect the baseline and candidate HTTP adapters, credentials, mappings and request limits. The sample services are explicitly administrator-allowlisted. Use **Test** with a dataset case's input only. Target requests never include the reference or evaluator context.
-3. In **Evaluators**, configure criteria through the guided forms, then choose named evaluator versions in **New suite**. The support project also computes classification confusion matrices and micro/macro metrics. A separate fixture judge suite supports calibration without a provider key.
-4. Launch **Baseline · release v1** with the original dataset, baseline target, Release criteria suite, two repetitions and concurrency two. Wait for completion. Open its result, expand **Run details & actions**, and select **Pin baseline**.
-5. Launch **Candidate · release v2** with the same dataset/suite and candidate target. The baseline ID is copied at launch; later baseline changes do not move this comparison reference.
-6. Open **Compare**. Select the two runs and **Field accuracy**. Filter regressions, errors or tags. Inspect baseline and candidate side by side, expected output/context, field differences, evaluator explanations and trace data. A score improvement in the aggregate can coexist with critical case regressions.
-7. Save a human assessment on a regression. Automated results remain intact. The experiment calibration section reports human agreement and disagreements, using the latest assessment per reviewer/case/metric.
-8. Open candidate results, expand **Run details & actions**, choose the fixture judge suite and **Rescore outputs**. The new record links to the source experiment and reuses its outputs. It makes no target calls and reports no new target latency.
-9. In **Release checks**, select the candidate to evaluate the saved policy. Expand **Edit release policy** to change thresholds. The deliberately regressed candidates fail. Download JSON/JUnit or persist a report artifact.
-10. Switch to **Support triage** and repeat the same workflow with no engine changes.
-
-For an automated demonstration using the real HTTP API and worker:
-
-```bash
-uv sync --frozen
-uv run python scripts/demo_verify.py
-```
-
-This creates new runs, verifies both applications, imports observable agent traces, saves a human disagreement, asserts zero target calls during rescoring and verifies the CLI exit code. It writes `docs/verification.json` and example reports. It does not call a live model.
-
-See [the UX revision and acceptance report](docs/UX-REVIEW.md) for guided editors, keyboard/mobile behavior and the verified local workflows. Advanced JSON remains available for complex configuration.
-
-## First local calibration pack
-
-The [catalog-v2 pack](calibration/catalog-v2/README.md) contains 40 explicitly synthetic English cases, proposed references pending human approval, six deterministic criteria and positive/negative imported-output controls. It exercises the local workflow before real-model calibration. See the [executed results and review guide](docs/catalog-calibration-v2.md).
-
-```bash
-uv run python scripts/prepare_catalog_calibration.py
-uv run python scripts/load_catalog_calibration.py
-```
-
-This creates a dedicated project through the API, preserves the original examples and never calls targets/models or records assistant decisions as human reviews. In projects without an HTTP target, the launcher defaults to imported outputs.
-
-## Ready-to-use AI pilot
-
-Set `OPENAI_API_KEY` in the project root `.env`, then run `docker compose up -d --no-deps --force-recreate api worker`. In **Catalog extraction · public-source pilot**, choose **New experiment → Launch experiment**. The model, extraction prompt, structured output schema and evaluation suite are already prepared.
-
-To prepare the same pilot in a new installation:
-
-```bash
-uv run python scripts/load_public_catalog.py
-uv run python scripts/configure_catalog_ai.py
-docker compose up -d --no-deps --force-recreate api worker
-```
-
-The default run uses eight calibration inputs and up to eight AI reviews. Usage is billed by OpenAI. See [AI setup](docs/AI-READINESS.md) for settings and verification limits. No API key is included in this repository.
-
-## CLI and CI
-
-Create a token in Settings. Tokens are hashed in the database, restricted to one workspace and a set of `read`/`write` scopes, and expire. The plaintext is shown once.
+For CI, install the Python package with `uv sync --frozen`, create a workspace token in **Settings**, and use a completed experiment ID:
 
 ```bash
 export EVALDOCK_URL=http://localhost:5188
-export EVALDOCK_TOKEN='your-scoped-token'
-uv run evaldock projects
-uv run evaldock upload PROJECT_ID 'My dataset' fixtures/catalog.jsonl
-# For a subsequent version:
-uv run evaldock upload PROJECT_ID 'My dataset' fixtures/catalog.jsonl --resource-id RESOURCE_ID
-RUN_ID=$(uv run evaldock start PROJECT_ID DATASET_VERSION_ID SUITE_VERSION_ID 'CI candidate' --target TARGET_VERSION_ID --baseline main)
-uv run evaldock wait "$RUN_ID" --timeout 600
-uv run evaldock compare "$RUN_ID" --metric field_accuracy
-uv run evaldock export "$RUN_ID" report.json --format json
-uv run evaldock export "$RUN_ID" junit.xml --format junit
-uv run evaldock gate "$RUN_ID" --metric field_accuracy
+export EVALDOCK_TOKEN='your-workspace-token'
+uv run evaldock gate EXPERIMENT_ID --metric field_accuracy
 ```
 
-Exit **0** means the gate passed, **1** means a quality-gate failure, and **2** means infrastructure/configuration failure. A missing pinned baseline, unknown metric, unfinished experiment or incomparable requested latency measurement is a configuration failure. Coverage and evaluator errors have explicit policy. See `infra/evaluation-ci.yml` for an example.
+Exit codes: **0** passed, **1** quality failure, **2** infrastructure or configuration error. More examples: [CLI and CI](docs/WORKFLOWS.md#cli-and-ci).
 
-## Real LLM judge
+## Engineering decisions
 
-The backend integrates the OpenAI Responses API through the official async Python SDK and schema-validated Pydantic responses. No LangChain or LangGraph is required. Create an encrypted credential in Settings and use its ID in a new evaluator:
+### Immutable experiment inputs
 
-```json
-{
-  "kind": "llm_judge",
-  "metric_key": "answer_correctness",
-  "max_attempts": 2,
-  "config": {
-    "mode": "live",
-    "template": "correctness",
-    "rubric": "The answer must be correct relative to the supplied reference. Unsupported claims fail; appropriate abstention passes.",
-    "rubric_version": "correctness-v1",
-    "model": "YOUR_SUPPORTED_STRUCTURED_OUTPUT_MODEL",
-    "credential_id": "CREDENTIAL_ID",
-    "parameters": {}
-  }
-}
-```
+Experiments pin exact dataset, target and evaluator versions so later edits cannot change earlier evidence. Updates create new versions, trading additional records for reproducibility. Human assessments are appended rather than replacing machine judgments.
 
-The other template is `context_support`: it checks support by supplied context, **not real-world truth**. Fixture mode must be selected explicitly. Live errors, schema failures and refusals never fall back to fixtures. Judge instructions occupy a separate system message; evaluated content is untrusted data. No tools are provided to the judge. This separation reduces injection risk but is not a proof that models resist every attack. Human calibration remains necessary.
+### Reliability
 
-Provider token usage is recorded separately from target usage. Costs remain unavailable unless supplied by a target/provider; there is no bundled price table. No live provider evaluation was performed without a user-provided credential.
+A PostgreSQL outbox and durable worker recover interrupted dispatch. Target and evaluator attempts are tracked separately, allowing evaluation retries to reuse saved outputs. External calls are **at least once**: a target must honor idempotency keys to prevent duplicate side effects.
 
-## Development and tests
+### Security
 
-```bash
-uv sync --frozen
-uv run ruff check apps/api packages/cli scripts
-uv run ruff format --check apps/api packages/cli scripts
-uv run mypy
-uv run python scripts/test_backend.py
-cd apps/web
-npm ci
-npm run typecheck
-npm test
-npm run build
-npx playwright install chromium
-npm run e2e
-```
+Workspace roles and scoped, expiring tokens control access. Sessions use HttpOnly cookies and CSRF checks; stored credentials are encrypted, and the prepared OpenAI key stays in the server environment. HTTP adapters validate destinations and enforce request limits. See [security boundaries](docs/SECURITY.md).
 
-Integration tests use real PostgreSQL in the separate `evaldock_test` database. The helper creates it if needed and applies Alembic migrations. Browser tests require the running app, demo seed, and `docs/verification.json` from `demo_verify.py`. They exercise both integrations, comparison filtering, diffs, human review, rescoring, gate failure, experiment launching and JSONL validation.
+## AI behavior
 
-Regenerate frontend API request types when the FastAPI schema changes:
+Live AI is optional; fixture mode and imported-output evaluation work without credentials.
 
-```bash
-uv run python -m evaldock.api > apps/web/openapi.json
-cd apps/web && npm run api:types
-```
+| Area | Approach |
+| --- | --- |
+| Model support | OpenAI structured generation and judging; JSON HTTP adapters for other applications |
+| Structured output | Target JSON Schema validation and Pydantic-validated judge responses |
+| Evaluation | Deterministic criteria, optional rubric-based judges, and separate human reviews |
+| Reliability | Bounded attempts; refusals and invalid output stay errors, with no fixture fallback |
+| Privacy | Targets receive input only; judges receive their versioned evidence scope. Outputs and judgments persist locally |
+| Cost control | Request budgets, concurrency/rate limits, output-token caps and recorded usage; no dollar-budget guarantee |
 
-Generated request contracts are in `src/api/schema.d.ts`; view models add types for the generic JSON-valued resource registry. `uv.lock` and `package-lock.json` pin the resolved versions. The Python CLI ships in the same installable package as the API.
+Configure `OPENAI_API_KEY` in the root `.env` after preparing the pilot. The [AI setup guide](docs/AI-READINESS.md) explains credential binding, model settings and expected requests.
 
-## Documentation
+### Evaluation
 
-- [Architecture and decisions](docs/ARCHITECTURE.md)
-- [HTTP adapters, datasets and traces](docs/INTEGRATIONS.md)
-- [Metrics, attempts and CI policies](docs/METRICS.md)
-- [Security boundaries and limitations](docs/SECURITY.md)
-- [Implementation plan and official references](docs/PLAN.md)
-- [Executed verification](docs/VERIFICATION.md)
+The public-source catalog pilot tests material, weight and origin extraction using twelve curated product passages: eight calibration cases and four separate validation cases. Six deterministic criteria cover schema validity, field accuracy and exact records; an additional AI judge checks source support.
 
-The MVP uses no arbitrary user code, vector database, agent builder, automatic prompt optimization, billing or enterprise SSO. Evaluation datasets should be held out from repeated prompt tuning.
+The first live calibration accepted **8/8 correct controls**, rejected **8/8 incorrect controls**, and passed **4/4 validation records**. The release gate uses deterministic criteria; the AI judge remains advisory. These are small, non-blind pilot results with references pending independent human approval, not a general model-quality benchmark.
 
-## Local completion and public-source pilot
+[Calibration method and results](docs/AI-CALIBRATION.md) · [Frozen execution plan](docs/catalog-ai-v2/plan.json) · [Machine-readable results](docs/catalog-ai-v2/summary.json)
 
-See [the local completion report](docs/LOCAL-COMPLETION.md), [rubric review](docs/catalog-rubric-review.md), and [first live AI experiment guide](docs/AI-READINESS.md). The public-source pack contains twelve real products as curated factual paraphrases, actual offline extraction outputs and reproducible paired results. It requires no external project integration or model key.
+## Limitations
+
+- Local/team deployment; no public hosted demo, enterprise SSO or managed backup/retention workflow.
+- HTTP targets use synchronous JSON POST; streaming and asynchronous target protocols are unsupported.
+- Provider cost is unavailable unless reported; token usage is not converted into a price estimate.
+- Fresh held-out cases and independent human calibration are still needed before relying on AI judgments for release decisions.
+
+## Roadmap
+
+- [x] Versioned evaluation, comparison, review and release-check workflows.
+- [x] Automated backend, frontend and browser tests.
+- [ ] Independent human calibration with fresh held-out cases.
+- [ ] Harden deployment, identity, backups and retention for wider use.
+
+## Contributing
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, checks and contribution guidelines. Report security concerns privately as described in [SECURITY.md](docs/SECURITY.md).
+
+## License
+
+A license has not been selected yet. This repository does not currently include a `LICENSE` file.
