@@ -24,8 +24,8 @@ test('viewer can inspect versions and manage only read tokens; editing stays pro
   await expect(page.getByRole('heading', { name: 'Project overview', exact: true })).toBeVisible()
   const id = evidence.integrations[0].project_id
   await page.goto(`/projects/${id}/datasets`)
-  await expect(page.getByRole('button', { name: 'Create new', exact: true })).toHaveCount(0)
-  await page.getByRole('button', { name: 'Inspect versions', exact: true }).first().click()
+  await expect(page.getByRole('button', { name: 'New dataset', exact: true })).toHaveCount(0)
+  await page.getByRole('button', { name: 'View versions', exact: true }).first().click()
   await expect(page.getByLabel('Target input', { exact: true })).toBeDisabled()
   await expect(page.getByRole('button', { name: 'Save immutable version', exact: true })).toHaveCount(0)
   await page.getByRole('button', { name: 'Close', exact: true }).click()

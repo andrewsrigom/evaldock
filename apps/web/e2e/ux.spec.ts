@@ -32,7 +32,7 @@ test('guided dataset versions, suite selection and imported run preserve null an
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message))
   const id = await newProject(page, 'local workflow')
   await page.goto(`/projects/${id}/datasets`)
-  await page.getByRole('button', { name: 'Create new', exact: true }).click()
+  await page.getByRole('button', { name: 'New dataset', exact: true }).click()
   await page.getByLabel('Name', { exact: true }).fill('Answer cases')
   await page.getByLabel('Target input', { exact: true }).fill('{"question":"Hello"}')
   await page.getByLabel('Reference output provided', { exact: true }).check()
@@ -43,7 +43,7 @@ test('guided dataset versions, suite selection and imported run preserve null an
   await saved(page)
   let project = await (await page.request.get(`/api/projects/${id}`)).json()
   const version1 = project.resources[0].versions[0].id
-  await page.getByRole('button', { name: 'Edit / versions', exact: true }).click()
+  await page.getByRole('button', { name: 'Edit versions', exact: true }).click()
   await page.getByRole('button', { name: /missing-reference No reference/ }).click()
   await page.getByLabel('Reference output provided').check()
   await expect(page.getByLabel('Expected output', { exact: true })).toHaveValue('null')
@@ -56,7 +56,7 @@ test('guided dataset versions, suite selection and imported run preserve null an
   expect(latest.cases[1]).toHaveProperty('expected', null)
 
   await page.goto(`/projects/${id}/evaluators`)
-  await page.getByRole('button', { name: 'Create new', exact: true }).click()
+  await page.getByRole('button', { name: 'New evaluator', exact: true }).click()
   await page.getByLabel('Name', { exact: true }).fill('Answer equality')
   await page.getByLabel('Metric key', { exact: true }).fill('answer_match')
   await saved(page)
@@ -82,7 +82,7 @@ test('guided dataset versions, suite selection and imported run preserve null an
 
 test('invalid JSON, duplicate IDs and unsaved changes are guarded', async ({ page }) => {
   await page.goto(`/projects/${evidence.integrations[0].project_id}/datasets`)
-  await page.getByRole('button', { name: 'Create new', exact: true }).click()
+  await page.getByRole('button', { name: 'New dataset', exact: true }).click()
   await expect(page.locator('#app')).toHaveAttribute('inert', '')
   await expect(page.locator('#app')).toHaveAttribute('aria-hidden', 'true')
   await page.getByLabel('Name', { exact: true }).fill('Uncommitted draft')
@@ -107,7 +107,7 @@ test('target and evaluator forms save exact configurations without making calls'
   const id = await newProject(page, 'configuration')
   const before = await (await page.request.get('http://localhost:8099/health')).json()
   await page.goto(`/projects/${id}/targets`)
-  await page.getByRole('button', { name: 'Create new', exact: true }).click()
+  await page.getByRole('button', { name: 'New target', exact: true }).click()
   await page.getByLabel('Name', { exact: true }).fill('Example adapter')
   await page.getByLabel('Endpoint URL').fill('https://example.com/evaluate')
   await page.getByRole('button', { name: 'Add mapping' }).click()
@@ -117,7 +117,7 @@ test('target and evaluator forms save exact configurations without making calls'
   await page.goto(`/projects/${id}/evaluators`)
   const kinds = ['field_comparison', 'classification', 'numeric_tolerance', 'tool_calls', 'json_schema', 'llm_judge']
   for (const kind of kinds) {
-    await page.getByRole('button', { name: 'Create new', exact: true }).click()
+    await page.getByRole('button', { name: 'New evaluator', exact: true }).click()
     await page.getByLabel('Name', { exact: true }).fill(`Criteria ${kind}`)
     await page.getByLabel('Evaluator type').selectOption(kind)
     await page.getByLabel('Metric key', { exact: true }).fill(kind)
@@ -139,6 +139,7 @@ test('target and evaluator forms save exact configurations without making calls'
 test('gate form persists thresholds and protects unsaved policy', async ({ page }) => {
   const id = await newProject(page, 'gate policy')
   await page.goto(`/projects/${id}/gates`)
+  await page.getByText('Edit release policy', { exact: true }).click()
   await page.getByLabel('Maximum regressions').fill('2')
   await page.getByLabel('Minimum coverage').fill('0.95')
   page.once('dialog', d => d.dismiss())
@@ -147,6 +148,7 @@ test('gate form persists thresholds and protects unsaved policy', async ({ page 
   await page.getByRole('button', { name: 'Save gate policy' }).click()
   await expect(page.getByRole('status')).toContainText('Gate policy saved')
   await page.reload()
+  await page.getByText('Edit release policy', { exact: true }).click()
   await expect(page.getByLabel('Maximum regressions')).toHaveValue('2')
   await expect(page.getByLabel('Minimum coverage')).toHaveValue('0.95')
 })
@@ -170,7 +172,7 @@ test('responsive navigation, comparison filtering and keyboard tabs', async ({ p
   await page.getByRole('link', { name: 'Datasets', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Datasets', exact: true })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Toggle navigation' })).toHaveAttribute('aria-expanded','false')
-  await page.getByRole('button', { name: 'Create new', exact: true }).click()
+  await page.getByRole('button', { name: 'New dataset', exact: true }).click()
   await expect(page.getByLabel('Target input', { exact: true })).toBeVisible()
   const widths = await page.evaluate(() => ({ body: document.documentElement.scrollWidth, viewport: innerWidth, dialog: document.querySelector('[role=dialog]')!.getBoundingClientRect().width }))
   expect(widths.body).toBeLessThanOrEqual(widths.viewport + 1)

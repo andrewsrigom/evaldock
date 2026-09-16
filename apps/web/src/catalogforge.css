@@ -62,3 +62,27 @@ details { border-color:#e2e8f1; padding:16px; } summary { color:#476da7; font-si
 .settings-details[open]>summary { margin-bottom:16px; }.settings-details:not(.pad)[open]>summary { margin-bottom:0; }
 
 .revoked-tokens { margin-top:18px; color:#64748b; font-size:12px; }.revoked-tokens summary { cursor:pointer; }.revoked-tokens .credential-row { margin-top:10px; }
+
+/* Final usability pass: readable labels, compact results, details on demand. */
+.sidebar nav a { font-size:13px; }.panel-header h2 { font-size:16px; }
+table { font-size:13px; } th { font-size:11px; } label { font-size:13px; }
+.latest-context { margin:-6px 0 24px; font-size:13px; display:flex; flex-wrap:wrap; gap:6px; }
+.criteria-summary { display:grid; gap:4px; min-width:95px; }.criteria-summary strong { font-weight:550; }.criteria-summary small { font-size:11px; }
+.case-results td:first-child { min-width:180px; max-width:320px; }.case-results .strong-link { display:block; line-height:1.55; }
+.source-passage { padding:18px 22px; margin:0; white-space:pre-wrap; line-height:1.7; font-size:13px; }
+.run-details { display:grid; grid-template-columns:130px minmax(0,1fr); gap:10px 18px; font-size:13px; margin:18px 0; }.run-details dt { color:#64748b; }.run-details dd { margin:0; overflow-wrap:anywhere; }
+.rescore-controls { border-top:1px solid #e2e7ef; margin-top:22px; padding-top:22px; max-width:600px; }
+.release-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px; align-items:start; }.release-layout h2 { margin:0 0 8px; }.release-check>p,.release-policy>p { font-size:13px; margin-bottom:22px; }
+.policy-summary { margin:20px 0; }.policy-summary>div { display:flex; justify-content:space-between; gap:16px; margin:12px 0; font-size:13px; }.policy-summary dt { color:#64748b; }.policy-summary dd { margin:0; font-weight:550; }
+.release-policy table { margin:8px 0 22px; }.release-policy td,.release-policy th { padding:12px 8px; }.release-policy td:last-child,.release-policy th:last-child { text-align:right; }
+.policy-editor { padding:0; border:0; }.policy-editor>summary { padding:10px 0; }.policy-editor .panel { border:0; box-shadow:none; padding:16px 0 0; margin:0; }.policy-editor .section-intro:first-child { display:none; }
+.release-check .gate-result { border:1px solid #d3eade; border-radius:8px; padding:20px; margin:22px 0; }.release-check .gate-result.fail { border-color:#f2dcd6; }.release-check .gate-result h3 { margin:0 0 7px; font-size:18px; }.release-check .gate-result p { margin:0; color:inherit; }.gate-result ul { margin-top:12px; }
+.comparison-method { padding:0; margin:0; border:0; }.comparison-method p { max-width:480px; font-size:12px; }.comparison-method[open]>summary { margin-bottom:7px; }.case-item strong { white-space:normal; line-height:1.5; overflow-wrap:anywhere; }
+summary { cursor:pointer; min-height:28px; }.result-secondary .inline-actions { margin-top:18px; }
+@media(max-width:1000px) { .release-layout { grid-template-columns:1fr; }.release-layout .release-policy { max-width:none; } }
+@media(max-width:600px) { input,select,textarea { font-size:16px; min-height:44px; }.icon-button { min-width:40px; min-height:40px; }.run-details { grid-template-columns:1fr; gap:4px; }.run-details dd { margin-bottom:12px; }.case-results td:first-child { min-width:170px; }.source-passage { padding:16px; }.comparison-filterbar .tab-bar { gap:17px; }.policy-summary>div { gap:10px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; animation:none!important; } }
+
+.evidence-header>div:first-child { min-width:0; }.evidence-header h2 { font-family:inherit; line-height:1.45; }.evidence-header>div:last-child { flex-shrink:0; }.tags { flex-wrap:wrap; }.tags>span { white-space:nowrap; }
+.other-findings { margin:8px 24px 22px; }.other-findings .evaluator-row { padding:16px 0; }.other-findings .evaluator-row:last-child { border-bottom:0; }
+@media(max-width:600px) { .compare-selectors { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; padding:18px; }.compare-selectors>label { width:100%; max-width:none; }.compare-selectors .versus { display:none; }.compare-selectors .metric-select { grid-column:auto; }.evidence-header { flex-direction:column; align-items:flex-start; gap:12px; }.evidence-header>div:last-child { width:100%; flex-direction:row; align-items:center; justify-content:space-between; }.evidence-header h2 { font-size:17px; }.other-findings { margin:8px 18px 20px; }.reference-toggle button,.evidence-tabs button,.report-actions>a { min-height:44px; }.release-check .report-actions button { min-height:44px; } }

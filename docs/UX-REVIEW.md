@@ -1,58 +1,47 @@
-# UX revision — ready for local calibration setup
+# Final UX review
 
-Date: 2026-09-16. Scope: finish the local workbench experience before integrating another application or using a live judge.
+2026-09-16 · Local demo and portfolio presentation.
 
-## Visual direction
+The workbench retains CatalogForge's white navigation, blue actions and restrained slate/neutral surfaces. Application copy is English. No blocking usability issue was found in the flows checked below.
 
-The local CatalogForge stylesheet was inspected as the reference. EvalDock now shares its white navigation, `#215acb` blue actions, slate typography, pale neutral surfaces, compact tables, subtle borders and rounded panels. CatalogForge itself was not modified or integrated. Success, failure and warning colors retain their semantic meaning.
+## Final changes
 
-## Completed flows
+- Comparison opens with a baseline from the candidate's dataset and offers criteria present in both runs. A direct link from a report preserves the selected candidate.
+- Reports distinguish completed executions, passing criteria and evaluation coverage. Product names replace opaque identifiers when available. Successful case results use one compact summary; failures and unscored criteria remain explicit.
+- The selected comparison criterion has primary evidence. Other findings, references, traces, telemetry and secondary actions remain accessible on demand.
+- **Release checks** shows the result before policy editing. Passing, failing and incomplete checks have distinct messages; changing the run refreshes the result. Thresholds retain their original machine-readable keys.
+- Source passages are readable text. Draft protection, keyboard filters, focus restoration and mobile navigation remain intact. Mobile case headers and run selectors no longer clip their content.
 
-- **Dataset editor:** searchable case list, add/duplicate/remove, stable identifiers, separate JSON input/reference/context, explicit missing versus null, tags, slices, acceptance criteria and reference IDs. JSONL file upload or paste has line-specific errors and an explicit apply step. Saved versions remain immutable.
-- **Target editor:** URL, credential selection, authentication, stable request-mapping rows, response pointers, rate/concurrency/time limits, retry policy and revision metadata.
-- **Evaluator editor:** guided controls for all seven evaluator kinds, normalization, paths, labels, tolerances, tool assertions, schema and versioned judge rubrics. Fixture and live modes are explicit. Saving a configuration does not call a target or AI provider.
-- **Suite editor:** select criteria by name and pin versions. Empty suites and duplicate metric keys are rejected before saving.
-- **Gate editor:** editable thresholds, coverage, regression limits, critical tags, evaluator error policy and optional latency ceiling. JSON remains available as an advanced mode.
-- **Experiment launcher:** planned case/replicate count, pinned-baseline context, dependency hints and imported-output file/paste validation. Missing outputs remain visible in coverage; imports never call targets.
-- **Comparison:** keyboard-operated result filters, tag/slice selectors, clear filters, per-side coverage, both baseline and candidate explanations and a bounded case list. Candidate scores are no longer unconditionally colored as an improvement.
-- **Navigation and review:** searchable histories/resources/review cases, contextual page descriptions, back links, real setup progress and metric selection based on each project. Completed runs stop polling.
-- **Access and feedback:** viewer-aware controls, selectable token scopes/expiry, copy/hide/revoke flows, readable server validation messages, modal focus trap and restoration, inert background, responsive navigation and warnings before discarding drafts or leaving an edited policy.
+## Verification for this revision
 
-Arbitrary JSON inputs, outputs, JSON Schemas and tool argument schemas still use a JSON field because their shape is project-specific. The field validates syntax, retains invalid drafts, formats valid JSON and prevents saving an invalid value.
+- 13 frontend unit tests passed.
+- TypeScript checking and the production build passed; the local web container serves the updated build.
+- Six browser journeys passed: the report/comparison/release-check journey; six mobile routes; the public-source pilot; configured/missing-key behavior; invalid JSON and discard guards; responsive navigation and keyboard filters.
+- Browser inspection covered desktop and 390 × 844 mobile views. No JavaScript console errors were observed. Tests check both page overflow and clipping inside the comparison header.
+- No model requests, persisted evaluation changes or new verification accounts/projects were made. The main review journey blocks unexpected API writes after sign-in.
 
-## Verified
+Backend scoring was unchanged. The 78-test backend verification belongs to the preceding calibration revision. The full mutation-heavy browser suite was not rerun against the local pilot.
 
-- 9 Vitest tests passed, including missing/null integrity, duplicate IDs/metrics, invalid JSON preservation and live-judge configuration requirements.
-- 8 complete Playwright journeys passed together: both sample domains; JSONL validation; versioned dataset/suite/imported run; invalid drafts and discard guards; all evaluator types and target mappings without calls; persisted gate policy/navigation guards; desktop/mobile layout and keyboard filters.
-- One additional Playwright journey passed with a real temporary viewer: read-only inspection, read-scoped expiring token creation/revocation and backend rejection of an edit.
-- Strict TypeScript and the production Vite build passed. Screenshots were inspected at 1500×1000 and 390×844.
-- Browser checks caught and fixed same-route discard-guard bypass and request-pointer loss while renaming a mapping field.
-- Existing backend/scoring code was not changed. Its earlier 45-test PostgreSQL verification remains documented separately; it was not rerun for this frontend revision.
-- No external application integration and no live-model calls were performed. Local deterministic fixtures and imported outputs supplied the verification data.
+## Portfolio walkthrough
 
-After explicit user authorization, the ten temporary UX verification projects and the temporary viewer account were removed. Both original sample projects and their results were preserved.
+Use the **Catalog extraction · public-source pilot** project:
 
-## What remains for the next phase
+1. Open **Compare**: the validation baseline and AI candidate share four cases. Select **Exact record**, then **Improvements**.
+2. Inspect a changed field and its source; open the case for complete evidence.
+3. Return to the experiment, then **Release checks**, to explain how results inform a release decision.
 
-1. Choose a real evaluation dataset and rubric for the first AI calibration.
-2. Add the provider credential and select a supported model in the guided judge editor.
-3. Review a labeled subset and investigate disagreements before using judge decisions as release gates.
+The [calibration report](AI-CALIBRATION.md) documents the limited pilot evidence. Results remain preliminary: the validation set is curated, not blind, and independent human approval is pending.
 
-Local deployment/security boundaries remain in SECURITY.md. This revision does not add internet hosting, SSO, automated backups/retention, bulk review assignment or live-model quality claims.
+Screenshots: [comparison](portfolio/comparison-desktop.png), [results](portfolio/results-desktop.png), [release checks](portfolio/release-checks-desktop.png), [overview](portfolio/overview-desktop.png), [mobile overview](portfolio/overview-mobile.png), [mobile checks](portfolio/release-checks-mobile.png).
 
-## Re-run
+## Re-run the focused checks
 
 ```bash
 cd apps/web
-npm run test
+npm test
 npm run build
-npm run e2e
+npm run e2e -- e2e/portfolio.spec.ts e2e/public-catalog.spec.ts e2e/ai-setup.spec.ts
+npm run e2e -- e2e/ux.spec.ts --grep 'invalid JSON|responsive navigation'
 ```
 
-Browser journeys require the running local stack and its generated `.env`. They create persisted verification data; use a disposable workspace/database for repeated CI runs. Traces and authentication artifacts remain ignored by Git.
-
-## Simplicity pass, 2026-09-16
-
-Removed promotional panels, repeated header/footer copy and completed setup steps. Overview prioritizes results, baseline and recent runs. Settings keep credentials and active tokens visible; members, activity, notes and revoked tokens expand on demand. Evidence, coverage and actionable errors remain accessible. English copy remains the project default.
-
-Validation: 9 frontend tests, strict typing, production build and 2 read-only browser journeys. The journeys cover imports, comparison, source evidence, mobile layout and expanding workspace members. No new verification projects or accounts were created.
+These browser checks require the prepared local pilot and generated `.env`. Run the complete browser suite against a disposable database because its other journeys create records.
