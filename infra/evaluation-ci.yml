@@ -1,0 +1,32 @@
+# Example: run in your application's CI after its test endpoint is available.
+name: Evaluate candidate
+on: [workflow_dispatch]
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    env:
+      EVALDOCK_URL: ${{ vars.EVALDOCK_URL }}
+      EVALDOCK_TOKEN: ${{ secrets.EVALDOCK_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - name: Start pinned evaluation
+        run: |
+          RUN_ID=$(uv run evaldock start '${{ vars.EVALDOCK_PROJECT }}' '${{ vars.EVALDOCK_DATASET }}' '${{ vars.EVALDOCK_SUITE }}' 'CI candidate' --target '${{ vars.EVALDOCK_TARGET }}')
+          echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
+          uv run evaldock wait "$RUN_ID"
+      - name: Export evidence
+        if: always() && env.RUN_ID != ''
+        run: |
+          uv run evaldock export "$RUN_ID" report.json --format json
+          uv run evaldock export "$RUN_ID" junit.xml --format junit
+      - name: Enforce release gate
+        run: uv run evaldock gate "$RUN_ID" --metric field_accuracy
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evaldock-evidence
+          path: |
+            report.json
+            junit.xml

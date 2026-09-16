@@ -1,0 +1,69 @@
+name: Product checks
+on: [push, pull_request]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: evaldock
+          POSTGRES_PASSWORD: test-only-password
+          POSTGRES_DB: evaldock
+        ports: ['5492:5432']
+        options: --health-cmd 'pg_isready -U evaldock' --health-interval 3s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+psycopg://evaldock:test-only-password@localhost:5492/evaldock
+      ALLOWED_TARGET_ORIGINS: http://localhost:8099
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.13'
+      - run: uv sync --frozen
+      - run: uv run ruff check apps/api packages/cli scripts
+      - run: uv run ruff format --check apps/api packages/cli scripts
+      - run: uv run mypy
+      - name: Temporary encryption key
+        run: echo "APP_KEY=$(uv run python -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())')" >> "$GITHUB_ENV"
+      - run: uv run python scripts/test_backend.py
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci
+        working-directory: apps/web
+      - run: npm run typecheck && npm test && npm run build
+        working-directory: apps/web
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: uv sync --frozen
+      - run: python3 scripts/configure.py
+      - run: docker compose up -d --build
+      - run: uv run python scripts/wait_ready.py
+      - run: docker compose exec -T api uv run python -m evaldock.seed
+      - run: uv run python scripts/demo_verify.py
+      - run: npm ci && npx playwright install --with-deps chromium && npm run e2e
+        working-directory: apps/web
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          path: |
+            docs/*comparison.png
+            docs/verification.json
+      - run: docker compose down
+        if: always()

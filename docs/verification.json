@@ -1,0 +1,66 @@
+{
+  "fixture_mode": true,
+  "real_model_evaluation": false,
+  "integrations": [
+    {
+      "project": "Catalog extraction",
+      "project_id": "5b0b27bb-f608-4b4f-82fe-de06d2a15382",
+      "baseline": "f236e5f5-6f44-460e-b2ba-02d2f4390cf4",
+      "candidate": "17a67461-499c-4b2f-ba2c-86b99cd918fb",
+      "rescore": "f3986b19-6b69-4120-8bae-05347588b1e1",
+      "case_count": 24,
+      "executions_per_run": 48,
+      "paired_counts": {
+        "unchanged_pass": 26,
+        "improved": 14,
+        "regressed": 6,
+        "unchanged_fail": 2
+      },
+      "gate_exit_code": 1,
+      "rescore_target_calls": 0,
+      "human_disagreements": 1
+    },
+    {
+      "project": "Support triage",
+      "project_id": "0bd7d2ba-e094-432d-af53-3d5ccadf8755",
+      "baseline": "95972e17-717a-4f67-b7fe-b39cc84cffd1",
+      "candidate": "4fa5b525-3c63-49e1-bda9-ef8604debd30",
+      "rescore": "ccb2d5f7-85a9-4e8b-89fa-e432700412a9",
+      "case_count": 24,
+      "executions_per_run": 48,
+      "paired_counts": {
+        "unchanged_pass": 24,
+        "regressed": 8,
+        "improved": 16
+      },
+      "gate_exit_code": 1,
+      "rescore_target_calls": 0,
+      "human_disagreements": 1
+    }
+  ],
+  "imported_trace": {
+    "experiment_id": "57d4a989-30e9-4fe8-80ce-8cc334e4d4e0",
+    "status": "partially_failed",
+    "coverage": 0.6666666666666666
+  },
+  "worker_recovery": {
+    "experiment_id": "f9e07756-58ee-41cf-978b-44af84c99ad8",
+    "signal": "SIGKILL",
+    "status": "completed",
+    "completed_before_kill": 2,
+    "interrupted_attempts": 2,
+    "recovery_seconds": 29.2,
+    "duplicate_delivery_target_calls": 0,
+    "execution_count": 10
+  },
+  "automated_checks": {
+    "pytest": 45,
+    "vitest": 2,
+    "playwright": 3,
+    "ruff": "passed",
+    "mypy": "passed",
+    "vue_typescript": "passed",
+    "vite_build": "passed",
+    "npm_audit_vulnerabilities": 0
+  }
+}

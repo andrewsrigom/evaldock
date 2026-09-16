@@ -1,0 +1,43 @@
+{
+  "dataset_version_id": "REPLACE_WITH_CREATED_VERSION_ID",
+  "outputs": [
+    {
+      "case_id": "agent-001",
+      "replicate": 0,
+      "output": {
+        "answer": "Order shipped"
+      },
+      "trace": {
+        "tool_calls": [
+          {
+            "name": "lookup_order",
+            "arguments": {
+              "order_id": "101"
+            }
+          },
+          {
+            "name": "respond",
+            "arguments": {}
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "agent-002",
+      "replicate": 0,
+      "output": {
+        "answer": "Order pending"
+      },
+      "trace": {
+        "tool_calls": [
+          {
+            "name": "delete_order",
+            "arguments": {
+              "order_id": "102"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

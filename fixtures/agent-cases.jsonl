@@ -1,0 +1,3 @@
+{"case_id": "agent-001", "input": {"question": "Find order 101"}, "expected": {"answer": "Order shipped"}, "tags": ["critical"]}
+{"case_id": "agent-002", "input": {"question": "Find order 102"}, "expected": {"answer": "Order pending"}}
+{"case_id": "agent-003", "input": {"question": "Find order 103"}, "expected": null}
