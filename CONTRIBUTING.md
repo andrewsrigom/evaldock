@@ -39,17 +39,7 @@ npm test
 npm run build
 ```
 
-The backend helper migrates and uses the isolated `evaldock_test` PostgreSQL database. Use a disposable local stack for the complete browser suite: it creates projects, runs, reviews and tokens. Preparation steps are in [the CI workflow](.github/workflows/ci.yml).
-
-From the repository root:
-
-```bash
-cd apps/web
-npx playwright install chromium
-npm run e2e
-```
-
-Pilot browser journeys also need prepared datasets and saved reports; tests skip unavailable pilot evidence. The [UX review](docs/UX-REVIEW.md#re-run-the-focused-checks) lists focused checks for the prepared local pilot.
+The [testing guide](docs/TESTING.md) covers the isolated backend database, browser setup and focused checks. The full browser suite creates records; use a disposable stack.
 
 When the API schema changes, regenerate request types from the repository root:
 
@@ -69,10 +59,10 @@ npm run api:types
 
 ## Pull requests
 
-Describe the problem, resulting behavior and relevant verification. Include screenshots for visible UI changes and identify migrations or compatibility changes. Submit through the repository's hosting platform when available; no remote is configured in this checkout yet.
+Describe the problem, resulting behavior and relevant verification. Include screenshots for visible UI changes and identify migrations or compatibility changes.
 
 ## Reporting bugs
 
-Include the affected workflow, reproduction steps, expected versus actual behavior, environment and sanitized error output. Attach a minimal fixture or screenshot when useful. Share the report with the maintainer; this checkout does not yet have a public issue tracker.
+Include the affected workflow, reproduction steps, expected versus actual behavior, environment and sanitized error output. Attach a minimal fixture or screenshot when useful. Send the report to the maintainer.
 
 For suspected vulnerabilities, use the private reporting guidance in [SECURITY.md](docs/SECURITY.md).

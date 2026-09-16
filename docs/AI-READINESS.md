@@ -1,27 +1,39 @@
 # AI setup
 
-The local pilot has completed its first live calibration. See [results and scope](AI-CALIBRATION.md).
+The catalog pilot supports OpenAI generation and source-support judging. The API key stays in the server environment and is shared only by the project's configured target and judge.
 
-Set `OPENAI_API_KEY` in the project root `.env`. The existing `OPENAI_CREDENTIAL_ID` binds that key to the prepared target and judge; keep it unchanged. The key stays in the server environment and is not copied into the database. `.env` is ignored by Git and excluded from images and source archives.
+## Prepare the pilot
+
+With the [seeded stack](../README.md#quick-start) running, execute from the repository root:
+
+```bash
+uv sync --frozen
+uv run python scripts/load_public_catalog.py
+uv run python scripts/configure_catalog_ai.py
+```
+
+Setup creates the target, judge and suite from [the preset](../examples/catalog_ai.json). It reuses matching versions and preserves existing `.env` secrets. Setup makes no model requests.
+
+## Configure the key
+
+Set `OPENAI_API_KEY` in the root `.env`. Keep the `OPENAI_CREDENTIAL_ID` written by the setup script; it binds the key to the prepared project credential.
 
 ```dotenv
 OPENAI_API_KEY=your-key-here
 ```
 
-From the project directory, apply the changed environment to both processes:
+Apply the environment to both server processes:
 
 ```bash
 docker compose up -d --no-deps --force-recreate api worker
 ```
 
-Settings shows whether the key is configured. Other projects keep their own saved credentials. This local server key is not shared automatically with other projects, the sample targets or the frontend.
+**Settings** shows whether the key is configured. The key is not copied into the credential database, frontend or sample targets. Other projects use their own saved credentials. `.env` is excluded from Git and Docker images.
 
-Then select **New experiment → Launch experiment**. Defaults select eight calibration cases, the saved extraction prompt and schema, six deterministic checks and one source-support AI review. One repetition makes up to eight generation requests and eight judge requests; provider usage is billed to your account. No automatic retries are configured for these presets.
+## Run an experiment
 
-Both roles use `gpt-5.4-mini-2026-03-17`, low reasoning effort and a 2,000-token output limit. The target sends only case input. The calibrated judge receives the saved output and context, without the reference answer or execution metadata. Model settings, prompt and rubric are immutable versions editable through Targets and Evaluators. Incomplete, refused and invalid outputs remain errors; no reference-answer fallback exists.
+Open **Catalog extraction · public-source pilot** and select **New experiment**. The defaults use eight calibration cases, six deterministic criteria and one source-support judge. One repetition makes up to eight generation and eight judge requests, billed by the provider. These presets have no automatic model retries.
 
-Setup itself makes no model requests. Live generation, judging, repeatability and separate validation have now been verified with the configured key. Review failures before tuning. The four existing validation cases were visible during authoring; independent human review and fresh cases are still needed for calibration. AI review is not included in the existing deterministic release gate.
+Both roles use `gpt-5.4-mini-2026-03-17`, low reasoning effort and a 2,000-token output limit. Model, prompt and rubric changes create new resource versions. The target receives only case input; the judge receives the saved output and source context. Refused, incomplete or invalid responses remain errors.
 
-Setup can be reproduced with `uv run python scripts/configure_catalog_ai.py` after loading the public-source pilot, then recreating the API and worker as above. Rerunning reuses matching versions and preserves existing `.env` secrets. Presets are in `examples/catalog_ai.json`.
-
-API contract references: [GPT-5.4 mini](https://developers.openai.com/api/docs/models/gpt-5.4-mini), [Structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs).
+The AI judge is advisory. The pilot's release gate uses deterministic criteria. See [calibration results and scope](AI-CALIBRATION.md) for the saved model runs.

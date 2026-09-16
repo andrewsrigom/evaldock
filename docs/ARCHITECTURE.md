@@ -37,8 +37,8 @@ External requests cannot be made atomic with PostgreSQL. A kill after the remote
 
 ## UI
 
-Vue 3 Composition API, strict TypeScript, Vite, Vue Router, TanStack Vue Query, Tailwind and generated shadcn-vue button components. Lucide provides icons. All displayed experiment values come from persisted API data. Client-only form state uses local refs; a Pinia store is unnecessary. Authenticated polling refreshes experiment state, with persisted progress-event cursor endpoints for reconnectable consumers.
+Vue 3 Composition API, strict TypeScript, Vite, Vue Router, TanStack Vue Query, Tailwind and shadcn-vue button components. Lucide provides icons. All displayed experiment values come from persisted API data. Form state uses local Vue refs. Authenticated polling refreshes experiment state, with persisted progress-event cursor endpoints for reconnectable consumers.
 
 ## Artifacts
 
-`ArtifactStore` defines get/put; `LocalArtifactStore` writes report snapshots atomically under a private root. Downloads resolve an artifact ID, check its project's workspace membership, then read the stored key. Raw case outputs and structured traces remain JSONB in the MVP, bounded by HTTP limits. A remote object store implementation can be added without changing report authorization.
+`ArtifactStore` defines get/put; `LocalArtifactStore` writes report snapshots atomically under a private root. Downloads resolve an artifact ID, check its project's workspace membership, then read the stored key. Raw case outputs and structured traces remain in JSONB, bounded by HTTP limits. A remote object store implementation can be added without changing report authorization.

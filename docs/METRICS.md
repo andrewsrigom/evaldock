@@ -28,7 +28,7 @@ Different dataset versions generate a warning and separate lists of added, remov
 
 Target latency measures the HTTP request/response wall time, excluding the queue and throttle wait. Evaluation latency is recorded separately. P95 uses nearest rank: sort n observations ascending, select `ceil(0.95*n)-1`. Sample count is always included. Comparison labels latency comparable only for the same dataset, HTTP mode, concurrency, warm-up setting and target limits. This does not control network noise or hardware variation.
 
-Warm-up is explicitly 0 in this MVP. Target and judge usage/cost are separate. Costs without provider-supplied values are unavailable. There is no price estimator or inferred zero spend. Optional execution budget is a maximum target-call reservation count, not a dollar estimate.
+Experiments do not run warm-up calls. Target and judge usage/cost are separate. Costs without provider-supplied values are unavailable. There is no price estimator or inferred zero spend. Optional execution budget is a maximum target-call reservation count, not a dollar estimate.
 
 Target transport/protocol failures retry with bounded exponential backoff. Valid outputs with low scores are never retried. The first successfully persisted target output contributes to metrics. Independent evaluator errors retry against this same output. Every attempt remains inspectable; no best-score selection occurs. Manual retry applies only to failed work. Rescoring always creates a separate linked experiment with preserved raw outputs and an explicitly selected suite.
 
